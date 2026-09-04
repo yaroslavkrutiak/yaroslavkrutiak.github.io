@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaroslav Krutiak — Senior Backend Engineer</title>
+<meta name="description" content="Portfolio of Yaroslav Krutiak, Senior Backend Engineer / Backend Architect — fintech, social, geo &amp; IAM systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EDEEEA;
+    --paper-deep: #E2E4DC;
+    --ink: #23262B;
+    --ink-soft: #5F6469;
+    --line: #D2D5CC;
+    --accent: #7A2E2E;
+    --signal: #3E6B5C;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #15171A;
+      --paper-deep: #0F1113;
+      --ink: #E4E3DD;
+      --ink-soft: #9B9F9C;
+      --line: #2B2E31;
+      --accent: #C4685F;
+      --signal: #5FA98F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #15171A;
+    --paper-deep: #0F1113;
+    --ink: #E4E3DD;
+    --ink-soft: #9B9F9C;
+    --line: #2B2E31;
+    --accent: #C4685F;
+    --signal: #5FA98F;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+  header.masthead {
+    padding: 56px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  h1.name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 8vw, 4.2rem);
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .role {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+  .meta-row span { display: inline-flex; align-items: center; gap: 8px; }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 22%, transparent);
+    flex: none;
+  }
+
+  section { padding: 44px 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding-top: 4px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .statement {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .statement p {
+    max-width: 62ch;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  .statement p:last-child { margin-bottom: 0; }
+
+  .stack-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .stack-list span:not(:last-child)::after {
+    content: '·';
+    color: var(--line);
+    margin: 0 12px;
+  }
+
+  .ledger { border-top: 1px solid var(--line); }
+  .entry {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .entry-idx {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    padding-top: 4px;
+    line-height: 1.5;
+  }
+  .entry-org {
+    display: block;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .entry-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .entry-desc {
+    margin: 0 0 12px;
+    max-width: 60ch;
+    color: var(--ink);
+  }
+  .entry-tags {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .entry-tags span:not(:last-child)::after { content: '/'; margin: 0 8px; color: var(--line); }
+
+  footer {
+    padding: 44px 0 60px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .contact-links a {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: fit-content;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-links a:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .fine {
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  @media (min-width: 640px) {
+    .meta-row { gap: 32px; }
+  }
+  @media (max-width: 520px) {
+    .section-head, .statement, .stack-row, .entry, .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-num, .entry-idx { padding-top: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">Backend Architect — Ledgers, Custody &amp; Distributed Systems</div>
+    <h1 class="name">Yaroslav Krutiak</h1>
+    <p class="role">Senior Backend Engineer · Backend Architect</p>
+    <div class="meta-row">
+      <span><span class="dot"></span> Open to remote roles — full availability</span>
+      <span>Lviv, Ukraine</span>
+      <span>6 years — fintech, social, geo &amp; IAM</span>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <h2>Profile</h2>
+    </div>
+    <div class="statement">
+      <div></div>
+      <div>
+        <p>I build the backend of systems where correctness isn't optional — ledgers, custody, and the async pipelines that move money and data without losing either. Most recently I led backend architecture for a regulated crypto exchange, setting technical direction for the team through design and code review.</p>
+        <p>Across six years I've shipped RESTful APIs and event-driven backends for fintech, social, geospatial, IAM, and health-tech products — usually starting from the domain model, not the schema.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <h2>Stack</h2>
+    </div>
+    <div class="stack-row">
+      <div></div>
+      <div class="stack-list">
+        <span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>CQRS / DDD</span><span>PostgreSQL</span><span>Prisma</span><span>Redis</span><span>AWS</span><span>Docker</span><span>Terraform</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <h2>Selected work</h2>
+    </div>
+    <div class="ledger">
+      <article class="entry">
+        <div class="entry-idx">Mar —<br>Aug 2026<span class="entry-org">Devima Solutions</span></div>
+        <div>
+          <h3 class="entry-title">CoinPrime — regulated crypto exchange</h3>
+          <p class="entry-desc">Led backend architecture for a regulated crypto exchange serving the EU/Kosovo market — a domain-driven, CQRS-based platform handling custody, ledgering, and compliance end to end.</p>
+          <div class="entry-tags"><span>NestJS</span><span>CQRS</span><span>Fireblocks</span><span>OKX</span><span>Terraform</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-idx">2024 —<br>2026<span class="entry-org">Spdload</span></div>
+        <div>
+          <h3 class="entry-title">Dynery — social dining platform</h3>
+          <p class="entry-desc">Built the backend from the ground up for a social dining platform, covering notifications, recommendations, media processing, and location search.</p>
+          <div class="entry-tags"><span>NestJS</span><span>DynamoDB</span><span>Gemini AI</span><span>H3</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-idx">2024 —<br>2026<span class="entry-org">Spdload</span></div>
+        <div>
+          <h3 class="entry-title">RAMO — geospatial data platform</h3>
+          <p class="entry-desc">Built the backend for a geospatial data platform, handling large-scale earth-observation analytics and a major processing-pipeline migration for scale.</p>
+          <div class="entry-tags"><span>PostGIS</span><span>Databricks</span><span>Delta Lake</span><span>C++ / N-API</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-idx">2022 —<br>2024<span class="entry-org">Spdload</span></div>
+        <div>
+          <h3 class="entry-title">Nolemon-Nomelon — social photo &amp; video platform</h3>
+          <p class="entry-desc">Designed and maintained the backend APIs and real-time notification system for a social photo and video platform at mobile scale.</p>
+          <div class="entry-tags"><span>NestJS</span><span>Firebase FCM</span><span>i18n</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-idx">2022<span class="entry-org">Rinf.tech</span></div>
+        <div>
+          <h3 class="entry-title">Hii Retail / Extenda Retail — enterprise IAM</h3>
+          <p class="entry-desc">Built authentication and authorization services for a distributed, multi-tenant IAM platform used by enterprise retail clients.</p>
+          <div class="entry-tags"><span>OIDC</span><span>SAML</span><span>OAuth2</span><span>Firestore</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-idx">2021 —<br>2022<span class="entry-org">Oril</span></div>
+        <div>
+          <h3 class="entry-title">Medibio — mental health platform</h3>
+          <p class="entry-desc">Built server-side infrastructure for a consumer mental-health app, including real-time data ingestion from wearable devices.</p>
+          <div class="entry-tags"><span>NestJS</span><span>MongoDB</span><span>IoT</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <footer>
+    <div class="contact-grid">
+      <div class="section-num">04</div>
+      <div>
+        <div class="contact-links">
+          <a href="mailto:yaroslavkrutiakbd@gmail.com">yaroslavkrutiakbd@gmail.com</a>
+          <a href="https://github.com/yaroslavkrutiak">github.com/yaroslavkrutiak</a>
+          <a href="https://linkedin.com/in/yaroslav-krutiak">linkedin.com/in/yaroslav-krutiak</a>
+        </div>
+        <div class="fine">Portfolio — updated 2026 — built with plain HTML &amp; CSS</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
