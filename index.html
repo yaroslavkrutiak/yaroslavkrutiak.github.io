@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yaroslav Krutiak — Senior Backend Engineer</title>
-<meta name="description" content="Portfolio of Yaroslav Krutiak, Senior Backend Engineer / Backend Architect — fintech, social, geo &amp; IAM systems.">
+<title>Yaroslav Krutiak — Senior Full-Stack Engineer</title>
+<meta name="description" content="Portfolio of Yaroslav Krutiak, Senior Full-Stack Engineer — TypeScript products end to end, from PostgreSQL and NestJS APIs to Next.js and React interfaces. Fintech, social, geo &amp; IAM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -140,11 +140,19 @@
   }
   .statement p:last-child { margin-bottom: 0; }
 
+  .stack-rows { display: flex; flex-direction: column; gap: 14px; }
   .stack-row {
     display: grid;
     grid-template-columns: 100px 1fr;
     gap: 16px;
     align-items: baseline;
+  }
+  .stack-label, .layer-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
   }
   .stack-list {
     display: flex;
@@ -193,6 +201,9 @@
     color: var(--ink);
   }
   .entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 4px;
     font-family: var(--mono);
     font-size: 11.5px;
     letter-spacing: 0.03em;
@@ -200,6 +211,26 @@
     text-transform: uppercase;
   }
   .entry-tags span:not(:last-child)::after { content: '/'; margin: 0 8px; color: var(--line); }
+
+  .case-intro {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .case-intro p { margin: 0; max-width: 62ch; font-size: 1.05rem; }
+  .case-intro .entry-org { margin-top: 0; font-family: var(--mono); font-size: 12px; padding-top: 4px; }
+  .layers { border-top: 1px solid var(--line); }
+  .layer {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .layer-label { color: var(--accent); }
+  .layer p { margin: 0; max-width: 62ch; }
 
   footer {
     padding: 44px 0 60px;
@@ -236,9 +267,10 @@
     .meta-row { gap: 32px; }
   }
   @media (max-width: 520px) {
-    .section-head, .statement, .stack-row, .entry, .contact-grid {
+    .section-head, .statement, .stack-row, .entry, .contact-grid, .case-intro, .layer {
       grid-template-columns: 1fr;
     }
+    .stack-row, .layer { gap: 4px; }
     .section-num, .entry-idx { padding-top: 0; }
   }
 
@@ -251,9 +283,9 @@
 
 <div class="wrap">
   <header class="masthead">
-    <div class="kicker">Backend Architect — Ledgers, Custody &amp; Distributed Systems</div>
+    <div class="kicker">Full-Stack TypeScript — from the database to the interface</div>
     <h1 class="name">Yaroslav Krutiak</h1>
-    <p class="role">Senior Backend Engineer · Backend Architect</p>
+    <p class="role">Senior Full-Stack Engineer · NestJS &amp; Next.js</p>
     <div class="meta-row">
       <span><span class="dot"></span> Open to remote roles — full availability</span>
       <span>Lviv, Ukraine</span>
@@ -271,8 +303,8 @@
     <div class="statement">
       <div></div>
       <div>
-        <p>I build the backend of systems where correctness isn't optional — ledgers, custody, and the async pipelines that move money and data without losing either. Most recently I led backend architecture for a regulated crypto exchange, setting technical direction for the team through design and code review.</p>
-        <p>Across six years I've shipped RESTful APIs and event-driven backends for fintech, social, geospatial, IAM, and health-tech products — usually starting from the domain model, not the schema.</p>
+        <p>I build products end to end in TypeScript — the domain model and database, the APIs and async pipelines behind them, and the Next.js interface people actually use. Most recently I led architecture for a regulated crypto exchange: I owned the backend and built core client flows — sign-in, onboarding, and transactions — in the Next.js app.</p>
+        <p>Across six years I've worked on web and mobile products in fintech, social, geospatial, IAM, and health-tech. My roots are in systems where correctness isn't optional, and I bring that to the frontend: typed API contracts, auth that keeps tokens out of reach, and screens that tell users what the system is actually doing.</p>
       </div>
     </div>
   </section>
@@ -284,10 +316,30 @@
       <div class="section-num">02</div>
       <h2>Stack</h2>
     </div>
-    <div class="stack-row">
-      <div></div>
-      <div class="stack-list">
-        <span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>CQRS / DDD</span><span>PostgreSQL</span><span>Prisma</span><span>Redis</span><span>AWS</span><span>Docker</span><span>Terraform</span>
+    <div class="stack-rows">
+      <div class="stack-row">
+        <div class="stack-label">Frontend</div>
+        <div class="stack-list">
+          <span>Next.js App Router</span><span>React</span><span>TypeScript</span><span>TanStack Query</span><span>React Hook Form</span><span>Zod</span><span>Tailwind</span><span>shadcn/ui</span><span>next-intl</span><span>Vitest</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-label">Backend</div>
+        <div class="stack-list">
+          <span>Node.js</span><span>NestJS</span><span>REST / OpenAPI</span><span>CQRS / DDD</span><span>BullMQ</span><span>OAuth2 / OIDC</span><span>Jest</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-label">Data</div>
+        <div class="stack-list">
+          <span>PostgreSQL</span><span>PostGIS</span><span>Prisma</span><span>Kysely</span><span>Redis</span><span>DynamoDB</span><span>MongoDB</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-label">Infra</div>
+        <div class="stack-list">
+          <span>AWS</span><span>GCP</span><span>Azure</span><span>Docker</span><span>Terraform</span><span>GitHub Actions</span>
+        </div>
       </div>
     </div>
   </section>
@@ -304,31 +356,31 @@
         <div class="entry-idx">Mar —<br>Aug 2026<span class="entry-org">Devima Solutions</span></div>
         <div>
           <h3 class="entry-title">CoinPrime — regulated crypto exchange</h3>
-          <p class="entry-desc">Led backend architecture for a regulated crypto exchange serving the EU/Kosovo market — a domain-driven, CQRS-based platform handling custody, ledgering, and compliance end to end.</p>
-          <div class="entry-tags"><span>NestJS</span><span>CQRS</span><span>Fireblocks</span><span>OKX</span><span>Terraform</span></div>
+          <p class="entry-desc">Led architecture for a regulated crypto exchange for the EU/Kosovo market. Owned the NestJS backend — custody, a double-entry ledger, trading, and compliance — and built core flows in the Next.js client: session auth behind a same-origin proxy, Google sign-in, KYC onboarding, country access gating, and transaction status.</p>
+          <div class="entry-tags"><span>Next.js</span><span>React</span><span>NestJS</span><span>PostgreSQL</span><span>Fireblocks</span><span>OKX</span></div>
         </div>
       </article>
       <article class="entry">
         <div class="entry-idx">2024 —<br>2026<span class="entry-org">Spdload</span></div>
         <div>
           <h3 class="entry-title">Dynery — social dining platform</h3>
-          <p class="entry-desc">Built the backend from the ground up for a social dining platform, covering notifications, recommendations, media processing, and location search.</p>
-          <div class="entry-tags"><span>NestJS</span><span>DynamoDB</span><span>Gemini AI</span><span>H3</span></div>
+          <p class="entry-desc">Built the product backend from the ground up for a social dining app — real-time messaging, multi-channel notifications, AI recommendations, media processing, and location search.</p>
+          <div class="entry-tags"><span>NestJS</span><span>PostgreSQL</span><span>DynamoDB</span><span>Gemini AI</span><span>H3</span></div>
         </div>
       </article>
       <article class="entry">
         <div class="entry-idx">2024 —<br>2026<span class="entry-org">Spdload</span></div>
         <div>
           <h3 class="entry-title">RAMO — geospatial data platform</h3>
-          <p class="entry-desc">Built the backend for a geospatial data platform, handling large-scale earth-observation analytics and a major processing-pipeline migration for scale.</p>
-          <div class="entry-tags"><span>PostGIS</span><span>Databricks</span><span>Delta Lake</span><span>C++ / N-API</span></div>
+          <p class="entry-desc">Built the service behind a geospatial web app — PostGIS queries and KPI analytics feeding interactive map views — and moved heavy earth-observation processing to Databricks for scale.</p>
+          <div class="entry-tags"><span>PostGIS</span><span>Felt Maps</span><span>Databricks</span><span>C++ / N-API</span></div>
         </div>
       </article>
       <article class="entry">
         <div class="entry-idx">2022 —<br>2024<span class="entry-org">Spdload</span></div>
         <div>
           <h3 class="entry-title">Nolemon-Nomelon — social photo &amp; video platform</h3>
-          <p class="entry-desc">Designed and maintained the backend APIs and real-time notification system for a social photo and video platform at mobile scale.</p>
+          <p class="entry-desc">Designed and maintained the APIs and real-time notification system behind a social photo and video platform used across iOS, Android, and web.</p>
           <div class="entry-tags"><span>NestJS</span><span>Firebase FCM</span><span>i18n</span></div>
         </div>
       </article>
@@ -353,9 +405,40 @@
 
   <hr class="rule">
 
+  <section>
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2>One feature, every layer</h2>
+    </div>
+    <div class="case-intro">
+      <div class="entry-org">CoinPrime</div>
+      <p>Regulation required blocking sign-ups by country — including people arriving through Google, who skip the registration form entirely. I built the fix across the whole stack:</p>
+    </div>
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-label">Interface</div>
+        <p>A country step in the Google sign-up flow, and a loader-first callback screen that never flashes an error before success.</p>
+      </div>
+      <div class="layer">
+        <div class="layer-label">Proxy</div>
+        <p>Next.js forwards API calls on the same origin. The refresh token lives in an httpOnly cookie, the access token only in memory, and OAuth state is verified idempotently so a repeated callback can't fail the sign-in.</p>
+      </div>
+      <div class="layer">
+        <div class="layer-label">API</div>
+        <p>A pending Google sign-up holds a single-use, encrypted ticket in Redis until the country is known. Domain errors come back as a typed result the UI can render, not a generic failure.</p>
+      </div>
+      <div class="layer">
+        <div class="layer-label">Policy</div>
+        <p>Country restrictions are enforced on the server for every sign-up path — the UI step is for the user, not for security.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
   <footer>
     <div class="contact-grid">
-      <div class="section-num">04</div>
+      <div class="section-num">05</div>
       <div>
         <div class="contact-links">
           <a href="mailto:yaroslavkrutiakbd@gmail.com">yaroslavkrutiakbd@gmail.com</a>
