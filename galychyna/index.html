@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Галичина · Потяг №1955</title>
+<meta name="description" content="Неофіційний концепт-лендінг Карпатського йогурту «Галичина» на заквасці Carpaticus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap">
+<style>
+:root{
+  --board:#f6f8fb;
+  --board-deep:#e9f0f8;
+  --tile:#1d5793;
+  --tile-top:#2461a0;
+  --seam:#143f6d;
+  --rule:#163a631a;
+  --rule-solid:#cfdcea;
+  --lamp:#1d68ad;
+  --crown:#2f7fc4;
+  --lamp-dim:#a9c6e3;
+  --glyph:#ffffff;
+  --glyph-dim:#8fb3d9;
+  --text:#163a63;
+  --muted:#4f6785;
+  --paper:#ffffff;
+  --paper-2:#eef3f9;
+  --ink:#163a63;
+  --ink-muted:#4f6785;
+  --go:#1a7a4c;
+  --stop:#c23a33;
+  --gutter:clamp(16px,4vw,56px);
+  --rail:0px;
+  --display:"Oswald","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+@media (min-width:1180px){:root{--rail:64px}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:var(--lamp-dim) var(--board-deep);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--board);color:var(--text);font:400 17px/1.6 var(--body);caret-color:var(--lamp)}
+::selection{background:var(--lamp);color:#fff}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--board-deep)}
+::-webkit-scrollbar-thumb{background:var(--lamp-dim);border-radius:10px;border:2px solid var(--board-deep)}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:3px}
+.paper :focus-visible{outline-color:var(--ink)}
+img,svg{max-width:100%}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:500}
+p{margin:0}
+.wrap{padding-inline:calc(var(--gutter) + var(--rail)) var(--gutter);max-width:calc(1360px + var(--rail));margin-inline:auto}
+.num{font-variant-numeric:tabular-nums}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--lamp);color:#fff;padding:8px 14px;border-radius:4px;font-weight:600}
+.skip:focus{top:12px}
+
+/* ---------- Split-flap ---------- */
+.flaps{display:flex;gap:var(--tg,4px);flex-wrap:nowrap}
+.flap{--tw:20px;position:relative;display:grid;place-items:center;width:var(--tw);height:calc(var(--tw)*1.36);flex:none;
+  background:var(--tile);border-radius:calc(var(--tw)*.08);overflow:hidden;perspective:300px;
+  font:500 calc(var(--tw)*1.02)/1 var(--display);color:var(--glyph);text-transform:uppercase}
+.flap::before{content:"";position:absolute;inset:0 0 50% 0;background:var(--tile-top)}
+.flap::after{content:"";position:absolute;left:0;right:0;top:calc(50% - .5px);height:1px;background:var(--seam)}
+.flap .c{position:relative;z-index:1;display:block;transform-origin:50% 50%}
+.flap[data-ch=" "]{background:#dde8f3}
+.flap[data-ch=" "]::before{background:#e5eef7}
+.flap[data-ch=" "]::after{background:#c9d9ea}
+.flap.tick .c{animation:flip .11s var(--ease-out)}
+@keyframes flip{0%{transform:rotateX(0)}45%{transform:rotateX(-88deg);opacity:.35}100%{transform:rotateX(0)}}
+@media (prefers-reduced-motion:reduce){.flap.tick .c{animation:none}}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--board-deep);border-bottom:1px solid var(--rule-solid)}
+.top .wrap{display:flex;align-items:center;gap:24px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.brand .crown{width:34px;height:26px;color:var(--crown);flex:none}
+.brand b{font:600 22px/1 var(--body);letter-spacing:-.01em}
+.brand span{font:500 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--lamp)}
+.nav{display:flex;gap:4px;margin-inline:auto;flex-wrap:wrap}
+.nav a{font:500 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:10px 10px;border-radius:3px;transition:color .2s}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--lamp)}
+.clock{display:flex;flex-direction:column;align-items:flex-end;line-height:1;flex:none}
+.clock b{font:500 22px/1 var(--display);color:var(--lamp);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.clock small{font:500 10px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.lang{display:flex;gap:8px;flex:none}
+.lang button{all:unset;cursor:pointer;display:flex;gap:2px;border-radius:3px;}
+.lang .m{position:relative;display:grid;place-items:center;width:20px;height:28px;background:var(--tile);border-radius:2px;overflow:hidden;font:500 17px/1 var(--display);color:var(--glyph-dim);transition:color .2s}
+.lang .m::after{content:"";position:absolute;left:0;right:0;top:calc(50% - .5px);height:1px;background:var(--seam)}
+.lang button[aria-pressed="true"] .m{color:var(--glyph)}
+.lang button[aria-pressed="true"]{box-shadow:0 2px 0 var(--lamp)}
+.lang .m.tick{animation:flip .16s var(--ease-out)}
+@media (prefers-reduced-motion:reduce){.lang .m.tick{animation:none}}
+.lang button:not([aria-pressed="true"]):hover .m{color:var(--glyph)}
+.lang button:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--lamp);transform-origin:0 50%;transform:scaleX(0)}
+@media (min-width:1180px){.progress{display:none}}
+@media (max-width:980px){.nav{display:none}.clock{margin-left:auto}}
+@media (max-width:520px){.brand span{display:none}.top .wrap{gap:14px}.clock small{display:none}}
+
+/* ---------- Route rail ---------- */
+.rail{position:fixed;left:22px;top:96px;bottom:28px;width:20px;z-index:20;display:none}
+@media (min-width:1180px){.rail{display:block}}
+.rail::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--lamp-dim)}
+.rail a{position:absolute;left:3px;width:14px;height:14px;border-radius:50%;background:var(--board);border:2px solid var(--lamp-dim);transform:translateY(-50%);transition:border-color .2s,background .2s}
+.rail a.passed{border-color:var(--lamp);background:var(--lamp)}
+.rail a span{position:absolute;left:24px;top:50%;transform:translate(-4px,-50%);white-space:nowrap;
+  font:500 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--lamp);background:var(--board-deep);padding:6px 8px;border-radius:3px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s var(--ease-out)}
+.rail a:hover span,.rail a:focus-visible span{opacity:1;transform:translate(0,-50%)}
+.rail .car{position:absolute;left:0;width:20px;height:30px;transform:translateY(-50%);pointer-events:none}
+
+/* ---------- Hero board ---------- */
+.hero{padding-block:clamp(28px,5vw,64px) clamp(40px,6vw,88px);border-bottom:1px solid var(--rule-solid)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:clamp(28px,4vw,64px);align-items:start}
+@media (max-width:1100px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.deps-cap{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;padding:16px 12px 4px}
+.deps-cap b{font:500 15px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--lamp)}
+.deps-cap span{font:500 12px/1.3 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.headline{display:grid;gap:clamp(4px,.5vw,8px);--tg:clamp(2px,.35vw,6px)}
+.headline .flap{--tw:clamp(22px,4.6vw,66px)}
+@media (max-width:640px){.headline .flap{--tw:calc((100vw - 2*var(--gutter) - 24px)/11)}.headline{--tg:2.4px}}
+.slogan{margin-top:clamp(18px,2.4vw,28px);font:400 clamp(26px,3.2vw,44px)/1.1 var(--display);letter-spacing:.01em;color:var(--text);text-transform:uppercase}
+.lead{margin-top:14px;max-width:58ch;color:var(--muted);font-size:clamp(16px,1.25vw,18px)}
+
+.deps{--dtw:clamp(13px,1.2vw,18px);--dcol:calc(var(--dtw)*15 + 28px);margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--rule-solid)}
+.deps-head,.dep{display:grid;grid-template-columns:62px var(--dcol) minmax(96px,1fr) 58px 104px;gap:14px;align-items:center}
+.deps-head{padding:12px 12px 10px;font:500 11px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.dep{all:unset;box-sizing:border-box;display:grid;grid-template-columns:62px var(--dcol) minmax(96px,1fr) 58px 104px;gap:14px;align-items:center;
+  width:100%;padding:9px 12px;border-top:1px solid var(--rule);cursor:pointer;border-radius:3px;transition:background .2s}
+.dep:hover{background:#163a630a}
+.dep[aria-pressed="true"]{background:#1d68ad14}
+.dep:focus-visible{outline:2px solid var(--lamp);outline-offset:-2px}
+.dep .t{font:500 18px/1 var(--display);color:var(--lamp);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.dep .flaps{--tg:2px}
+.dep .flap{--tw:var(--dtw)}
+.dep .f{font:400 14px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.dep .fat{font:500 16px/1 var(--display);color:var(--text);font-variant-numeric:tabular-nums}
+.dep .s{font:500 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.dep .s::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none}
+.dep[aria-pressed="true"] .s{color:var(--go)}
+.dep[aria-pressed="true"] .s::before{background:var(--go);animation:blink 1.2s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.dep[aria-pressed="true"] .s::before{animation:none}}
+@media (max-width:640px){
+  .deps-head{display:none}
+  .dep{grid-template-columns:52px 1fr auto;grid-template-areas:"t d d" ". f s";row-gap:8px;padding:12px 8px}
+  .dep .t{grid-area:t}.dep .flaps{grid-area:d}.dep .f{grid-area:f}.dep .fat{display:none}.dep .s{grid-area:s}
+  .deps{--dtw:clamp(12px,3.6vw,16px)}
+}
+.board-foot{display:flex;gap:16px 28px;align-items:center;flex-wrap:wrap;margin-top:clamp(24px,3vw,36px)}
+
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:4px;border:0;cursor:pointer;text-decoration:none;
+  font:500 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;transition:transform .25s var(--ease-out),background .2s,color .2s}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s var(--ease-out)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-lamp{background:var(--lamp);color:#fff}
+.btn-line{color:var(--lamp);box-shadow:inset 0 0 0 1.5px var(--lamp);background:none}
+.btn-line:hover{background:#1d68ad12}
+.btn-lamp:hover{background:#17599a}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#0f2c4d}
+.btn-ghost{color:var(--text);padding-inline:4px;min-height:44px;background:none}
+.btn-ghost:hover{color:var(--lamp)}
+
+/* ---------- Ticket ---------- */
+.ticket-wrap{filter:drop-shadow(0 22px 28px rgba(22,58,99,.2));transform:rotate(1.6deg);transform-origin:50% 0;position:sticky;top:96px}
+@media (max-width:1100px){.ticket-wrap{position:static;transform:none;max-width:440px}}
+.ticket{background:var(--paper);color:var(--ink);border-radius:8px;
+  -webkit-mask:radial-gradient(circle 13px at 0 var(--notch,58%),#0000 12.5px,#000 13px) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% var(--notch,58%),#0000 12.5px,#000 13px) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 13px at 0 var(--notch,58%),#0000 12.5px,#000 13px) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% var(--notch,58%),#0000 12.5px,#000 13px) right/51% 100% no-repeat}
+.ticket{position:relative}
+.punch{position:absolute;right:14px;top:52px;width:78px;height:78px;transform:rotate(-14deg);pointer-events:none}
+.punch.hit{animation:punch .38s var(--ease-out)}
+@keyframes punch{0%{transform:rotate(-14deg) scale(1.5);opacity:0}60%{opacity:1}100%{transform:rotate(-14deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.punch.hit{animation:none}}
+.ticket-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px 12px;border-bottom:1px solid #163a6322}
+.ticket-top b{font:500 12px/1 var(--display);letter-spacing:.2em;text-transform:uppercase}
+.ticket-top span{font:500 12px/1 var(--display);letter-spacing:.08em;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.ticket-art{display:grid;place-items:center;padding:14px 22px 0;height:250px}
+.ticket-art svg{height:100%;width:auto}
+.ticket-art.photo{display:block;background:#fff;margin:14px 18px 0;padding:10px;border-radius:4px;box-shadow:inset 0 0 0 1px #163a6314}
+.ticket-art.photo img{height:100%;width:100%;object-fit:contain;display:block}
+.ticket-art.drawn{position:relative}
+.art-tag{position:absolute;right:22px;bottom:2px;font:500 10px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+.ticket-body{padding:10px 22px 18px}
+.ticket-body h3{font:500 28px/1.05 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.ticket-body .kind{margin-top:6px;font-size:14px;color:var(--ink-muted)}
+.perf{border-top:2px dashed #163a6340;margin-inline:18px}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;padding:16px 22px 6px;margin:0}
+.spec div{min-width:0}
+.spec dt{font:500 11px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+.spec dd{margin:5px 0 0;font:500 18px/1.15 var(--display);font-variant-numeric:tabular-nums}
+.nutri{margin:10px 22px 0;padding:10px 0 0;border-top:1px solid #163a6322;font-size:13px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.nutri b{color:var(--ink);font-weight:600}
+.ticket-cta{padding:16px 22px 22px}
+.ticket-cta .btn{width:100%;justify-content:space-between}
+
+/* ---------- Section scaffolding ---------- */
+section{scroll-margin-top:72px}
+.sec{padding-block:clamp(72px,10vw,140px)}
+.sec-head{max-width:760px;margin-bottom:clamp(40px,6vw,72px)}
+.sec-head h2{font:500 clamp(40px,6.2vw,88px)/.98 var(--display);text-transform:uppercase;letter-spacing:-.005em}
+.sec-head p{margin-top:18px;font-size:clamp(17px,1.3vw,19px);color:var(--muted);max-width:56ch}
+.paper{background:var(--paper);color:var(--ink)}
+.paper .sec-head p{color:var(--ink-muted)}
+.deep{background:var(--board-deep)}
+
+/* ---------- Route ---------- */
+.route{margin:0;padding:0;list-style:none;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.route::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--lamp)}
+.stop{position:relative;padding:44px clamp(16px,2vw,32px) 0 0}
+.stop::before{content:"";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--board);border:3px solid var(--lamp)}
+.stop:last-child::before,.stop.lit::before{background:var(--lamp)}
+.stop::before{transition:background .4s var(--ease-out)}
+.stop h3{font:500 clamp(30px,3vw,44px)/1 var(--display);text-transform:uppercase}
+.stop p{margin-top:14px;color:var(--muted);max-width:34ch;font-size:16px}
+.stop .big{display:block;margin-top:22px;font:500 clamp(52px,6vw,88px)/.9 var(--display);color:var(--lamp);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stop .big small{font-size:max(16px,.32em);letter-spacing:.12em;margin-left:6px;color:var(--text)}
+@media (max-width:860px){
+  .route{grid-template-columns:minmax(0,1fr);gap:40px;padding-left:36px}
+  .route::before{left:9px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .stop{padding:0}
+  .stop::before{left:-36px;top:2px}
+}
+
+/* ---------- Carpaticus ---------- */
+.carp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(40px,6vw,96px);align-items:center}
+@media (max-width:900px){.carp{grid-template-columns:minmax(0,1fr)}}
+.carp h2{font:500 clamp(44px,6.6vw,96px)/.95 var(--display);text-transform:uppercase}
+.carp h2 em{font-style:normal;text-decoration:underline var(--lamp);text-decoration-thickness:.14em;text-underline-offset:.1em;text-decoration-skip-ink:none}
+.carp .copy p{margin-top:22px;font-size:clamp(17px,1.3vw,19px);max-width:52ch;color:var(--ink-muted)}
+.carp .copy p:first-of-type{color:var(--ink)}
+.carp .copy small{display:block;margin-top:18px;font-size:13px;color:var(--ink-muted)}
+.stamp-box{display:grid;justify-items:center;gap:28px}
+.stamp{width:min(360px,80vw);aspect-ratio:1;transform:rotate(-8deg);transition:transform .6s var(--ease-out)}
+.stamp:hover{transform:rotate(-2deg) scale(1.02)}
+.carp-spec{width:100%;max-width:420px;margin:0;border-top:2px solid var(--ink)}
+.carp-spec div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid #163a6326}
+.carp-spec dt{font:500 12px/1.4 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+.carp-spec dd{margin:0;font-size:16px;font-weight:500}
+.carp-spec dd i{font-style:italic}
+
+/* ---------- Timetable ---------- */
+.plats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,44px)}
+.plat{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:5px;border:1px solid var(--rule-solid);transition:border-color .2s,background .2s}
+.plat b{display:grid;place-items:center;width:34px;height:34px;border-radius:3px;background:var(--tile);font:500 20px/1 var(--display);color:var(--glyph)}
+.plat span{display:flex;flex-direction:column;gap:3px}
+.plat small{font:500 10px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.plat em{font:500 15px/1.1 var(--display);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.plat:hover{border-color:var(--lamp-dim)}
+.plat[aria-selected="true"]{background:var(--lamp);border-color:var(--lamp)}
+.plat[aria-selected="true"] b{background:var(--seam)}
+.plat[aria-selected="true"] em{color:#fff}
+.plat[aria-selected="true"] small{color:#d4e4f5}
+.plat:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}
+.tix{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:clamp(18px,2.4vw,32px)}
+.tix .ticket{--notch:64%;transition:transform .35s var(--ease-out)}
+.tix li{list-style:none;filter:drop-shadow(0 14px 20px rgba(22,58,99,.16))}
+.tix li:hover .ticket{transform:translateY(-4px) rotate(-.6deg)}
+.tix ul{margin:0;padding:0}
+.tix .ticket-art{height:220px}
+.tix .ticket-body h3{font-size:24px}
+.tix .spec{grid-template-columns:1fr 1fr;padding-bottom:20px}
+.panel[hidden]{display:none}
+@media (max-width:640px){
+  .plats{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter)*-1);padding:4px var(--gutter) 10px;scrollbar-width:none}
+  .plats::-webkit-scrollbar{display:none}
+  .plat{flex:none;scroll-snap-align:start}
+  .tix{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--gutter)*-1);padding:6px var(--gutter) 28px;scroll-padding-inline:var(--gutter)}
+  .tix li{flex:0 0 min(82%,320px);scroll-snap-align:start}
+}
+.panel{animation:panelIn .5s var(--ease-out)}
+@keyframes panelIn{from{transform:translateY(10px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+
+/* ---------- Other departures ---------- */
+.range-table{width:100%;border-collapse:collapse}
+.range-scroll{overflow-x:auto}
+.range-table th{text-align:left;padding:12px 16px 12px 0;font:500 11px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule-solid)}
+.range-table td{padding:16px 16px 16px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.range-table td.ph{width:84px;padding-right:20px;vertical-align:middle}
+.range-table td.ph img{display:block;width:64px;height:64px;object-fit:contain;background:#fff;border-radius:4px;padding:4px;box-shadow:inset 0 0 0 1px var(--rule)}
+.range-table td.ph .flap{margin-inline:auto}
+.range-table td.ph+td{font:500 clamp(18px,1.7vw,24px)/1.15 var(--display);text-transform:uppercase;color:var(--lamp);letter-spacing:.02em}
+.range-table td.ph+td small{display:block;margin-top:4px;font:400 14px/1.4 var(--body);text-transform:none;letter-spacing:0;color:var(--muted)}
+.range-table td.n{font:500 18px/1.2 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.range-table tr.brand-row td.ph+td{color:var(--text)}
+.range-table tr:hover td{background:#163a6306}
+@media (max-width:640px){
+  .range-table thead{display:none}
+  .range-table tr{display:grid;grid-template-columns:76px 1fr 1fr;border-bottom:1px solid var(--rule);padding:14px 0;column-gap:12px}
+  .range-table td{border:0;padding:4px 0}
+  .range-table td.ph{grid-row:1/3;width:auto;padding:0}
+  .range-table td.ph+td{grid-column:2/-1}
+}
+
+/* ---------- History ---------- */
+.track{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;padding-top:40px}
+.track::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.track::after{content:"";position:absolute;left:0;right:0;top:3px;height:8px;border-left:0;background:repeating-linear-gradient(90deg,var(--ink) 0 3px,transparent 3px 26px)}
+.km{padding-right:clamp(12px,2vw,28px)}
+.km b{display:block;font:500 clamp(34px,3.6vw,56px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.km p{margin-top:12px;font-size:15px;color:var(--ink-muted);max-width:26ch}
+@media (max-width:980px){.track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}}
+@media (max-width:600px){
+  .track{grid-template-columns:minmax(0,1fr);padding:0 0 0 38px;row-gap:28px}
+  .track::before{top:0;bottom:0;left:0;right:auto;width:14px;height:auto;border:0;border-left:3px solid var(--ink);border-right:3px solid var(--ink)}
+  .track::after{top:0;bottom:0;left:3px;right:auto;width:8px;height:auto;background:repeating-linear-gradient(180deg,var(--ink) 0 3px,transparent 3px 26px)}
+}
+
+/* ---------- Where to buy ---------- */
+.buyboard{--btw:clamp(13px,1.6vw,26px);border-top:1px solid var(--rule-solid)}
+.buyboard ul{margin:0;padding:0;list-style:none}
+.bb-head,.bb-row{display:grid;grid-template-columns:calc(var(--btw)*18 + 34px) 1fr 24px;gap:24px;align-items:center}
+.bb-head{padding:12px;font:500 11px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.bb-row{padding:12px;border-top:1px solid var(--rule);text-decoration:none;border-radius:3px;transition:background .2s}
+.bb-row .flaps{--tg:2px}
+.bb-row .flap{--tw:var(--btw)}
+.bb-row .host{font-size:15px;color:var(--muted);transition:color .2s;min-width:0;overflow-wrap:anywhere}
+.bb-row svg{width:22px;height:22px;color:var(--lamp);transition:transform .3s var(--ease-out)}
+.bb-row:hover{background:#1d68ad10}
+.bb-row:hover .host{color:var(--text)}
+.bb-row:hover svg{transform:translate(3px,-3px)}
+.bb-row:focus-visible{outline-offset:-2px}
+@media (max-width:760px){
+  .buyboard{--btw:calc((100vw - 2*var(--gutter) - 34px - 24px)/18)}
+  .bb-head{display:none}
+  .bb-row{grid-template-columns:1fr 22px;row-gap:8px;padding:14px 0}
+  .bb-row .flaps{grid-column:1/-1}
+}
+
+/* ---------- Footer ---------- */
+.foot{padding-block:48px 56px;border-top:1px solid var(--rule-solid);background:var(--board-deep);color:var(--muted);font-size:14px}
+.foot .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px}
+@media (max-width:760px){.foot .wrap{grid-template-columns:minmax(0,1fr)}}
+.foot p{max-width:62ch}
+.foot p+p{margin-top:10px}
+.foot b{color:var(--text);font-weight:500}
+.foot ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.foot h2{font:500 11px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--lamp);margin-bottom:12px}
+
+/* ---------- intro: a morning електричка crosses the Carpathians, cloud rolls in, the board appears ---------- */
+.intro{display:none;position:fixed;inset:0;z-index:100;background:#c4dcf1;overflow:hidden;contain:strict}
+html.intro-on{overflow:hidden}
+html.intro-on .intro{display:block}
+.intro>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.intro .ilayer{position:absolute;inset:0;will-change:transform,opacity}
+.intro .ilayer>svg{position:absolute;inset:0;width:100%;height:100%;display:block;will-change:transform}
+.intro .itrain{position:absolute;left:0;will-change:transform}
+.intro .itrain>svg{display:block;width:100%;height:100%;overflow:visible}
+.intro .fl{animation:fl 1.9s steps(3,end) infinite alternate}
+@keyframes fl{to{opacity:.62}}
+.intro-clouds{position:absolute;inset:0;pointer-events:none}
+.intro-clouds i{position:absolute;left:0;top:0;opacity:0;will-change:transform,opacity;
+  background:
+    radial-gradient(ellipse 18% 26% at 40% 30%,#ffffff 0 30%,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 16% 24% at 62% 34%,#ffffff 0 30%,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 27% 38% at 50% 42%,#fbfcfe 0 34%,rgba(251,252,254,0) 72%),
+    radial-gradient(ellipse 18% 22% at 14% 64%,#e6eef7 0 30%,rgba(230,238,247,0) 72%),
+    radial-gradient(ellipse 18% 22% at 86% 62%,#e2ebf5 0 30%,rgba(226,235,245,0) 72%),
+    radial-gradient(ellipse 30% 40% at 29% 56%,#f2f6fb 0 34%,rgba(242,246,251,0) 72%),
+    radial-gradient(ellipse 30% 38% at 72% 54%,#eef3f9 0 34%,rgba(238,243,249,0) 72%),
+    radial-gradient(ellipse 50% 28% at 50% 70%,#c9dbee 0 42%,rgba(201,219,238,0) 76%)}
+.intro-clouds i.mir{scale:-1 1}
+.intro-veil{position:absolute;inset:0;background:var(--board);opacity:0}
+.intro-skip{position:absolute;z-index:2;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));
+  display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;cursor:pointer;
+  font:500 12px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--lamp);
+  background:rgba(255,255,255,.82);border:1px solid var(--lamp-dim);border-radius:4px;transition:border-color .15s,background .15s}
+.intro-skip:hover{border-color:var(--lamp);background:#fff}
+.intro-skip:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}
+.intro-skip svg{position:static;width:14px;height:14px}
+
+/* page arrives from under the cloud: header drops in, the board rises, the ticket lands last */
+html.intro-on .top,html.intro-on .rail,html.intro-on .hero .wrap>div>*,html.intro-on .ticket-wrap{
+  transition:opacity .9s var(--ease-out),translate 1.2s var(--ease-out)}
+html.intro-hold .top{opacity:0;translate:0 -24px}
+html.intro-hold .rail,html.intro-hold .hero .wrap>div>*,html.intro-hold .ticket-wrap{opacity:0;translate:0 26px}
+html.intro-on .hero .wrap>div>:nth-child(2){transition-delay:.08s}
+html.intro-on .hero .wrap>div>:nth-child(3){transition-delay:.16s}
+html.intro-on .hero .wrap>div>:nth-child(4){transition-delay:.24s}
+html.intro-on .hero .wrap>div>:nth-child(5){transition-delay:.32s}
+html.intro-on .ticket-wrap{transition-delay:.38s}
+html.intro-on .rail{transition-delay:.45s}
+</style>
+<script>
+/* Decide before first paint whether the intro plays; a deep link, reduced motion or a background tab go straight to the page. */
+(function(){var d=document.documentElement;try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!document.hidden&&!location.hash&&!/[?&]nointro\b/.test(location.search)){d.classList.add("intro-on","intro-hold");setTimeout(function(){d.classList.remove("intro-on","intro-hold");var o=document.getElementById("intro");if(o)o.remove()},15000)}}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="intro" id="intro">
+  <svg id="intro-scene" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMax slice"></svg>
+  <div class="intro-veil" id="intro-veil"></div>
+  <div class="intro-clouds" id="intro-clouds" aria-hidden="true"></div>
+  <button type="button" class="intro-skip" id="intro-skip"><span data-i18n="introSkip">Пропустити заставку</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6l6 6-6 6M13 6l6 6-6 6"/></svg></button>
+</div>
+<a class="skip" href="#board" data-i18n="skip">Перейти до розкладу</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#board" aria-label="Галичина">
+      <svg class="crown" viewBox="-24 -20 48 36" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(-15 -1) rotate(-32) scale(.95)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g><g transform="translate(0 -4) scale(1.15)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g><g transform="translate(15 -1) rotate(32) scale(.95)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g></g><rect x="-21" y="7" width="42" height="3.6" rx="1" fill="currentColor"/><rect x="-21" y="13" width="42" height="1.6" rx=".8" fill="currentColor"/></svg>
+      <b>Галичина</b><span data-i18n="brandTrain">Потяг №1955</span>
+    </a>
+    <nav class="nav" aria-label="Розділи" data-i18n-aria="navLabel">
+      <a href="#route" data-i18n="navRoute">Маршрут</a>
+      <a href="#carpaticus">Carpaticus</a>
+      <a href="#timetable" data-i18n="navTimetable">Розклад</a>
+      <a href="#range" data-i18n="navRange">Інші потяги</a>
+      <a href="#history" data-i18n="navHistory">Шлях</a>
+      <a href="#buy" data-i18n="navBuy">Де купити</a>
+    </nav>
+    <div class="clock" aria-live="off">
+      <b class="num" id="clock">--:--</b>
+      <small data-i18n="kyiv">Київ</small>
+    </div>
+    <div class="lang" role="group" aria-label="Мова / Language">
+      <button type="button" id="lang-uk" data-lang="uk" aria-pressed="true" lang="uk" aria-label="Українська"><span class="m">У</span><span class="m">К</span></button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false" lang="en" aria-label="English"><span class="m">E</span><span class="m">N</span></button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Маршрут сторінки" data-i18n-aria="railLabel"></nav>
+
+<main>
+  <!-- HERO BOARD -->
+  <section class="hero" id="board" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title">
+          <span class="sr" id="hero-sr">Карпатський йогурт</span>
+          <span class="headline" aria-hidden="true">
+            <span class="flaps" id="hl1"></span>
+            <span class="flaps" id="hl2"></span>
+          </span>
+        </h1>
+        <p class="slogan" data-i18n="slogan">Бери силу Карпат</p>
+        <p class="lead" data-i18n="lead">Жива закваска Carpaticus народилася в Українських Карпатах. Звідти вона їде в кожне місто у стаканчику 260 г або пляшці 800 г. Оберіть свій рейс.</p>
+
+        <div class="deps" role="group" aria-label="Табло смаків" data-i18n-aria="depsLabel">
+          <p class="deps-cap"><b data-i18n="boardTitle">Відправлення</b><span data-i18n="boardFrom">Карпати → уся Україна</span></p>
+          <div class="deps-head" aria-hidden="true">
+            <span data-i18n="colTime">Час</span><span data-i18n="colFlavour">Смак</span><span data-i18n="colFormat">Формат</span><span data-i18n="colFat">Жир</span><span data-i18n="colStatus">Статус</span>
+          </div>
+          <div id="deps"></div>
+        </div>
+
+        <div class="board-foot">
+          <a class="btn btn-line" href="#timetable"><span data-i18n="ctaAll">Увесь розклад смаків</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#carpaticus"><span data-i18n="ctaWhat">Що таке Carpaticus?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg></a>
+        </div>
+      </div>
+
+      <aside class="ticket-wrap" aria-live="polite" aria-labelledby="tk-name">
+        <article class="ticket" id="hero-ticket"></article>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ROUTE -->
+  <section class="sec" id="route" aria-labelledby="route-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="route-h" data-i18n="routeH">Маршрут потяга №1955</h2>
+        <p data-i18n="routeP">Чотири зупинки від полонини до вашого холодильника. На кожній — один факт про те, звідки береться Карпатський йогурт.</p>
+      </header>
+      <ol class="route" role="list">
+        <li class="stop">
+          <h3 data-i18n="s1H">Полонина</h3>
+          <p data-i18n="s1P">Карпатський йогурт народжується в Карпатах. Первозданна природа й кисломолочні традиції горян надихнули технологів «Галичини».</p>
+        </li>
+        <li class="stop">
+          <h3>Carpaticus</h3>
+          <p data-i18n="s2P">Українська закваска Enterococcus carpaticus з Карпат, на якій тримається вся лінійка карпатських йогуртів.</p>
+        </li>
+        <li class="stop">
+          <h3 data-i18n="s3H">Радехів</h3>
+          <p data-i18n="s3P">Маслозавод на Львівщині, що працює з 1955 року. Молоко — зі 100% місцевих ферм.</p>
+          <span class="big num">500<small data-i18n="s3Unit">т / добу</small></span>
+        </li>
+        <li class="stop">
+          <h3 data-i18n="s4H">Ваше місто</h3>
+          <p data-i18n="s4P">«Галичина» везе частинку Карпат у кожен регіон України, а ще у 14 країн.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CARPATICUS -->
+  <section class="sec paper" id="carpaticus" aria-labelledby="carp-h">
+    <div class="wrap carp">
+      <div class="copy">
+        <h2 id="carp-h" data-i18n-html="carpH">Закваска, що народилася на <em>полонинах</em></h2>
+        <p data-i18n="carpP1">Carpaticus — жива йогуртова культура, що походить з Українських Карпат. За даними виробника, вона має пробіотичну дію: підтримує травлення та імунітет.</p>
+        <p data-i18n="carpP2">Як і егокання, автентичний полонинський спів, Carpaticus прийшов з високогір’я. Тому «Карпатський» означає місце, звідки починається цей йогурт.</p>
+        <small data-i18n="carpNote">Властивості наведено за матеріалами компанії «Галичина».</small>
+      </div>
+      <div class="stamp-box">
+        <svg class="stamp" viewBox="0 0 320 320" role="img" aria-labelledby="stamp-t">
+          <title id="stamp-t">Штамп компостера: Carpaticus, жива культура, Українські Карпати</title>
+          <defs><path id="ring" d="M160 160 m-118 0 a118 118 0 1 1 236 0 a118 118 0 1 1 -236 0"/></defs>
+          <circle cx="160" cy="160" r="150" fill="none" stroke="#163a63" stroke-width="6"/>
+          <circle cx="160" cy="160" r="96" fill="none" stroke="#163a63" stroke-width="2"/>
+          <text font-family="Oswald, sans-serif" font-size="22" letter-spacing="5" fill="#163a63" font-weight="500">
+            <textPath href="#ring" startOffset="0" id="stamp-ring">ЖИВА КУЛЬТУРА · УКРАЇНСЬКІ КАРПАТИ · CARPATICUS ·</textPath>
+          </text>
+          <path d="M100 196 L134 146 L152 168 L178 126 L220 196 Z" fill="#163a63"/>
+          <path d="M178 126 L168 142 L175 140 L182 149 L189 137 L194 144 Z" fill="#e9ecef"/>
+          <rect x="92" y="203" width="136" height="28" fill="#e9ecef"/>
+          <text x="160" y="224" text-anchor="middle" font-family="Oswald, sans-serif" font-size="19" letter-spacing="2" fill="#163a63" font-weight="600">CARPATICUS</text>
+        </svg>
+        <dl class="carp-spec">
+          <div><dt data-i18n="kName">Назва</dt><dd>Carpaticus</dd></div>
+          <div><dt data-i18n="kOrg">Культура</dt><dd><i>Enterococcus carpaticus</i></dd></div>
+          <div><dt data-i18n="kOrigin">Походження</dt><dd data-i18n="vOrigin">Українські Карпати</dd></div>
+          <div><dt data-i18n="kAction">Дія</dt><dd data-i18n="vAction">Пробіотична</dd></div>
+          <div><dt data-i18n="kWhere">Де шукати</dt><dd data-i18n="vWhere">Уся лінійка «Карпатський йогурт», зокрема без цукру</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMETABLE -->
+  <section class="sec" id="timetable" aria-labelledby="tt-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="tt-h" data-i18n="ttH">Розклад смаків</h2>
+        <p data-i18n="ttP">Чотири платформи: від класичних стаканчиків до екзотики. Фото упаковок — з каталогів мереж.</p>
+      </header>
+      <div class="plats" role="tablist" aria-label="Платформи" data-i18n-aria="platsLabel" id="plats"></div>
+      <div id="panels"></div>
+    </div>
+  </section>
+
+  <!-- OTHER DEPARTURES -->
+  <section class="sec deep" id="range" aria-labelledby="rg-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="rg-h" data-i18n="rgH">Інші відправлення</h2>
+        <p data-i18n="rgP">Кефір, молоко, ряжанка, сметана, масло й безлактозна лінійка.</p>
+      </header>
+      <div class="range-scroll">
+        <table class="range-table">
+          <thead><tr><th scope="col"><span class="sr" data-i18n="photoCol">Фото</span></th><th scope="col" data-i18n="rgCol1">Продукт</th><th scope="col" data-i18n="rgCol2">Жирність</th><th scope="col" data-i18n="rgCol3">Фасування</th></tr></thead>
+          <tbody id="range-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="sec paper" id="history" aria-labelledby="hs-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="hs-h" data-i18n="hsH">Пройдений шлях</h2>
+        <p data-i18n="hsP">Від маслозаводу в Радехові до однієї з найбільших молочних компаній України.</p>
+      </header>
+      <ol class="track" style="margin:0;list-style:none" id="track"></ol>
+    </div>
+  </section>
+
+  <!-- WHERE TO BUY -->
+  <section class="sec" id="buy" aria-labelledby="buy-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="buy-h" data-i18n="buyH">Квитки продаються тут</h2>
+        <p data-i18n="buyP">Шукайте «Галичину» в мережах по всій Україні або замовляйте доставку напряму від виробника.</p>
+      </header>
+      <div class="buyboard">
+        <div class="bb-head" aria-hidden="true"><span data-i18n="bbChain">Мережа</span><span data-i18n="bbSite">Сайт</span></div>
+        <ul id="windows"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p><b data-i18n="footB">Неофіційний концепт-проєкт.</b> <span data-i18n="footP">Сторінку створено як портфоліо-роботу; вона не пов’язана з ТОВ «Молочна компанія «Галичина». Назви продуктів і факти взято з відкритих джерел. Фото упаковок — з каталогу zakaz.ua, © «Галичина» та відповідні мережі; використано лише для демонстрації.</span></p>
+      <p data-i18n="footCredit">Концепт і дизайн: Ярослав Крутяк, 2026.</p>
+    </div>
+    <div>
+      <h2 data-i18n="footSrc">Джерела</h2>
+      <ul>
+        <li><a href="https://galychyna.com.ua/" rel="noopener" target="_blank">galychyna.com.ua</a></li>
+        <li><a href="https://uk.wikipedia.org/wiki/ТМ_«Галичина»" rel="noopener" target="_blank">uk.wikipedia.org — ТМ «Галичина»</a></li>
+        <li><a href="https://silpo.ua/category/kefir-riazhanka-airan-4984/f/brand=halychyna" rel="noopener" target="_blank">silpo.ua — асортимент</a></li>
+        <li><a href="https://tavriav.zakaz.ua/uk/" rel="noopener" target="_blank">zakaz.ua — фото упаковок</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Intro: at dawn, an Ukrzaliznytsia ЕР9Є електричка carrying the Galychyna name crosses a Carpathian viaduct under the wires;
+   cloud rolls in; the page appears beneath.
+   Everything is drawn here in SVG. The page stays fully rendered underneath, so a failure only ever removes the intro. */
+(() => {
+"use strict";
+const root = document.documentElement;
+const intro = document.getElementById("intro");
+let reveal;
+window.galIntro = { revealed: new Promise(r => { reveal = r; }) };
+if (!intro || !root.classList.contains("intro-on")) { intro && intro.remove(); reveal(); return; }
+
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("intro-scene");
+const vw = innerWidth, vh = innerHeight;
+const H = 900, W = Math.max(400, Math.round(H * vw / vh));
+const D = 770;                                          // rail level on the viaduct deck
+// foreground scale for the train, viaduct and overhead line: large enough that the lettering on the cars reads,
+// and never below 1 on phones, where the train runs longer than the screen and one named car fills the width
+// The train stops with its nose just short of the right edge and a ГАЛИЧИНА mark in the middle of the screen, so the
+// scale follows from the layout: of the four car marks, take the one that gives the size closest to the preferred one
+// (phones: the head cab's mark; wider screens: the motor car's).
+const CL = 420, GAP = 12, NOSE = 4 * CL + 3 * GAP + 6;                  // car length, gap, front of the pilot (car units)
+const TYPES = ["cabL", "trailer", "motor", "cabR"];
+const MARK = { cabL: 253, trailer: 210, motor: 210, cabR: 167 };        // mark centre along each car, between its doors
+const EDGE = Math.max(12, vw * .025);                                   // how far short of the screen edge the nose stops
+const S = (() => {
+  const want = Math.min(1.6, Math.max(1, W / 1600 * 1.6)) * vw / W, fit = [];
+  TYPES.forEach((t, i) => fit.push((vw / 2 - EDGE) / (NOSE - i * (CL + GAP) - MARK[t])));
+  const best = fit.reduce((a, b) => Math.abs(Math.log(b / want)) < Math.abs(Math.log(a / want)) ? b : a);
+  return best * W / vw;
+})();
+svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+let seed = 1955;
+const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+const R = (a, b) => a + rnd() * (b - a);
+const f1 = n => Math.round(n * 10) / 10;
+const el = (tag, attrs, parent) => {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+};
+
+/* ---------- paints: the brand's milk and blues, with a warm dawn at the horizon ---------- */
+const C = {
+  navy: "#163a63", blue: "#1d5793", blueHi: "#2e6aa8", crown: "#2f7fc4", milk: "#f7f9fb",
+  graphite: "#232c38", graphiteHi: "#46505e", steel: "#c9d3de", red: "#c23a33", redDk: "#7d1f1b"
+};
+const defs = el("defs", {}, svg);
+const grad = (id, type, attrs, stops) => {
+  const g = el(type, Object.assign({ id }, attrs), defs);
+  stops.forEach(([o, c, a]) => el("stop", { offset: o, "stop-color": c, "stop-opacity": a == null ? 1 : a }, g));
+};
+const V = { x1: 0, y1: 0, x2: 0, y2: 1 };
+grad("i-sky", "linearGradient", V, [[0, "#86b6e2"], [.45, "#c4dcf1"], [.78, "#eef1f1"], [1, "#fde6cb"]]);
+grad("i-sun", "radialGradient", {}, [[0, "#fff6e3", .95], [.3, "#ffeccc", .45], [1, "#ffeccc", 0]]);
+grad("i-mist", "radialGradient", {}, [[0, "#ffffff", .5], [1, "#ffffff", 0]]);
+grad("i-valley", "linearGradient", V, [[0, "#7ea6cf"], [1, "#b9d2ea"]]);
+grad("i-stone", "linearGradient", V, [[0, "#e4ebf2"], [1, "#c9d6e3"]]);
+grad("i-boiler", "linearGradient", V, [[0, "#4a7db3"], [.28, C.blueHi], [.62, C.blue], [1, "#0f2c4d"]]);
+grad("i-body", "linearGradient", V, [[0, C.blueHi], [.5, C.blue], [1, C.navy]]);
+grad("i-graphite", "linearGradient", V, [[0, C.graphiteHi], [.45, C.graphite], [1, "#141a22"]]);
+grad("i-car", "linearGradient", V, [[0, "#ffffff"], [.7, "#f1f5f9"], [1, "#dde6ef"]]);
+grad("i-roof", "linearGradient", V, [[0, "#9fb1c5"], [1, "#5f738c"]]);
+grad("i-glass", "linearGradient", V, [[0, "#e6f1fb"], [.45, "#a9c8e6"], [1, "#6f98c4"]]);
+grad("i-beam", "linearGradient", { x1: 0, y1: 0, x2: 1, y2: 0 }, [[0, "#fff4cf", .55], [1, "#fff4cf", 0]]);
+
+/* ---------- layers: each part of the scene is its own composited SVG, drawn once, then only moved and faded ---------- */
+const stage = svg.parentNode, veilEl = document.getElementById("intro-veil");
+const K = vw / W;                                   // CSS px per scene unit (the viewBox matches the viewport's aspect)
+const layerSvg = () => {
+  const wrap = document.createElement("div"), s = document.createElementNS(NS, "svg");
+  wrap.className = "ilayer";
+  s.setAttribute("viewBox", `0 0 ${W} ${H}`); s.setAttribute("preserveAspectRatio", "xMidYMax slice"); s.setAttribute("aria-hidden", "true");
+  wrap.appendChild(s); stage.insertBefore(wrap, veilEl);
+  return s;
+};
+const layers = [];
+const layer = drift => {
+  const s = layerSvg(), inner = el("g", {}, s);
+  layers.push({ wrap: s.parentNode, s, drift });
+  return inner;
+};
+
+/* ---------- sky, sun, birds ---------- */
+el("rect", { width: W, height: H, fill: "url(#i-sky)" }, svg);
+const sky = el("g", {}, svg);
+const sx = Math.min(W * .7, W - 120), sy = 395;
+el("circle", { cx: sx, cy: sy, r: 300, fill: "url(#i-sun)" }, sky);
+el("circle", { cx: sx, cy: sy, r: 44, fill: "#fff8ea" }, sky);
+for (let i = 0; i < 5; i++) {
+  el("ellipse", { cx: f1(R(0, W)), cy: f1(R(70, 260)), rx: f1(R(120, 260)), ry: f1(R(5, 11)), fill: "#ffffff", opacity: f1(R(.35, .7)), class: "cirrus" }, sky);
+}
+// a loose flock; each bird beats its wings at its own pace, with short glides between bursts
+const birdG = el("g", { fill: "none", stroke: C.navy, "stroke-width": 1.6, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: .6 }, layerSvg());
+const birds = Array.from({ length: 6 }, () => ({
+  x: W * .14 + R(-70, 90), y: 215 + R(-45, 40), k: R(.75, 1.25), ph: R(0, 6.3), f: R(.011, .016), glide: R(0, 6.3),
+  vx: R(.03, .045), path: el("path", {}, birdG)
+}));
+function flap(t) {
+  for (const b of birds) {
+    // wing beat: tips swing from high (up-stroke) to below the body (down-stroke); a slow envelope adds glides
+    const beat = Math.sin(t * b.f + b.ph), env = .35 + .65 * Math.max(0, Math.sin(t * .0018 + b.glide));
+    const lift = beat * env, k = b.k;
+    const x = b.x + t * b.vx, y = b.y - t * .008 + Math.sin(t * .002 + b.ph) * 3;
+    const tipY = y - 7 * k * lift, midY = y - 5 * k * lift - 2 * k;
+    b.path.setAttribute("d", `M${f1(x - 10 * k)} ${f1(tipY)}Q${f1(x - 4.5 * k)} ${f1(midY)} ${f1(x)} ${f1(y)}Q${f1(x + 4.5 * k)} ${f1(midY)} ${f1(x + 10 * k)} ${f1(tipY)}`);
+  }
+}
+flap(0);
+
+/* ---------- the Carpathians: long rounded ranges in aerial blues, spruce forest to a tree line,
+   bald polonyna meadows on the highest domes, beech lower down, fog in the valleys ---------- */
+function ridge(base, amp, len, bumps) {
+  const ph = [R(0, 6.3), R(0, 6.3), R(0, 6.3)], pts = [];
+  for (let x = -120; x <= W + 120; x += 6) {
+    const u = x / len;
+    let y = base - amp * (.55 * Math.sin(u + ph[0]) + .3 * Math.sin(u * 2.3 + ph[1]) + .15 * Math.sin(u * 5.1 + ph[2]));
+    for (const b of bumps || []) y -= b.h * Math.exp(-(((x - b.x) / b.w) ** 2));
+    pts.push([x, y]);
+  }
+  return pts;
+}
+const ridgeD = pts => `M-120 ${H}L` + pts.map(p => `${p[0]} ${f1(p[1])}`).join("L") + `L${W + 120} ${H}Z`;
+// a spruce: narrow crown of drooping tiers that widen towards the ground; small, far trees get fewer tiers
+function spruce(x, b, h) {
+  const w = h * .44, T = h < 14 ? 3 : 5, rt = [], lt = [];
+  for (let i = 1; i <= T; i++) {
+    const y = b - h + h * .9 * i / T, hw = w / 2 * (.35 + .65 * i / T);
+    rt.push(`${f1(x + hw)} ${f1(y)}`);
+    if (i < T) rt.push(`${f1(x + hw * .42)} ${f1(y - h * .035)}`);
+    lt.unshift(`${f1(x - hw)} ${f1(y)}`);
+    if (i < T) lt.unshift(`${f1(x - hw * .42)} ${f1(y - h * .035)}`);
+  }
+  return `M${f1(x)} ${f1(b - h)}L${rt.join("L")}L${f1(x + w * .05)} ${f1(b)}L${f1(x - w * .05)} ${f1(b)}L${lt.join("L")}Z`;
+}
+const beech = (x, b, r) => {
+  const c = (cx, cy, rr) => `M${f1(cx - rr)} ${f1(cy)}a${f1(rr)} ${f1(rr)} 0 1 0 ${f1(rr * 2)} 0a${f1(rr)} ${f1(rr)} 0 1 0 ${f1(-rr * 2)} 0Z`;
+  return c(x, b - r, r) + c(x - r * .7, b - r * .6, r * .7) + c(x + r * .7, b - r * .55, r * .72);
+};
+const yAt = (pts, x) => {
+  const u = Math.max(0, Math.min(pts.length - 1.001, (x + 120) / 6)), i = Math.floor(u), t = u - i;
+  return pts[i][1] * (1 - t) + pts[i + 1][1] * t;
+};
+// dense forest: a bristling crest, then tightly overlapping rows of crowns down the slope, lit and shaded crowns
+// mixed within each row so the slope reads as one continuous canopy; nearer (lower) rows are drawn last;
+// beech crowns take over the lowest rows where asked
+function forest(g, pts, { hMin, hMax, rows, depth, light, dark, beechFrom }) {
+  for (let r = 0; r <= rows; r++) {
+    const d = ["", ""];
+    const off = r * depth / rows, round = beechFrom && r / rows >= beechFrom;
+    for (let x = -120 + R(0, 6); x < W + 120;) {
+      const sz = R(hMin, hMax) * (1 + .25 * r / rows);
+      const b = yAt(pts, x) + off + R(1, 5) + (r ? R(-3, 3) : 0);
+      d[rnd() < .45 ? 1 : 0] += round && rnd() < .7 ? beech(x, b, sz * .3) : spruce(x, b, sz);
+      x += sz * R(.19, .27);
+    }
+    el("path", { d: d[0], fill: dark }, g);
+    el("path", { d: d[1], fill: light }, g);
+  }
+}
+// each range is its own composited SVG layer: drawn once, then only moved and faded
+const mist = (g, cy, rx, ry) => el("ellipse", { cx: f1(R(.25, .75) * W), cy, rx, ry: ry || 40, fill: "url(#i-mist)", class: "mist" }, g);
+
+// high peaks behind everything (after Hoverla and Petros), just showing over the far range: bare polonyna summits
+// above a ragged tree line, the eastern faces in shade; the flock flies in front of them. No snow: the
+// Ukrainian Carpathians carry none past spring.
+const HB = 380, pw = Math.max(.55, Math.min(1, W / 1440));
+const peaks = [{ x: W * .3, h: 80, w: 67 }, { x: W * .5, h: 62, w: 47 }, { x: W * .08, h: 50, w: 50 }, { x: W * .9, h: 43, w: 67 }]
+  .map(pk => Object.assign(pk, { w: pk.w * pw }));
+const hiPts = [];
+for (let x = -120, n = 0; x <= W + 120; x += 6) {
+  n = n * .6 + R(-3, 3);
+  let y = HB - 14 * Math.sin(x / 90 + 1.3);
+  let up = 0;
+  for (const pk of peaks) up = Math.max(up, pk.h * Math.exp(-((Math.abs(x - pk.x) / pk.w) ** 1.8)));
+  y -= up;
+  hiPts.push([x, y + n]);
+}
+const hiTop = Math.min(...hiPts.map(q => q[1]));
+grad("i-peak", "linearGradient", { gradientUnits: "userSpaceOnUse", x1: 0, y1: f1(hiTop), x2: 0, y2: HB },
+  [[0, "#b6c8c6"], [.35, "#afc3cc"], [.6, "#aac1d6"], [1, "#a9c3dd"]]);
+let g = layer(0);
+el("path", { d: ridgeD(hiPts), fill: "url(#i-peak)" }, g);
+let shade = "";
+for (const pk of peaks) {
+  const i0 = Math.round((pk.x + 120) / 6), i1 = Math.min(hiPts.length - 1, i0 + Math.round(pk.w * 1.5 / 6));
+  const [ax, ay] = hiPts[i0];
+  shade += `M${f1(ax)} ${f1(ay)}L` + hiPts.slice(i0 + 1, i1 + 1).map(q => `${q[0]} ${f1(q[1])}`).join("L") + `L${f1(ax + pk.w * .7)} ${f1(ay + (HB - ay) * .9)}Q${f1(ax + pk.w * .15)} ${f1(ay + (HB - ay) * .45)} ${f1(ax)} ${f1(ay)}Z`;
+}
+el("path", { d: shade, fill: "#5b7ea6", opacity: .16 }, g);
+const hiTree = hiTop + (HB - hiTop) * .5;
+const hiForest = hiPts.map(([x, y]) => [x, Math.max(y + 4, hiTree + Math.sin(x / 31) * 9 + R(-4, 4))]);
+el("path", { d: ridgeD(hiForest), fill: "#a4bfdb" }, g);
+forest(g, hiForest, { hMin: 5, hMax: 8, rows: 4, depth: 44, light: "#aec8e1", dark: "#9ab7d6" });
+mist(g, HB + 20, W * .7, 40);
+stage.insertBefore(birdG.ownerSVGElement.parentNode, veilEl);
+
+// far range: broad Chornohora-like domes; forest stops at a fixed altitude, leaving bare meadow crowns
+const farPts = ridge(452, 30, 260, [{ x: W * .3, w: 430, h: 78 }, { x: W * .74, w: 360, h: 52 }]);
+const top = Math.min(...farPts.map(p => p[1])), tree = top + 30;
+grad("i-far", "linearGradient", { gradientUnits: "userSpaceOnUse", x1: 0, y1: f1(top), x2: 0, y2: f1(top + 40) },
+  [[0, "#c6d3d9"], [.3, "#c2d3df"], [1, "#bcd2e6"]]);
+g = layer(0);
+el("path", { d: ridgeD(farPts), fill: "url(#i-far)" }, g);
+const farForest = farPts.map(([x, y]) => [x, Math.max(y + 4, tree + Math.sin(x / 23) * 4 + R(-3, 3))]);
+el("path", { d: ridgeD(farForest), fill: "#a6c1dc" }, g);
+forest(g, farForest, { hMin: 6, hMax: 9, rows: 5, depth: 60, light: "#adc7e0", dark: "#9bb8d6" });
+mist(g, 505, W * .6, 36);
+// middle ranges, forested to the crest
+g = layer(-14);
+const m1 = ridge(530, 40, 150);
+el("path", { d: ridgeD(m1), fill: "#84a8cb" }, g);
+forest(g, m1, { hMin: 9, hMax: 13, rows: 7, depth: 90, light: "#8db0d1", dark: "#7599c0" });
+mist(g, 592, W * .5, 30);
+g = layer(-26);
+const m2 = ridge(606, 34, 120);
+el("path", { d: ridgeD(m2), fill: "#628cb6" }, g);
+forest(g, m2, { hMin: 13, hMax: 19, rows: 8, depth: 100, light: "#6d96bf", dark: "#5580ab" });
+mist(g, 668, W * .45, 28);
+// near range: tall spruce on the crest, beech crowns on the lower slope
+g = layer(-42);
+const nr = ridge(684, 26, 170);
+el("path", { d: ridgeD(nr), fill: "#3f6a94" }, g);
+forest(g, nr, { hMin: 22, hMax: 34, rows: 8, depth: 110, light: "#4a76a0", dark: "#345e88", beechFrom: .8 });
+// foreground stands of big spruce at the edges, framing the viaduct
+g = layer(-60);
+let fg = "";
+const stand = (x0, x1, n) => { for (let i = 0; i < n; i++) fg += spruce(R(x0, x1), D + R(30, 60), R(200, 340) * S); };
+stand(-60, W * .1, 7); stand(W * .9, W + 60, 7);
+el("path", { d: fg, fill: "#2c557f" }, g);
+
+/* ---------- pale stone arch viaduct (after the Austrian viaducts of the Carpathian line) ---------- */
+g = layer(0);
+const deck = g;   // the overhead line joins this layer later, so it rises and fades in with the viaduct
+el("rect", { x: -10, y: D, width: W + 20, height: H - D, fill: "url(#i-stone)" }, g);
+let arches = "";
+for (let x = -60 * S; x < W + 160 * S; x += 160 * S) {
+  const x0 = f1(x + 17 * S), x1 = f1(x + 143 * S), r = f1(63 * S), spring = f1(D + 34 * S + 63 * S);
+  arches += `M${x0} ${H}V${spring}A${r} ${r} 0 0 1 ${x1} ${spring}V${H}Z`;
+}
+el("path", { d: arches, fill: "url(#i-valley)" }, g);
+el("path", { d: arches, fill: "none", stroke: "#aebfd1", "stroke-width": f1(3 * S) }, g);
+let courses = "";
+for (let y = D + 30 * S; y < H; y += 14 * S) courses += `M-10 ${y}H${W + 10}`;
+el("path", { d: courses, stroke: C.navy, "stroke-opacity": .07, "stroke-width": 1 }, g);
+el("rect", { x: -10, y: D, width: W + 20, height: f1(18 * S), fill: "#d3dee9" }, g);
+el("path", { d: `M-10 ${f1(D + 18 * S)}H${W + 10}`, stroke: "#aebfd1", "stroke-width": f1(2 * S) }, g);
+el("path", { d: `M-10 ${D + 1}H${W + 10}`, stroke: "#5d7390", "stroke-width": f1(2.5 * S) }, g);
+
+/* ---------- the Galychyna mark: three veined leaves as a crown, over the hand-lettered name ---------- */
+let uid = 0;
+function crown(p, x, y, s, fill) {
+  const g = el("g", { transform: `translate(${x} ${y}) scale(${s})` }, p);
+  const leaf = (cx, cy, rot, k) => {
+    const l = el("g", { transform: `translate(${cx} ${cy}) rotate(${rot}) scale(${k})`, fill: "none", stroke: fill, "stroke-width": 2.2, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+    el("path", { d: "M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z" }, l);
+    el("path", { d: "M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1", "stroke-width": 1.6 }, l);
+  };
+  leaf(-15, -1, -32, .95); leaf(0, -4, 0, 1.15); leaf(15, -1, 32, .95);
+  el("rect", { x: -21, y: 7, width: 42, height: 3.6, rx: 1, fill }, g);
+  el("rect", { x: -21, y: 13, width: 42, height: 1.6, rx: .8, fill }, g);
+  return g;
+}
+function logo(p, x, y, s, crownFill, wordFill, tag) {
+  const g = el("g", { transform: `translate(${x} ${y}) scale(${s})` }, p);
+  crown(g, 0, -34, .9, crownFill);
+  const id = "i-arc" + (++uid);
+  el("path", { id, d: "M-60 12Q0 2 60 12", fill: "none" }, defs);
+  const t = el("text", { "text-anchor": "middle", fill: wordFill, "font-family": "Oswald, Arial Narrow, sans-serif", "font-size": 22, "font-weight": 400, "letter-spacing": 1.5 }, g);
+  const tp = el("textPath", { href: "#" + id, startOffset: "50%" }, t);
+  tp.textContent = "ГАЛИЧИНА";
+  if (tag) el("text", { x: 0, y: 26, "text-anchor": "middle", fill: crownFill, "font-family": "Golos Text, sans-serif", "font-size": 8.5, "letter-spacing": .6 }, g).textContent = "з чистих Карпат";
+  return g;
+}
+
+/* ---------- ЕР9Є електричка in Ukrzaliznytsia livery (drawn facing right, rails at y = 0) ----------
+   Ivory body over a UZ-blue lower band, blue sliding doors at the car ends, grey roof, domed cab with the roof headlight,
+   red and blue nose stripes, red pilot plate over a blue cowcatcher. The mark on the band follows the way UZ units carry
+   painted names. Four cars: tail cab, trailer, motor car with the pantograph, head cab. */
+const U = { ivory: "#ece7d8", ivoryDk: "#d6d0bf", blue: "#2a74bd", blueDk: "#1f5c98", red: "#d4423a", roof: "#9aa3ad",
+  roofDk: "#6f7883", under: "#343c47", steel: "#b8c1cb", rubber: "#262c33" };
+grad("i-uroof", "linearGradient", V, [[0, "#b9c1ca"], [1, U.roofDk]]);
+grad("i-uivory", "linearGradient", V, [[0, "#f6f2e8"], [.55, U.ivory], [1, U.ivoryDk]]);
+grad("i-ublue", "linearGradient", V, [[0, "#3483cf"], [1, U.blueDk]]);
+const trainBox = document.createElement("div"), trainSvg = document.createElementNS(NS, "svg");
+trainBox.className = "itrain"; trainSvg.setAttribute("aria-hidden", "true"); trainBox.appendChild(trainSvg);
+const trainG = el("g", {}, trainSvg);
+const spin = [];
+const BT = -128, BB = -40, BAND = -76, WIRE = 200;
+function wheel(p, cx, r) {
+  const cy = -r;
+  el("circle", { cx, cy, r, fill: "#2b3139" }, p);
+  const sp = el("g", {}, p);
+  el("circle", { cx, cy, r: r - 2.5, fill: "#4a525d" }, sp);
+  for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2; el("circle", { cx: f1(cx + Math.cos(a) * r * .5), cy: f1(cy + Math.sin(a) * r * .5), r: 1.8, fill: "#2b3139" }, sp); }
+  spin.push({ sp, cx, cy, r });
+  // tyre edge and the axle-box cover stay still while the disc turns behind them
+  el("circle", { cx, cy, r: r - 1.2, fill: "none", stroke: "#5b646f", "stroke-width": .8 }, p);
+  el("circle", { cx, cy, r: 4, fill: "#6b747f", stroke: "#39414b", "stroke-width": 1 }, p);
+}
+const coil = (p, x, y0, y1) => {
+  let d = "";
+  for (let y = y0; y < y1 - 1; y += 2.4) d += `M${x - 4} ${f1(y)}l8 1.6`;
+  el("path", { d, stroke: "#8d98a5", "stroke-width": 1.6, "stroke-linecap": "round" }, p);
+};
+// two-axle bogie: disc wheels with brake blocks on the rims, coil springs over the axle boxes, a side frame that
+// dips between the axles, and the bolster the body rests on
+function bogie(p, cx) {
+  wheel(p, cx - 24, 12); wheel(p, cx + 24, 12);
+  [cx - 39, cx + 36].forEach(x => el("rect", { x, y: -20, width: 3, height: 11, rx: 1, fill: "#1f252c" }, p));
+  coil(p, cx - 24, -29, -16); coil(p, cx + 24, -29, -16);
+  el("path", { d: `M${cx - 44} -36H${cx + 44}V-31Q${cx + 44} -29 ${cx + 40} -29H${cx + 30}L${cx + 26} -25H${cx - 26}L${cx - 30} -29H${cx - 40}Q${cx - 44} -29 ${cx - 44} -31Z`, fill: U.under }, p);
+  el("path", { d: `M${cx - 43} -35H${cx + 43}`, stroke: "#5b646f", "stroke-width": 1 }, p);
+  el("rect", { x: cx - 12, y: -40, width: 24, height: 8, rx: 2, fill: "#2a3038" }, p);
+}
+// passenger window: framed in a rubber gasket, with a top-hung vent pane and seat backs showing through the glass
+function pWindow(p, x, w) {
+  el("rect", { x: x - 2, y: -115, width: w + 4, height: 34, rx: 4, fill: "#f9f6ef", stroke: "#b9b3a3", "stroke-width": 1 }, p);
+  el("rect", { x, y: -113, width: w, height: 30, rx: 3, fill: "url(#i-glass)" }, p);
+  el("rect", { x: x + 2, y: -93, width: w / 2 - 3, height: 10, rx: 2.5, fill: "#3f5f84", opacity: .4 }, p);
+  el("rect", { x: x + w / 2 + 1, y: -93, width: w / 2 - 3, height: 10, rx: 2.5, fill: "#3f5f84", opacity: .4 }, p);
+  el("path", { d: `M${x} -103H${x + w}`, stroke: "#dfe6ee", "stroke-width": 2.4 }, p);
+  el("path", { d: `M${x + 4} -86L${x + w - 8} -110`, stroke: "#fff", "stroke-opacity": .45, "stroke-width": 2 }, p);
+  el("rect", { x: x + .6, y: -112.4, width: w - 1.2, height: 28.8, rx: 2.6, fill: "none", stroke: "#34404d", "stroke-width": 1.2 }, p);
+}
+function door(p, x) {
+  el("rect", { x, y: -124, width: 36, height: 84, rx: 2, fill: "url(#i-ublue)" }, p);
+  [x + 3, x + 19].forEach(dx => {
+    el("rect", { x: dx + 1.5, y: -117, width: 11, height: 26, rx: 2, fill: "url(#i-glass)", stroke: "#173f69", "stroke-width": 1 }, p);
+  });
+  el("path", { d: `M${x + 18} -124V-40`, stroke: U.rubber, "stroke-width": 1.4 }, p);
+  el("path", { d: `M${x + .6} -123V-41M${x + 35.4} -123V-41`, stroke: "#173f69", "stroke-width": 1.2 }, p);
+  // grab rails either side of the doorway
+  el("path", { d: `M${x - 4} -108V-56M${x + 40} -108V-56`, stroke: U.steel, "stroke-width": 1.8, "stroke-linecap": "round" }, p);
+  el("rect", { x: x + 2, y: -40, width: 32, height: 5, fill: U.under }, p);
+}
+// the brand mark as it rides on the blue band: crown, then the name
+function mark(p, cx) {
+  crown(p, cx - 80, -60, .78, "#ffffff");
+  el("text", { x: cx + 22, y: -48, "text-anchor": "middle", fill: "#ffffff", "font-family": "Oswald, Arial Narrow, sans-serif", "font-size": 27, "font-weight": 500, "letter-spacing": 4 }, p).textContent = "ГАЛИЧИНА";
+}
+function car(i, type) {
+  const o = i * (CL + GAP), g = el("g", {}, trainG);
+  const cabR = type === "cabR", cabL = type === "cabL";
+  // body outline: cab ends curve down from the roof into a near-vertical nose
+  const L = cabL ? `M${o + 6} ${BB}Q${o - 1} ${BB} ${o} -56L${o + 3} -110Q${o + 6} ${BT} ${o + 26} ${BT}` : `M${o} ${BB}V${BT + 6}Q${o} ${BT} ${o + 6} ${BT}`;
+  const Rt = cabR ? `H${o + CL - 26}Q${o + CL - 6} ${BT} ${o + CL - 3} -110L${o + CL} -56Q${o + CL + 1} ${BB} ${o + CL - 6} ${BB}Z` : `H${o + CL - 6}Q${o + CL} ${BT} ${o + CL} ${BT + 6}V${BB}Z`;
+  const outline = L + Rt;
+  const cid = "i-car" + i;
+  const cp = el("clipPath", { id: cid }, defs);
+  el("path", { d: outline }, cp);
+  // roof
+  const r0 = cabL ? 18 : 3, r1 = cabR ? 18 : 3;
+  el("path", { d: `M${o + r0} ${BT + 1}Q${o + CL / 2} ${BT - 16} ${o + CL - r1} ${BT + 1}Z`, fill: "url(#i-uroof)" }, g);
+  const roofY = x => { const t = (x - o - r0) / (CL - r0 - r1); return BT + 1 - 34 * t * (1 - t); };
+  const body = el("g", { "clip-path": `url(#${cid})` }, g);
+  el("rect", { x: o - 4, y: BT - 2, width: CL + 8, height: BB - BT + 4, fill: "url(#i-uivory)" }, body);
+  el("path", { d: `M${o - 4} ${BT + 5}H${o + CL + 4}`, stroke: "#c3bcaa", "stroke-width": 1.2 }, body);      // rain gutter
+  el("rect", { x: o - 4, y: BAND, width: CL + 8, height: BB - BAND + 2, fill: "url(#i-ublue)" }, body);
+  el("rect", { x: o - 4, y: BAND - 4, width: CL + 8, height: 2, fill: U.blue }, body);
+  el("path", { d: `M${o - 4} ${BB - 1.5}H${o + CL + 4}`, stroke: "#173f69", "stroke-width": 2 }, body);   // solebar shadow
+  // cab details: side window, number, diagonal side stripes, wrapped nose stripes
+  const cab = (dir) => {
+    const nose = dir > 0 ? o + CL : o, sx = x => dir > 0 ? nose - x : nose + x;
+    const wx = Math.min(sx(52), sx(24));
+    el("rect", { x: wx - 2, y: -116, width: 32, height: 32, rx: 5, fill: "#f9f6ef", stroke: "#b9b3a3", "stroke-width": 1 }, body);
+    el("rect", { x: wx, y: -114, width: 28, height: 28, rx: 4, fill: "url(#i-glass)", stroke: "#34404d", "stroke-width": 1.2 }, body);
+    el("polygon", { points: `${sx(90)},${BAND - 4} ${sx(78)},${BAND - 4} ${sx(46)},-114 ${sx(58)},-114`, fill: U.blue }, body);
+    el("polygon", { points: `${sx(72)},${BAND - 4} ${sx(66)},${BAND - 4} ${sx(34)},-114 ${sx(40)},-114`, fill: U.blue }, body);
+    el("rect", { x: Math.min(sx(10), nose), y: -88, width: 10, height: 5, fill: U.red }, body);
+    el("rect", { x: Math.min(sx(10), nose), y: BAND + 6, width: 10, height: 5, fill: U.red }, body);
+    // the windscreen, seen edge-on where the nose turns, and the driver's door behind the cab window with its handrail
+    el("path", { d: `M${sx(1)} -113L${sx(10)} -114L${sx(10)} -91L${sx(2.5)} -90Z`, fill: "#2f4358" }, body);
+    el("path", { d: `M${sx(58)} -123V-44M${sx(86)} -123V-44`, stroke: "#8f887a", "stroke-width": 1 }, body);
+    el("path", { d: `M${sx(92)} -104V-58`, stroke: U.steel, "stroke-width": 1.8, "stroke-linecap": "round" }, body);
+    el("text", { x: sx(36), y: -52, "text-anchor": "middle", fill: "#ffffff", "font-family": "Oswald, Arial Narrow, sans-serif", "font-size": 15, "font-weight": 500, "letter-spacing": .8 }, g).textContent = "ЕР9Є 655";
+    // roof headlight dome, marker lamp, horn, radio aerial
+    el("path", { d: `M${sx(56)} ${BT + 2}Q${sx(30)} ${BT - 14} ${sx(6)} ${BT + 8}Z`, fill: "url(#i-uroof)" }, g);
+    el("rect", { x: Math.min(sx(30), sx(10)), y: BT - 17, width: 20, height: 18, rx: 7, fill: U.roofDk }, g);
+    el("ellipse", { cx: sx(11.5), cy: BT - 8, rx: 3, ry: 7, fill: "#fff6d8", stroke: U.steel, "stroke-width": 1.2 }, g);
+    el("rect", { x: Math.min(sx(62), sx(52)), y: BT - 9, width: 10, height: 5, rx: 2, fill: U.steel }, g);
+    el("path", { d: `M${sx(76)} ${BT - 1}V${BT - 21}M${sx(70)} ${BT - 21}H${sx(82)}`, stroke: "#4b535d", "stroke-width": 1.4, "stroke-linecap": "round" }, g);
+    // rear-view mirror and buffer lamps on the nose: white at the head, red at the tail
+    el("rect", { x: dir > 0 ? nose - 1 : nose - 3, y: -107, width: 4, height: 12, rx: 1.5, fill: U.under }, g);
+    [-64, -48].forEach(y => el("circle", { cx: sx(.5), cy: y, r: 2.6, fill: dir > 0 ? "#fff3cf" : "#e0463c", stroke: U.under, "stroke-width": 1 }, g));
+    // pilot: red buffer plate over a blue cowcatcher lattice, coupler
+    const px0 = Math.min(sx(34), sx(-2));
+    el("rect", { x: px0, y: -40, width: 36, height: 10, fill: U.red }, g);
+    el("path", { d: `M${sx(30)} -30L${sx(-6)} -30L${sx(-2)} -3L${sx(30)} -3Z`, fill: "none", stroke: U.blue, "stroke-width": 2 }, g);
+    for (let k = 0; k < 4; k++) el("path", { d: `M${sx(30)} ${-26 + k * 6}H${sx(-4 + k)}`, stroke: U.blue, "stroke-width": 1.6 }, g);
+    el("rect", { x: Math.min(sx(-2), sx(-12)), y: -36, width: 10, height: 7, fill: U.under }, g);
+    // headlight beam
+    if (dir > 0) el("polygon", { points: `${sx(10)},${BT - 8} ${sx(-560)},${BT - 90} ${sx(-560)},0`, fill: "url(#i-beam)" }, g);
+  };
+  // doors at the vestibules, windows between them
+  const d1 = cabL ? o + 98 : o + 12, d2 = cabR ? o + CL - 134 : o + CL - 48;
+  door(body, d1); door(body, d2);
+  const w0 = d1 + 50, w1 = d2 - 14, n = Math.floor((w1 - w0 + 8) / 34);
+  const step = (w1 - w0 - 26) / (n - 1);
+  for (let k = 0; k < n; k++) pWindow(body, f1(w0 + k * step), 26);
+  if (cabR) cab(1);
+  if (cabL) cab(-1);
+  // every car carries the Galychyna mark on its band, centred between its doors
+  mark(g, o + MARK[type]);
+  // roof gear: ventilation hoods sitting on the curve of the roof; the motor car adds the pantograph's
+  // main breaker and cable, and the braking resistors
+  for (let k = 0; k < 5; k++) {
+    const x = o + 66 + k * 70, y = f1(Math.min(roofY(x), roofY(x + 18)) + 1);
+    el("path", { d: `M${x} ${y}V${y - 4}Q${x} ${y - 7} ${x + 4} ${y - 7}H${x + 14}Q${x + 18} ${y - 7} ${x + 18} ${y - 4}V${y}Z`, fill: U.roofDk }, g);
+    el("path", { d: `M${x + 4} ${y - 5}H${x + 14}`, stroke: "#b9c1ca", "stroke-width": 1 }, g);
+  }
+  if (type === "motor") {
+    el("rect", { x: o + 210, y: BT - 22, width: 110, height: 12, rx: 2, fill: "#7a838e" }, g);
+    for (let k = 0; k < 6; k++) el("path", { d: `M${o + 218 + k * 18} ${BT - 22}v12`, stroke: "#5b646f", "stroke-width": 2 }, g);
+    el("rect", { x: o + 156, y: BT - 20, width: 36, height: 10, rx: 2, fill: "#838c97" }, g);
+    [o + 162, o + 186].forEach(x => el("path", { d: `M${x} ${BT - 20}v-4`, stroke: "#c96d3a", "stroke-width": 3.4 }, g));
+    el("path", { d: `M${o + 144} ${BT - 15}H${o + 156}M${o + 192} ${BT - 16}H${o + 210}`, stroke: "#3b434d", "stroke-width": 1.6 }, g);
+  }
+  // underframe: air reservoirs, battery and apparatus boxes with louvres, cable conduit, then the bogies
+  el("rect", { x: o + 8, y: BB, width: CL - 16, height: 6, fill: U.under }, g);
+  el("path", { d: `M${o + 106} ${BB + 8}H${o + CL - 106}`, stroke: "#5b646f", "stroke-width": 1.4 }, g);
+  const tank = (x, w) => {
+    el("rect", { x, y: BB + 7, width: w, height: 13, rx: 6.5, fill: "#56606b" }, g);
+    el("path", { d: `M${x + 5} ${BB + 10}H${x + w - 5}`, stroke: "#7c8793", "stroke-width": 1.4, "stroke-linecap": "round" }, g);
+  };
+  const box = (x, w, louvres) => {
+    el("rect", { x, y: BB + 6, width: w, height: 17, rx: 1.5, fill: "#434c57" }, g);
+    if (!louvres) return;
+    let d = "";
+    for (let lx = x + 4; lx < x + w - 2; lx += 4) d += `M${lx} ${BB + 9}V${BB + 20}`;
+    el("path", { d, stroke: "#5c6671", "stroke-width": 1.2 }, g);
+  };
+  if (type === "motor") { box(o + 112, 76, true); box(o + 196, 40); tank(o + 244, 64); }
+  else { tank(o + 124, 70); box(o + 204, 48, true); tank(o + 262, 42); }
+  bogie(g, o + 62); bogie(g, o + CL - 62);
+  el("path", { d: outline, fill: "none", stroke: "#b3ad9d", "stroke-width": 1 }, g);
+  // gangway bellows and the automatic coupler between cars
+  if (i < 3) {
+    const gx = o + CL;
+    el("rect", { x: gx - 1, y: -118, width: GAP + 2, height: 76, rx: 2, fill: "#2a3037" }, g);
+    let f = "";
+    for (let k = 1; k < 5; k++) f += `M${f1(gx - 1 + k * (GAP + 2) / 5)} -116V-44`;
+    el("path", { d: f, stroke: "#4b545f", "stroke-width": 1 }, g);
+    el("rect", { x: gx - 6, y: -37, width: GAP + 12, height: 6, rx: 1.5, fill: U.under }, g);
+    el("rect", { x: gx + GAP / 2 - 3, y: -39, width: 6, height: 10, rx: 1.5, fill: "#20262d" }, g);
+  }
+}
+TYPES.forEach((tp, i) => car(i, tp));
+// diamond pantograph on the motor car, pressed up against the contact wire
+const PX = 2 * (CL + GAP) + 110;
+{
+  const top = -WIRE, base = BT - 12, g = el("g", { fill: "none", stroke: "#3b434d", "stroke-width": 2.6, "stroke-linecap": "round", "stroke-linejoin": "round" }, trainG);
+  el("rect", { x: PX - 34, y: base - 2, width: 68, height: 6, rx: 2, fill: "#5b646f", stroke: "none" }, g);
+  [PX - 26, PX + 26].forEach(x => el("path", { d: `M${x} ${base + 8}V${base}`, stroke: "#c96d3a", "stroke-width": 4 }, g));
+  const mid = (base + top) / 2 + 6;
+  el("path", { d: `M${PX - 28} ${base}L${PX - 6} ${mid}L${PX + 20} ${top + 6}M${PX + 28} ${base}L${PX + 6} ${mid}L${PX - 20} ${top + 6}` }, g);
+  el("path", { d: `M${PX - 34} ${top + 3}Q${PX - 38} ${top + 3} ${PX - 40} ${top + 8}M${PX - 34} ${top + 1}H${PX + 34}M${PX + 34} ${top + 3}Q${PX + 38} ${top + 3} ${PX + 40} ${top + 8}`, "stroke-width": 3 }, g);
+}
+const LEN = 4 * CL + 3 * GAP + 14;
+const shadow = el("ellipse", { cx: LEN / 2, cy: 4, rx: LEN / 2, ry: 6, fill: C.navy, opacity: .12 }, trainSvg);
+trainSvg.insertBefore(shadow, trainG);
+const VX0 = -20, VY0 = -(WIRE + 30), VW = LEN + 620, VH = WIRE + 44;   // car-coordinate box, headlight beam included
+trainSvg.setAttribute("viewBox", `${VX0} ${VY0} ${VW} ${VH}`);
+Object.assign(trainBox.style, { top: f1((D + VY0 * S) * K) + "px", width: f1(VW * S * K) + "px", height: f1(VH * S * K) + "px" });
+stage.insertBefore(trainBox, veilEl);
+
+/* ---------- overhead line: masts on the parapet, messenger wire with droppers, contact wire ---------- */
+const wy = D - WIRE * S, span = 300 * S;
+const masts = el("g", {}, deck);
+const ohl = el("g", { fill: "none", stroke: "#3f4a57", "stroke-linecap": "round" }, deck);
+let mess = "", drop = "";
+for (let x = -span; x < W + span; x += span) {
+  el("rect", { x: f1(x - 5 * S), y: f1(wy - 70 * S), width: f1(10 * S), height: f1(D - wy + 70 * S), fill: "#8796a8" }, masts);
+  el("path", { d: `M${x} ${f1(wy - 58 * S)}H${f1(x + 60 * S)}M${x} ${f1(wy - 28 * S)}L${f1(x + 60 * S)} ${f1(wy - 2)}`, stroke: "#8796a8", "stroke-width": f1(3.5 * S) }, masts);
+  const mx = x + 60 * S, nx = mx + span;
+  mess += `M${f1(mx)} ${f1(wy - 34 * S)}Q${f1((mx + nx) / 2)} ${f1(wy - 4 * S)} ${f1(nx)} ${f1(wy - 34 * S)}`;
+  for (let k = 1; k < 7; k++) {
+    const u = k / 7, dx = mx + u * span, my = (1 - u) * (1 - u) * (wy - 34 * S) + 2 * u * (1 - u) * (wy - 4 * S) + u * u * (wy - 34 * S);
+    drop += `M${f1(dx)} ${f1(my)}V${f1(wy)}`;
+  }
+}
+el("path", { d: mess, "stroke-width": f1(1.5 * S) }, ohl);
+el("path", { d: drop, "stroke-width": f1(.9 * S), opacity: .8 }, ohl);
+el("path", { d: `M-10 ${f1(wy)}H${W + 10}`, "stroke-width": f1(1.8 * S) }, ohl);
+const sparks = el("g", {}, trainSvg);
+
+/* ---------- motion ---------- */
+const t0 = performance.now();
+const TRAIN_IN = 300, CLOUDS = 4600, REVEAL = 6200, END = 8100;
+// The train runs on the compositor and brakes to a stop the way a train pulls into a station: constant deceleration
+// from the moment it enters (an exact quadratic ease-out), so speed falls smoothly to zero with the nose just short of
+// the right edge and a ГАЛИЧИНА mark in the middle of the screen (the scale S was chosen for that).
+const u = S * K;
+const xIn = -(VW - VX0) * u, xStop = vw - EDGE - (NOSE - VX0) * u, BRAKE = 3800;
+trainBox.animate([{ transform: `translate3d(${f1(xIn)}px,0,0)` }, { transform: `translate3d(${f1(xStop)}px,0,0)` }],
+  { duration: BRAKE, delay: TRAIN_IN, easing: "cubic-bezier(.333,.667,.667,1)", fill: "both" });
+let raf = 0, lastSpark = 0, gap = 400, lastTx = xIn, running = true;
+function frame(now) {
+  if (!running) return;
+  const t = now - t0;
+  flap(t);
+  // wheels turn with the distance the train has actually covered, so they slow through the crawl
+  const tx = new DOMMatrixReadOnly(getComputedStyle(trainBox).transform).m41, dist = (tx - xIn) / u;
+  const moving = Math.abs(tx - lastTx) > .05;
+  lastTx = tx;
+  if (moving) for (const w of spin) w.sp.setAttribute("transform", `rotate(${f1(dist / w.r * 57.3)} ${w.cx} ${w.cy})`);
+  // the pantograph arcs now and then where it rides the wire, but only while the train is drawing power
+  if (moving && t > TRAIN_IN && now - lastSpark > gap) { lastSpark = now; gap = R(260, 700); spark(PX + R(-20, 20), -WIRE); }
+  raf = requestAnimationFrame(frame);
+}
+function spark(x, y) {
+  const s = el("g", {}, sparks);
+  el("circle", { r: 7, fill: "#dff1ff", opacity: .9 }, s);
+  el("path", { d: "M0 -11V11M-11 0H11M-7 -7L7 7M-7 7L7 -7", stroke: "#bfe3ff", "stroke-width": 1.4 }, s);
+  s.animate([{ opacity: 1, transform: `translate(${f1(x)}px,${f1(y)}px) scale(.4)` }, { opacity: 0, transform: `translate(${f1(x)}px,${f1(y)}px) scale(1.4)` }],
+    { duration: 180, easing: "ease-out", fill: "forwards" }).onfinish = () => s.remove();
+}
+layers.forEach((l, i) => {
+  l.wrap.animate([{ transform: "translateY(46px)", opacity: 0 }, { transform: "none", opacity: 1 }],
+    { duration: 1500, delay: i * 110, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards" });
+  if (l.drift) l.s.animate([{ transform: "none" }, { transform: `translateX(${f1(l.drift * K)}px)` }], { duration: END, fill: "forwards" });
+});
+sky.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1200, fill: "backwards" });
+raf = requestAnimationFrame(frame);
+
+/* ---------- clouds: roll in from the edges, cover, then part onto the milk-white page ---------- */
+const cloudBox = document.getElementById("intro-clouds"), veil = document.getElementById("intro-veil");
+const clouds = [];
+const big = Math.max(vw, vh), cols = vw > vh ? 5 : 3, rows = vw > vh ? 3 : 5;
+for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+  const w = big * R(.55, .8), h = w * .62;
+  const tx = (c + .5) / cols * vw + R(-.12, .12) * vw / cols, ty = (r + .5) / rows * vh + R(-.15, .15) * vh / rows;
+  let dx = tx - vw / 2, dy = ty - vh / 2;
+  const n = Math.hypot(dx, dy) || 1; dx /= n; dy /= n;
+  if (Math.abs(dx) < .3) dx = c < cols / 2 ? -.6 : .6;
+  const node = document.createElement("i");
+  if (rnd() < .5) node.className = "mir";
+  node.style.width = w + "px"; node.style.height = h + "px";
+  cloudBox.appendChild(node);
+  clouds.push({ node, w, h, tx, ty, dx, dy });
+}
+const at = (x, y, s) => `translate(${Math.round(x)}px,${Math.round(y)}px) scale(${s})`;
+const anims = [];
+function cloudsIn() {
+  clouds.forEach(c => anims.push(c.node.animate([
+    { transform: at(c.tx - c.w / 2 + c.dx * vw * .75, c.ty - c.h / 2 + c.dy * vh * .5 + vh * .15, .8), opacity: 0 },
+    { transform: at(c.tx - c.w / 2, c.ty - c.h / 2, 1), opacity: 1 }
+  ], { duration: 1350, delay: R(0, 300), easing: "cubic-bezier(.16,1,.3,1)", fill: "both" })));
+  anims.push(veil.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 850, delay: 700, easing: "ease-in", fill: "both" }));
+}
+function cloudsOut() {
+  anims.forEach(a => a.cancel());
+  clouds.forEach(c => c.node.animate([
+    { transform: at(c.tx - c.w / 2, c.ty - c.h / 2, 1), opacity: 1 },
+    { transform: at(c.tx - c.w / 2 + c.dx * vw * .9, c.ty - c.h / 2 + c.dy * vh * .6 - vh * .18, 1.3), opacity: 0 }
+  ], { duration: 1600, delay: R(0, 250), easing: "cubic-bezier(.45,0,.2,1)", fill: "both" }));
+  veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1150, easing: "cubic-bezier(.4,0,.2,1)", fill: "both" });
+}
+
+/* ---------- sequence, skip, cleanup ---------- */
+let revealed = false, ended = false;
+const timers = [];
+const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+function stopScene() { running = false; cancelAnimationFrame(raf); stage.querySelectorAll(":scope > svg, .ilayer, .itrain").forEach(s => { s.style.visibility = "hidden"; }); sparks.textContent = ""; }
+function doReveal() {
+  if (revealed) return;
+  revealed = true;
+  stopScene();
+  intro.style.background = "transparent";
+  root.classList.remove("intro-hold");
+  reveal();
+}
+function end() {
+  if (ended) return;
+  ended = true;
+  timers.forEach(clearTimeout);
+  removeEventListener("keydown", onKey);
+  intro.remove();
+  root.classList.remove("intro-on", "intro-hold");
+  delete window.galIntro.skip;
+}
+function skip() {
+  if (ended) return;
+  timers.forEach(clearTimeout);
+  intro.style.pointerEvents = "none";
+  intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 320, easing: "ease-out", fill: "forwards" }).onfinish = () => { doReveal(); later(end, 1300); };
+}
+function onKey(e) { if (!e.metaKey && !e.ctrlKey && !e.altKey) skip(); }
+document.getElementById("intro-skip").addEventListener("click", skip);
+intro.addEventListener("pointerdown", e => { if (!e.target.closest(".intro-skip")) skip(); });
+addEventListener("keydown", onKey);
+window.galIntro.skip = skip;
+
+later(cloudsIn, CLOUDS);
+later(() => { doReveal(); cloudsOut(); }, REVEAL);
+later(end, END);
+})();
+</script>
+<script>
+(() => {
+"use strict";
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ------------------------------------------------ copy ------------------------------------------------ */
+const T = {
+  uk:{
+    skip:"Перейти до розкладу", introSkip:"Пропустити заставку", brandTrain:"Потяг №1955", navLabel:"Розділи", railLabel:"Маршрут сторінки",
+    navBoard:"Відправлення", navRoute:"Маршрут", navTimetable:"Розклад", navRange:"Інші потяги", navHistory:"Шлях", navBuy:"Де купити",
+    kyiv:"Київ", boardTitle:"Відправлення", boardFrom:"Карпати → уся Україна",
+    hl1:"КАРПАТСЬКИЙ", hl2:"ЙОГУРТ", heroSr:"Карпатський йогурт",
+    slogan:"Бери силу Карпат",
+    lead:"Жива закваска Carpaticus народилася в Українських Карпатах. Звідти вона їде в кожне місто у стаканчику 260 г або пляшці 800 г. Оберіть свій рейс.",
+    depsLabel:"Табло смаків", colTime:"Час", colFlavour:"Смак", colFormat:"Формат", colFat:"Жир", colStatus:"Статус",
+    boarding:"Посадка", ontime:"Вчасно", ctaAll:"Увесь розклад смаків", ctaWhat:"Що таке Carpaticus?",
+    ticket:"Квиток", photoOf:"Упаковка:", illustration:"Ілюстрація", photoCol:"Фото", tFormat:"Формат", tFat:"Жирність", tWeight:"Вага", tCulture:"Закваска", tLine:"Лінійка",
+    per100:"На 100 г", kcal:"ккал", prot:"білки", fatN:"жири", carb:"вуглеводи", g:"г",
+    buyCta:"Де купити",
+    cup:"Стаканчик", bottle:"Пляшка", tub:"Густий, стаканчик", onPack:"див. на упаковці",
+    routeH:"Маршрут потяга №1955", routeP:"Чотири зупинки від полонини до вашого холодильника. На кожній — один факт про те, звідки береться Карпатський йогурт.",
+    s1When:"Зупинка 1 · високогір’я", s1H:"Полонина", s1P:"Карпатський йогурт народжується в Карпатах. Первозданна природа й кисломолочні традиції горян надихнули технологів «Галичини».",
+    s2When:"Зупинка 2 · жива культура", s2P:"Українська закваска Enterococcus carpaticus з Карпат, на якій тримається вся лінійка карпатських йогуртів.",
+    s3When:"Зупинка 3 · з 1955 року", s3H:"Радехів", s3P:"Маслозавод на Львівщині, що працює з 1955 року. Молоко — зі 100% місцевих ферм.", s3Unit:"т / добу",
+    s4When:"Кінцева", s4H:"Ваше місто", s4P:"«Галичина» везе частинку Карпат у кожен регіон України, а ще у 14 країн.",
+    carpH:"Закваска, що народилася на <em>полонинах</em>",
+    carpP1:"Carpaticus — жива йогуртова культура, що походить з Українських Карпат. За даними виробника, вона має пробіотичну дію: підтримує травлення та імунітет.",
+    carpP2:"Як і егокання, автентичний полонинський спів, Carpaticus прийшов з високогір’я. Тому «Карпатський» означає місце, звідки починається цей йогурт.",
+    carpNote:"Властивості наведено за матеріалами компанії «Галичина».",
+    kName:"Назва", kOrg:"Культура", kOrigin:"Походження", kAction:"Дія", kWhere:"Де шукати",
+    vOrigin:"Українські Карпати", vAction:"Пробіотична", vWhere:"Уся лінійка «Карпатський йогурт», зокрема без цукру",
+    stampRing:"ЖИВА КУЛЬТУРА · УКРАЇНСЬКІ КАРПАТИ · CARPATICUS ·",
+    ttH:"Розклад смаків", ttP:"Чотири платформи: від класичних стаканчиків до екзотики. Фото упаковок — з каталогів мереж.",
+    platsLabel:"Платформи", platform:"Платформа",
+    rgH:"Інші відправлення", rgP:"Кефір, молоко, ряжанка, сметана, масло й безлактозна лінійка.",
+    rgCol1:"Продукт", rgCol2:"Жирність", rgCol3:"Фасування",
+    hsH:"Пройдений шлях", hsP:"Від маслозаводу в Радехові до однієї з найбільших молочних компаній України.",
+    buyH:"Квитки продаються тут", buyP:"Шукайте «Галичину» в мережах по всій Україні або замовляйте доставку напряму від виробника.",
+    bbChain:"Мережа", bbSite:"Сайт",
+    footB:"Неофіційний концепт-проєкт.",
+    footP:"Сторінку створено як портфоліо-роботу; вона не пов’язана з ТОВ «Молочна компанія «Галичина». Назви продуктів і факти взято з відкритих джерел. Фото упаковок — з каталогу zakaz.ua, © «Галичина» та відповідні мережі; використано лише для демонстрації.",
+    footCredit:"Концепт і дизайн: Ярослав Крутяк, 2026.", footSrc:"Джерела",
+    title:"Галичина · Потяг №1955"
+  },
+  en:{
+    skip:"Skip to the timetable", introSkip:"Skip intro", brandTrain:"Train No. 1955", navLabel:"Sections", railLabel:"Page route",
+    navBoard:"Departures", navRoute:"Route", navTimetable:"Timetable", navRange:"Other trains", navHistory:"History", navBuy:"Where to buy",
+    kyiv:"Kyiv time", boardTitle:"Departures", boardFrom:"Carpathians → all of Ukraine",
+    hl1:"CARPATHIAN", hl2:"YOGURT", heroSr:"Carpathian yogurt",
+    slogan:"Take the strength of the Carpathians",
+    lead:"Carpaticus, a live culture, was born in the Ukrainian Carpathians. From there it travels to every city in a 260 g cup or an 800 g bottle. Pick your departure.",
+    depsLabel:"Flavour board", colTime:"Time", colFlavour:"Flavour", colFormat:"Format", colFat:"Fat", colStatus:"Status",
+    boarding:"Boarding", ontime:"On time", ctaAll:"See every flavour", ctaWhat:"What is Carpaticus?",
+    ticket:"Ticket", photoOf:"Pack:", illustration:"Illustration", photoCol:"Photo", tFormat:"Format", tFat:"Fat", tWeight:"Weight", tCulture:"Culture", tLine:"Line",
+    per100:"Per 100 g", kcal:"kcal", prot:"protein", fatN:"fat", carb:"carbs", g:"g",
+    buyCta:"Where to buy",
+    cup:"Cup", bottle:"Bottle", tub:"Thick, cup", onPack:"see pack",
+    routeH:"The route of train No. 1955", routeP:"Four stops from the mountain pasture to your fridge. Each one carries one fact about where Carpathian yogurt comes from.",
+    s1When:"Stop 1 · the highlands", s1H:"Polonyna", s1P:"Carpathian yogurt is born in the Carpathians. Untouched nature and the highlanders’ fermented-milk traditions inspired Galychyna’s technologists.",
+    s2When:"Stop 2 · the live culture", s2P:"Enterococcus carpaticus, a Ukrainian starter culture from the Carpathians, is the base of the whole Carpathian yogurt line.",
+    s3When:"Stop 3 · since 1955", s3H:"Radekhiv", s3P:"A butter plant in the Lviv region, running since 1955. The milk comes from 100% local farms.", s3Unit:"t / day",
+    s4When:"Terminus", s4H:"Your city", s4P:"Galychyna brings a piece of the Carpathians to every region of Ukraine, and exports to 14 countries.",
+    carpH:"A culture born on the <em>mountain pastures</em>",
+    carpP1:"Carpaticus is a live yogurt culture that comes from the Ukrainian Carpathians. According to the producer, it has a probiotic effect that supports digestion and immunity.",
+    carpP2:"Like egokannia, the authentic singing of the high pastures, Carpaticus comes from the highlands. That makes “Carpathian” the place this yogurt starts, not just a word on the label.",
+    carpNote:"Properties as described by the Galychyna company.",
+    kName:"Name", kOrg:"Culture", kOrigin:"Origin", kAction:"Action", kWhere:"Where to find",
+    vOrigin:"Ukrainian Carpathians", vAction:"Probiotic", vWhere:"The whole Karpatskyi yogurt line, including sugar-free",
+    stampRing:"LIVE CULTURE · UKRAINIAN CARPATHIANS · CARPATICUS ·",
+    ttH:"Flavour timetable", ttP:"Four platforms, from classic cups to exotic flavours. Pack photos come from retailer catalogues.",
+    platsLabel:"Platforms", platform:"Platform",
+    rgH:"Other departures", rgP:"Kefir, milk, ryazhenka, sour cream, butter and a lactose-free line.",
+    rgCol1:"Product", rgCol2:"Fat", rgCol3:"Pack",
+    hsH:"Distance covered", hsP:"From a butter plant in Radekhiv to one of Ukraine’s largest dairy companies.",
+    buyH:"Tickets sold here", buyP:"Find Galychyna in supermarket chains across Ukraine, or order delivery straight from the producer.",
+    bbChain:"Chain", bbSite:"Website",
+    footB:"Unofficial concept project.",
+    footP:"Made as a portfolio piece and not affiliated with Galychyna Dairy Company LLC. Product names and facts come from public sources. Pack photos come from the zakaz.ua catalogue, © Galychyna and the respective retailers, used for demonstration only.",
+    footCredit:"Concept & design: Yaroslav Krutiak, 2026.", footSrc:"Sources",
+    title:"Galychyna · Train No. 1955"
+  }
+};
+
+/* ------------------------------------------------ products ------------------------------------------------ */
+// Facts from brand pages and retailer listings (Sept 2026). null = not confirmed, shown as "see pack".
+const P = [
+  {id:"straw-wild", photo:"assets/products/straw-wild.jpg", plat:1, fmt:"cup", w:260, fat:"2,2", color:"#d6453d", fruits:["strawberry","wild"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"ПОЛУНИЦЯ-СУНИЦЯ", name:"Полуниця-Суниця", kind:"Ложковий десертний йогурт"},
+    en:{short:"WILD STRAWBERRY", name:"Strawberry & wild strawberry", kind:"Spoonable dessert yogurt"}},
+  {id:"blue-bil", photo:"assets/products/blue-bil.jpg", plat:1, fmt:"cup", w:260, fat:"2,2", color:"#3d4d9e", fruits:["blueberry","bilberry","blueberry"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"ЛОХИНА-ЧОРНИЦЯ", name:"Лохина-Чорниця", kind:"Ложковий десертний йогурт"},
+    en:{short:"BLUE & BILBERRY", name:"Blueberry & bilberry", kind:"Spoonable dessert yogurt"}},
+  {id:"cherries", photo:"assets/products/cherries.jpg", plat:1, fmt:"cup", w:260, fat:"2,2", color:"#8e1b2c", fruits:["cherry"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"ВИШНЯ-ЧЕРЕШНЯ", name:"Вишня-Черешня", kind:"Ложковий десертний йогурт"},
+    en:{short:"TWO CHERRIES", name:"Sour & sweet cherry", kind:"Spoonable dessert yogurt"}},
+  {id:"prune", photo:"assets/products/prune.jpg", plat:1, fmt:"cup", w:260, fat:"2,2", color:"#4a2c3a", fruits:["prune","grain"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"ЧОРНОСЛИВ-ЗЛАКИ", name:"Чорнослив-Злаки", kind:"Ложковий десертний йогурт"},
+    en:{short:"PRUNE & GRAINS", name:"Prune & grains", kind:"Spoonable dessert yogurt"}},
+  {id:"b-straw", photo:"assets/products/b-straw.jpg", plat:2, fmt:"bottle", w:800, fat:"2,2", color:"#d6453d", fruits:["strawberry"], line:"КАРПАТСЬКИЙ",
+    nutri:{kcal:"88,2", p:"2,2", f:"2,2", c:"14,9"},
+    uk:{short:"ПОЛУНИЦЯ", name:"Полуниця", kind:"Питний йогурт"},
+    en:{short:"STRAWBERRY", name:"Strawberry", kind:"Drinkable yogurt"}},
+  {id:"b-nosugar", photo:"assets/products/b-nosugar.jpg", plat:2, fmt:"bottle", w:800, fat:"2,2", color:"#1f6f4a", fruits:["mountain"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"БЕЗ ЦУКРУ", name:"Без цукру", kind:"Питний йогурт із закваскою Carpaticus"},
+    en:{short:"NO SUGAR", name:"Sugar-free", kind:"Drinkable yogurt with Carpaticus culture"}},
+  {id:"x-mango", photo:"assets/products/x-mango.jpg", plat:3, fmt:"cup", w:250, fat:"2,2", color:"#f2a516", fruits:["mango"], line:"ЕКЗОТИКА",
+    uk:{short:"МАНГО", name:"Манго", kind:"Ложковий йогурт «Галичина екзотична»"},
+    en:{short:"MANGO", name:"Mango", kind:"Spoonable yogurt, Galychyna Exotic"}},
+  {id:"x-pine", photo:"assets/products/x-pine.jpg", plat:3, fmt:"cup", w:260, fat:"2,2", color:"#d9ad17", fruits:["pineapple"], line:"ЕКЗОТИКА",
+    uk:{short:"АНАНАС", name:"Ананас", kind:"Ложковий йогурт «Галичина екзотична»"},
+    en:{short:"PINEAPPLE", name:"Pineapple", kind:"Spoonable yogurt, Galychyna Exotic"}},
+  {id:"x-passion", photo:"assets/products/x-passion.jpg", plat:3, fmt:"cup", w:260, fat:"2,2", color:"#e2692b", fruits:["mango","passion"], line:"ЕКЗОТИКА",
+    uk:{short:"МАНГО-МАРАКУЙЯ", name:"Манго-Маракуйя", kind:"Ложковий йогурт «Галичина екзотична»"},
+    en:{short:"MANGO-PASSION", name:"Mango & passion fruit", kind:"Spoonable yogurt, Galychyna Exotic"}},
+  {id:"d-cream", photo:"assets/products/d-cream.jpg", plat:4, fmt:"cup", w:280, fat:"8", color:"#b0823f", fruits:["cream"], line:"КАРПАТСЬКИЙ",
+    uk:{short:"З ВЕРШКАМИ", name:"Без цукру з вершками", kind:"Карпатський йогурт без цукру з вершками, закваска Carpaticus"},
+    en:{short:"WITH CREAM", name:"Sugar-free with cream", kind:"Sugar-free Carpathian yogurt with cream, Carpaticus culture"}}
+];
+const HERO_IDS = ["straw-wild","blue-bil","cherries","prune","b-straw","b-nosugar"];
+const PLATS = [
+  {n:1, uk:"Ложкові · 260 г", en:"Spoonable · 260 g"},
+  {n:2, uk:"Питні · 800 г", en:"Drinkable · 800 g"},
+  {n:3, uk:"Екзотика · 250–260 г", en:"Exotic · 250–260 g"},
+  {n:4, uk:"З вершками · 8%", en:"With cream · 8%"}
+];
+const RANGE = [
+  {photo:"r-kefir", uk:["Карпатський кефір","За авторською технологією компанії"], en:["Carpathian kefir","Made with the company’s own technology"], fat:"1% · 2,5%", pack:{uk:"250 г · 870 г",en:"250 g · 870 g"}},
+  {photo:"r-milk", uk:["Молоко пастеризоване",""], en:["Pasteurised milk",""], fat:"2,5%", pack:{uk:"870 г",en:"870 g"}},
+  {photo:"r-ryazhenka", uk:["Ряжанка",""], en:["Ryazhenka","Baked fermented milk"], fat:"4%", pack:{uk:"800 г",en:"800 g"}},
+  {photo:"r-smetana", uk:["Сметана",""], en:["Sour cream",""], fat:"15% · 20%", pack:{uk:"300 г",en:"300 g"}},
+  {photo:"r-butter-extra", uk:["Масло «Екстра»","Солодковершкове"], en:["“Extra” butter","Sweet cream"], fat:"82,5%", pack:{uk:"180 г",en:"180 g"}},
+  {photo:"r-butter-sel", uk:["Масло «Селянське»","Солодковершкове"], en:["“Selianske” butter","Sweet cream"], fat:"72,6%", pack:{uk:"180 г",en:"180 g"}},
+  {photo:"r-lfmilk", uk:["Безлактозна лінійка","Молоко, сметана, вершки, йогурти без цукру"], en:["Lactose-free line","Milk, sour cream, cream, sugar-free yogurts"], fat:"2,5% · 15% · 10%", pack:{uk:"молоко 870 · 950 г",en:"milk 870 · 950 g"}}
+];
+const HISTORY = [
+  {y:"1955", uk:"У Радехові відкривається маслозавод: масло та згущене молоко.", en:"A butter plant opens in Radekhiv, making butter and condensed milk."},
+  {y:"1998", uk:"Виробництво відроджується після кризи 90-х.", en:"Production restarts after the crisis of the 1990s."},
+  {y:"2000+", uk:"Завод освоює кефір і йогурти.", en:"The plant moves into kefir and yogurt."},
+  {y:"2017", uk:"Друге місце в рейтингу питних йогуртів ACNielsen.", en:"Second place in the ACNielsen drinkable-yogurt ranking."},
+  {y:"2020", uk:"Нагорода «Йогурт року».", en:"“Yogurt of the Year” award."},
+  {y:"2022 →", uk:"Понад 29 млн грн продукції та 17 автомобілів передано війську.", en:"Over 29 million UAH of products and 17 vehicles donated to the army."}
+];
+const SHOPS = [
+  {name:{uk:"Сільпо",en:"Silpo"}, url:"https://silpo.ua/", host:"silpo.ua"},
+  {name:{uk:"VARUS",en:"VARUS"}, url:"https://varus.ua/", host:"varus.ua"},
+  {name:{uk:"Фора",en:"Fora"}, url:"https://fora.ua/", host:"fora.ua"},
+  {name:{uk:"Таврія В",en:"Tavria V"}, url:"https://www.tavriav.ua/", host:"tavriav.ua"},
+  {name:{uk:"METRO",en:"METRO"}, url:"https://shop.metro.ua/", host:"shop.metro.ua"},
+  {name:{uk:"Галичина доставка",en:"Galychyna delivery"}, url:"https://dostavka.galychyna.com.ua/", host:"dostavka.galychyna.com.ua"}
+];
+
+/* ------------------------------------------------ pack illustrations ------------------------------------------------ */
+const INK = "#163a63";
+function lum(hex){const n=parseInt(hex.slice(1),16);const r=(n>>16)/255,g=(n>>8&255)/255,b=(n&255)/255;return .2126*r+.7152*g+.0722*b}
+const FRUIT = {
+  strawberry:`<path d="M20 10c9 0 15 5 14 13-1 8-8 15-14 16-6-1-13-8-14-16-1-8 5-13 14-13z" fill="#e2342f" stroke="${INK}" stroke-width="1.2"/>
+    <g fill="#f7d774"><ellipse cx="14" cy="19" rx="1" ry="1.5"/><ellipse cx="20" cy="17" rx="1" ry="1.5"/><ellipse cx="26" cy="19" rx="1" ry="1.5"/><ellipse cx="17" cy="25" rx="1" ry="1.5"/><ellipse cx="23" cy="25" rx="1" ry="1.5"/><ellipse cx="20" cy="31" rx="1" ry="1.5"/></g>
+    <path d="M20 11 11 6l6 1 3-6 3 6 6-1z" fill="#2f8a3b" stroke="${INK}" stroke-width="1"/>`,
+  wild:`<g transform="translate(6 8) scale(.7)"><path d="M20 10c9 0 15 5 14 13-1 8-8 15-14 16-6-1-13-8-14-16-1-8 5-13 14-13z" fill="#c2202b" stroke="${INK}" stroke-width="1.5"/>
+    <g fill="#f7d774"><circle cx="14" cy="20" r="1.3"/><circle cx="20" cy="17" r="1.3"/><circle cx="26" cy="20" r="1.3"/><circle cx="20" cy="27" r="1.3"/></g>
+    <path d="M20 11 12 6l6 1 2-6 2 6 6-1z" fill="#2f8a3b"/></g>`,
+  blueberry:`<circle cx="20" cy="22" r="12" fill="#3f55b0" stroke="${INK}" stroke-width="1.2"/><path d="M20 14l2 3 3-1-1 3 3 2-4 0-3 2-1-3-3-1 3-2z" fill="#1d2a63"/><circle cx="14" cy="19" r="2.2" fill="#fff" opacity=".35"/>`,
+  bilberry:`<circle cx="20" cy="24" r="10" fill="#27306b" stroke="${INK}" stroke-width="1.2"/><circle cx="20" cy="17" r="2.4" fill="#141a3d"/><circle cx="15" cy="21" r="1.8" fill="#fff" opacity=".3"/>`,
+  cherry:`<path d="M13 24C15 14 19 8 26 4M27 26c-1-9-1-16-1-22" stroke="#3c6b2a" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M26 4c4 0 8 3 8 7-4 0-7-3-8-7z" fill="#2f8a3b"/>
+    <circle cx="12" cy="29" r="8.5" fill="#a3162b" stroke="${INK}" stroke-width="1.2"/><circle cx="27" cy="31" r="8" fill="#c8283f" stroke="${INK}" stroke-width="1.2"/><circle cx="9" cy="26" r="2" fill="#fff" opacity=".4"/><circle cx="24" cy="28" r="2" fill="#fff" opacity=".4"/>`,
+  prune:`<ellipse cx="20" cy="22" rx="11" ry="14" fill="#3b2233" stroke="${INK}" stroke-width="1.2"/><path d="M20 9c-3 6-3 20 0 27" stroke="#241420" stroke-width="1.4" fill="none"/><ellipse cx="15" cy="17" rx="2" ry="4" fill="#fff" opacity=".25"/>`,
+  grain:`<path d="M20 38V6" stroke="#8a6326" stroke-width="1.6"/><g fill="#e0ab4b" stroke="${INK}" stroke-width=".9"><ellipse cx="15" cy="12" rx="3.2" ry="5" transform="rotate(-25 15 12)"/><ellipse cx="25" cy="12" rx="3.2" ry="5" transform="rotate(25 25 12)"/><ellipse cx="15" cy="21" rx="3.2" ry="5" transform="rotate(-25 15 21)"/><ellipse cx="25" cy="21" rx="3.2" ry="5" transform="rotate(25 25 21)"/><ellipse cx="15" cy="30" rx="3.2" ry="5" transform="rotate(-25 15 30)"/><ellipse cx="25" cy="30" rx="3.2" ry="5" transform="rotate(25 25 30)"/><ellipse cx="20" cy="6" rx="3" ry="4.6"/></g>`,
+  pumpkin:`<path d="M20 12c2-4 4-6 7-6" stroke="#4d6b21" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="13" cy="25" rx="9" ry="11" fill="#e5782a" stroke="${INK}" stroke-width="1.2"/><ellipse cx="27" cy="25" rx="9" ry="11" fill="#e5782a" stroke="${INK}" stroke-width="1.2"/><ellipse cx="20" cy="25" rx="8" ry="12" fill="#f08a36" stroke="${INK}" stroke-width="1.2"/>`,
+  seed:`<g fill="#e3d6a2" stroke="${INK}" stroke-width="1.1"><ellipse cx="14" cy="18" rx="5" ry="8" transform="rotate(-20 14 18)"/><ellipse cx="26" cy="24" rx="5" ry="8" transform="rotate(25 26 24)"/></g><g fill="#5e7d33"><ellipse cx="14" cy="18" rx="2" ry="5" transform="rotate(-20 14 18)"/><ellipse cx="26" cy="24" rx="2" ry="5" transform="rotate(25 26 24)"/></g>`,
+  raisin:`<g fill="#5a2c2c" stroke="${INK}" stroke-width="1.1"><path d="M9 18c3-5 9-4 10 1s-4 9-8 7-4-4-2-8z"/><path d="M21 24c3-5 10-4 11 1s-4 9-9 7-4-4-2-8z"/><path d="M15 32c2-3 7-3 8 0s-3 6-6 5-3-3-2-5z"/></g>`,
+  mango:`<path d="M9 26c-2-10 6-18 15-17 8 1 11 9 8 16-3 8-12 12-18 9-3-2-5-5-5-8z" fill="#f7a823" stroke="${INK}" stroke-width="1.2"/><path d="M24 9c5-5 10-5 13-3-4 4-8 5-13 3z" fill="#2f8a3b" stroke="${INK}" stroke-width="1"/><path d="M12 28c2 4 6 6 10 5" stroke="#e66a1f" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+  pineapple:`<path d="M20 14 13 2l6 6 1-7 2 7 6-6z" fill="#2f8a3b" stroke="${INK}" stroke-width="1"/><ellipse cx="20" cy="26" rx="10" ry="13" fill="#f0c33c" stroke="${INK}" stroke-width="1.2"/><path d="M12 19l16 16M12 27l10 10M16 14l13 13M28 19 12 35M28 27 18 37M24 14 11 27" stroke="#b7811a" stroke-width="1.1"/>`,
+  passion:`<circle cx="20" cy="22" r="13" fill="#5c2a5e" stroke="${INK}" stroke-width="1.2"/><circle cx="20" cy="22" r="9" fill="#f2c230"/><g fill="#2b1a10"><circle cx="17" cy="19" r="1.3"/><circle cx="23" cy="20" r="1.3"/><circle cx="19" cy="25" r="1.3"/><circle cx="24" cy="26" r="1.3"/><circle cx="15" cy="24" r="1.3"/></g>`,
+  granola:`<g stroke="${INK}" stroke-width="1.1"><path d="M6 24c0-6 6-9 10-7s5 8 1 11-11 2-11-4z" fill="#c98d3c"/><path d="M18 16c1-5 8-7 12-4s3 9-2 10-11-1-10-6z" fill="#b37a2e"/><path d="M20 30c1-4 7-6 11-3s2 8-3 9-9-2-8-6z" fill="#d9a04b"/></g><g fill="#f4e3b5"><ellipse cx="12" cy="22" rx="2" ry="1"/><ellipse cx="25" cy="16" rx="2" ry="1"/><ellipse cx="26" cy="31" rx="2" ry="1"/></g>`,
+  mountain:`<path d="M2 36 15 14l6 9 6-11 11 24z" fill="#163a63" stroke="${INK}" stroke-width="1.2" stroke-linejoin="round"/><path d="M27 12l-4 7 3-1 2 3 2-4 2 2z" fill="#fff"/><path d="M15 14l-3 5 3-1 2 2z" fill="#fff"/>`,
+  cream:`<path d="M20 5c7 10 12 16 12 22a12 12 0 0 1-24 0c0-6 5-12 12-22z" fill="#fbf6e9" stroke="${INK}" stroke-width="1.3"/><path d="M14 27c0 4 3 7 6 7" stroke="#d8c9a4" stroke-width="2" fill="none" stroke-linecap="round"/>`
+};
+function fruitRow(list, cx, cy, s){
+  const gap = 36*s, start = cx - (list.length-1)*gap/2;
+  return list.map((f,i)=>`<g transform="translate(${start+i*gap-20*s} ${cy-20*s}) scale(${s})">${FRUIT[f]||""}</g>`).join("");
+}
+function ridge(x0,x1,y,col){
+  const w=x1-x0, pts=[[0,1],[.12,.35],[.22,.62],[.38,.05],[.52,.55],[.63,.3],[.78,.7],[.88,.4],[1,1]];
+  return `<path d="${pts.map((p,i)=>(i?"L":"M")+(x0+p[0]*w).toFixed(1)+" "+(y-18+p[1]*18).toFixed(1)).join(" ")} Z" fill="${col}"/>`;
+}
+function packSVG(p, uid){
+  const light = lum(p.color) > .5, onBand = light ? INK : "#fff";
+  const fat = p.fat ? p.fat+"%" : "";
+  const wtxt = p.w ? p.w+" г" : "";
+  const cid = "clip-"+uid;
+  if (p.fmt === "bottle"){
+    const body = "M72 44Q72 34 82 32L118 32Q128 34 128 44L148 74Q156 84 156 96L156 218Q156 230 144 230L56 230Q44 230 44 218L44 96Q44 84 52 74Z";
+    return `<svg viewBox="0 0 200 244" role="img" aria-hidden="true" focusable="false">
+      <ellipse cx="100" cy="234" rx="62" ry="6" fill="#163a63" opacity=".18"/>
+      <rect x="78" y="8" width="44" height="26" rx="5" fill="${p.color}" stroke="${INK}" stroke-width="2"/>
+      <path d="M80 16h40M80 22h40" stroke="${INK}" stroke-opacity=".35" stroke-width="1.5"/>
+      <clipPath id="${cid}"><path d="${body}"/></clipPath>
+      <path d="${body}" fill="#fbfcfb"/>
+      <g clip-path="url(#${cid})">
+        <rect x="40" y="100" width="120" height="104" fill="${p.color}"/>
+        ${ridge(40,160,100,p.color)}
+        <path d="M120 40l18 30" stroke="#fff" stroke-width="5" opacity=".6" stroke-linecap="round"/>
+      </g>
+      <path d="${body}" fill="none" stroke="${INK}" stroke-width="2.2"/>
+      <text x="100" y="88" text-anchor="middle" font-family="Golos Text, sans-serif" font-weight="600" font-size="15" fill="${INK}">Галичина</text>
+      <text x="100" y="122" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="500" font-size="15" letter-spacing="1.2" fill="${onBand}">${p.line}</text>
+      <text x="100" y="137" text-anchor="middle" font-family="Oswald, sans-serif" font-size="10.5" letter-spacing="2" fill="${onBand}">ЙОГУРТ · ${fat}</text>
+      ${fruitRow(p.fruits, 100, 168, .82)}
+      <text x="100" y="222" text-anchor="middle" font-family="Oswald, sans-serif" font-size="11" letter-spacing="1" fill="${INK}">${wtxt}</text>
+    </svg>`;
+  }
+  const tub = p.fmt === "tub";
+  const [tl,tr,bl,br,top,bot] = tub ? [22,178,36,164,92,226] : [40,160,54,146,46,226];
+  const body = `M${tl} ${top}L${tr} ${top}L${br} ${bot-6}Q${br} ${bot} ${br-6} ${bot}L${bl+6} ${bot}Q${bl} ${bot} ${bl} ${bot-6}Z`;
+  const bandTop = tub ? top+28 : top+32, bandBot = bot-16;
+  const fy = tub ? bandTop+56 : bandTop+86;
+  return `<svg viewBox="0 0 200 244" role="img" aria-hidden="true" focusable="false">
+    <ellipse cx="100" cy="234" rx="${(br-bl)/2+12}" ry="6" fill="#163a63" opacity=".18"/>
+    <clipPath id="${cid}"><path d="${body}"/></clipPath>
+    <path d="${body}" fill="#fbfcfb"/>
+    <g clip-path="url(#${cid})">
+      <rect x="0" y="${bandTop}" width="200" height="${bandBot-bandTop}" fill="${p.color}"/>
+      ${ridge(tl-4,tr+4,bandTop,p.color)}
+      <path d="M${tr-18} ${top+6}L${br-12} ${bot-10}" stroke="#fff" stroke-width="6" opacity=".35" stroke-linecap="round"/>
+    </g>
+    <path d="${body}" fill="none" stroke="${INK}" stroke-width="2.2"/>
+    <rect x="${tl-7}" y="${top-12}" width="${tr-tl+14}" height="14" rx="4" fill="#d5dadf" stroke="${INK}" stroke-width="2"/>
+    <rect x="${tl-7}" y="${top-12}" width="${tr-tl+14}" height="5" rx="2" fill="${p.color}"/>
+    <text x="100" y="${top+19}" text-anchor="middle" font-family="Golos Text, sans-serif" font-weight="600" font-size="14" fill="${INK}">Галичина</text>
+    <text x="100" y="${bandTop+24}" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="500" font-size="${tub?16:15}" letter-spacing="1.2" fill="${onBand}">${p.line}</text>
+    <text x="100" y="${bandTop+39}" text-anchor="middle" font-family="Oswald, sans-serif" font-size="10.5" letter-spacing="2" fill="${onBand}">ЙОГУРТ${fat?" · "+fat:""}</text>
+    ${fruitRow(p.fruits, 100, fy, tub ? .78 : .86)}
+    ${wtxt?`<text x="100" y="${bot-4}" text-anchor="middle" font-family="Oswald, sans-serif" font-size="10" letter-spacing="1" fill="${onBand}">${wtxt}</text>`:""}
+  </svg>`;
+}
+
+/* ------------------------------------------------ split-flap engine ------------------------------------------------ */
+const GLYPHS = "АБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЮЯABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+function buildFlaps(el, len){
+  el.textContent = "";
+  for (let i=0;i<len;i++){
+    const t = document.createElement("span"); t.className="flap";
+    const c = document.createElement("span"); c.className="c"; c.textContent=" ";
+    t.appendChild(c); t.dataset.ch=" "; el.appendChild(t);
+  }
+}
+function setFlaps(el, text, animate){
+  const tiles = el.children, len = tiles.length;
+  const str = (text||"").toUpperCase().padEnd(len," ").slice(0,len);
+  const token = (el._tok = (el._tok||0)+1);
+  for (let i=0;i<len;i++){
+    const tile = tiles[i], ch = str[i], face = tile.firstChild;
+    if (tile.dataset.ch === ch) continue;
+    const show = x => { face.textContent = x===" " ? " " : x; tile.dataset.ch = x;
+      if (animate && !reduce){ tile.classList.remove("tick"); void tile.offsetWidth; tile.classList.add("tick"); } };
+    if (!animate || reduce){ show(ch); continue; }
+    const steps = 2 + ((i*7) % 4);
+    for (let s=0;s<=steps;s++){
+      setTimeout(()=>{ if (el._tok!==token) return;
+        show(s===steps ? ch : GLYPHS[(Math.random()*GLYPHS.length)|0]); }, i*26 + s*62);
+    }
+  }
+}
+
+/* ------------------------------------------------ state ------------------------------------------------ */
+let lang = "uk";
+try { const s = localStorage.getItem("gal-lang"); if (s==="en"||s==="uk") lang = s; } catch(e){}
+let selected = "straw-wild";
+let activePlat = 1;
+const byId = id => P.find(p=>p.id===id);
+const t = k => T[lang][k] ?? k;
+const fmtLabel = p => p.fmt==="bottle" ? `${t("bottle")} ${p.w} ${t("g")}` : p.fmt==="tub" ? t("tub") : `${t("cup")} ${p.w} ${t("g")}`;
+const wLabel = p => p.w ? `${p.w} ${t("g")}` : t("onPack");
+
+/* ------------------------------------------------ clock & departure times ------------------------------------------------ */
+const kyivFmt = new Intl.DateTimeFormat("uk-UA",{timeZone:"Europe/Kyiv",hour:"2-digit",minute:"2-digit",hour12:false});
+function kyivMinutes(){ const [h,m] = kyivFmt.format(new Date()).split(":").map(Number); return h*60+m; }
+const hhmm = m => { m=((m%1440)+1440)%1440; return String((m/60)|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0"); };
+const OFFS = [4,11,19,26,34,47];
+function tickClock(){
+  const now = kyivMinutes();
+  document.getElementById("clock").textContent = hhmm(now);
+  document.querySelectorAll(".dep .t").forEach((el,i)=>{ el.textContent = hhmm(now+OFFS[i]); });
+}
+
+/* ------------------------------------------------ renderers ------------------------------------------------ */
+const deps = document.getElementById("deps");
+function renderDeps(animate){
+  if (!deps.children.length){
+    HERO_IDS.forEach((id,i)=>{
+      const b = document.createElement("button");
+      b.type="button"; b.className="dep"; b.dataset.id=id; b.id="dep-"+id;
+      b.innerHTML = `<span class="t num"></span><span class="flaps" aria-hidden="true"></span><span class="f"></span><span class="fat num"></span><span class="s"></span><span class="sr lbl"></span>`;
+      buildFlaps(b.querySelector(".flaps"), 15);
+      b.addEventListener("click",()=>select(id,true));
+      b.addEventListener("keydown",e=>{
+        if (e.key!=="ArrowDown" && e.key!=="ArrowUp") return;
+        e.preventDefault();
+        const n = HERO_IDS[(i + (e.key==="ArrowDown"?1:-1) + HERO_IDS.length) % HERO_IDS.length];
+        document.getElementById("dep-"+n).focus();
+      });
+      deps.appendChild(b);
+    });
+  }
+  [...deps.children].forEach((b,i)=>{
+    const p = byId(b.dataset.id), on = p.id===selected;
+    b.setAttribute("aria-pressed", on);
+    setFlaps(b.querySelector(".flaps"), p[lang].short, animate);
+    b.querySelector(".f").textContent = fmtLabel(p);
+    b.querySelector(".fat").textContent = p.fat+"%";
+    b.querySelector(".s").textContent = on ? t("boarding") : t("ontime");
+    b.querySelector(".lbl").textContent = `${p[lang].name}, ${fmtLabel(p)}, ${p.fat}%`;
+  });
+  tickClock();
+}
+function ticketHTML(p, uid, withCta){
+  const L = p[lang];
+  const n = p.nutri ? `<p class="nutri num">${t("per100")}: <b>${p.nutri.kcal}</b> ${t("kcal")} · ${t("prot")} ${p.nutri.p} ${t("g")} · ${t("fatN")} ${p.nutri.f} ${t("g")} · ${t("carb")} ${p.nutri.c} ${t("g")}</p>` : "";
+  const no = String(1955).padStart(4,"0")+"-"+String(P.indexOf(p)+1).padStart(2,"0");
+  return `
+    <div class="ticket-top"><b>${t("ticket")}</b><span>№ ${no} · ${t("platform")} ${p.plat}</span></div>
+    ${p.photo
+      ? `<div class="ticket-art photo"><img src="${p.photo}" width="800" height="800" alt="${t("photoOf")} ${L.name}" ${withCta?'fetchpriority="high"':'loading="lazy"'} decoding="async"></div>`
+      : `<div class="ticket-art drawn">${packSVG(p, uid)}<span class="art-tag">${t("illustration")}</span></div>`}
+    <div class="ticket-body"><h3 id="${withCta?"tk-name":"tn-"+uid}">${L.name}</h3><p class="kind">${L.kind}</p></div>
+    <div class="perf" aria-hidden="true"></div>
+    <dl class="spec">
+      <div><dt>${t("tFormat")}</dt><dd>${p.fmt==="bottle"?t("bottle"):p.fmt==="tub"?t("tub"):t("cup")}</dd></div>
+      <div><dt>${t("tWeight")}</dt><dd class="num">${wLabel(p)}</dd></div>
+      <div><dt>${t("tFat")}</dt><dd class="num">${p.fat ? p.fat+"%" : t("onPack")}</dd></div>
+      <div><dt>${t("tCulture")}</dt><dd>${p.plat===3 ? t("onPack") : "Carpaticus"}</dd></div>
+    </dl>
+    ${n}
+    ${withCta ? `<div class="ticket-cta"><a class="btn btn-ink" href="#buy"><span>${t("buyCta")}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>` : `<div style="height:14px"></div>`}`;
+}
+function renderTicket(punch){
+  const el = document.getElementById("hero-ticket");
+  const time = document.getElementById("clock").textContent;
+  el.innerHTML = ticketHTML(byId(selected), "hero", true) +
+    `<svg class="punch${punch && !reduce ? " hit" : ""}" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36" fill="none" stroke="#d6453d" stroke-width="3"/><circle cx="40" cy="40" r="28" fill="none" stroke="#d6453d" stroke-width="1.2"/><text x="40" y="36" text-anchor="middle" font-family="Oswald, sans-serif" font-size="10" letter-spacing="1.5" fill="#d6453d">${t("boarding").toUpperCase()}</text><text x="40" y="52" text-anchor="middle" font-family="Oswald, sans-serif" font-size="14" fill="#d6453d">${time}</text></svg>`;
+}
+function select(id, animate){
+  selected = id; renderDeps(animate); renderTicket(animate);
+}
+function renderPlats(){
+  const tl = document.getElementById("plats"), panels = document.getElementById("panels");
+  if (!tl.children.length){
+    PLATS.forEach((pl,i)=>{
+      const b = document.createElement("button");
+      b.type="button"; b.className="plat"; b.id="tab-"+pl.n; b.setAttribute("role","tab"); b.setAttribute("aria-controls","panel-"+pl.n);
+      b.innerHTML = `<b class="num">${pl.n}</b><span><small></small><em></em></span>`;
+      b.addEventListener("click",()=>{ activePlat=pl.n; syncPlats(true); });
+      b.addEventListener("keydown",e=>{
+        const k = {ArrowRight:1,ArrowLeft:-1}[e.key]; if(!k) return; e.preventDefault();
+        const n = PLATS[(i+k+PLATS.length)%PLATS.length].n; activePlat=n; syncPlats(true); document.getElementById("tab-"+n).focus();
+      });
+      tl.appendChild(b);
+      const panel = document.createElement("div");
+      panel.className="panel tix"; panel.id="panel-"+pl.n; panel.setAttribute("role","tabpanel"); panel.setAttribute("aria-labelledby","tab-"+pl.n); panel.tabIndex=0;
+      panels.appendChild(panel);
+    });
+  }
+  PLATS.forEach(pl=>{
+    const b = document.getElementById("tab-"+pl.n);
+    b.querySelector("small").textContent = `${t("platform")} ${pl.n}`;
+    b.querySelector("em").textContent = pl[lang];
+    const panel = document.getElementById("panel-"+pl.n);
+    panel.innerHTML = `<ul style="display:contents">${P.filter(p=>p.plat===pl.n).map(p=>`<li><article class="ticket" aria-labelledby="tn-${p.id}">${ticketHTML(p, p.id, false)}</article></li>`).join("")}</ul>`;
+  });
+  syncPlats(false);
+}
+function syncPlats(anim){
+  PLATS.forEach(pl=>{
+    const on = pl.n===activePlat, b=document.getElementById("tab-"+pl.n), panel=document.getElementById("panel-"+pl.n);
+    b.setAttribute("aria-selected", on); b.tabIndex = on?0:-1;
+    const wasHidden = panel.hidden; panel.hidden = !on;
+    if (on && anim && wasHidden){ panel.style.animation="none"; void panel.offsetWidth; panel.style.animation=""; }
+  });
+}
+function renderRange(){
+  document.getElementById("range-rows").innerHTML = RANGE.map(r=>{
+    const [name, sub] = r[lang];
+    const ph = r.photo
+      ? `<img src="assets/products/${r.photo}.jpg" width="800" height="800" alt="${t("photoOf")} ${name}" loading="lazy" decoding="async">`
+      : `<span class="flap" aria-hidden="true" style="--tw:30px"><span class="c">${r.tile}</span></span>`;
+    return `<tr class="${r.brand?"brand-row":""}"><td class="ph">${ph}</td><td>${name}${sub?`<small>${sub}</small>`:""}</td><td class="n">${r.fat}</td><td class="n">${r.pack[lang]}</td></tr>`;
+  }).join("");
+}
+function renderHistory(){
+  document.getElementById("track").innerHTML = HISTORY.map(h=>`<li class="km"><b class="num">${h.y}</b><p>${h[lang]}</p></li>`).join("");
+}
+const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
+const shopList = document.getElementById("windows");
+function renderShops(animate){
+  if (!shopList.children.length){
+    SHOPS.forEach(sh=>{
+      const li = document.createElement("li");
+      li.innerHTML = `<a class="bb-row" href="${sh.url}" target="_blank" rel="noopener"><span class="flaps" aria-hidden="true"></span><span class="host"></span>${ARROW}</a>`;
+      buildFlaps(li.querySelector(".flaps"), 18);
+      shopList.appendChild(li);
+    });
+  }
+  [...shopList.children].forEach((li,i)=>{
+    const sh = SHOPS[i], a = li.querySelector("a");
+    setFlaps(li.querySelector(".flaps"), sh.name[lang], animate);
+    li.querySelector(".host").textContent = sh.host;
+    a.setAttribute("aria-label", `${sh.name[lang]} — ${sh.host}`);
+  });
+}
+if ("IntersectionObserver" in window && !reduce){
+  const bio = new IntersectionObserver(es=>{ if (!es[0].isIntersecting) return; bio.disconnect();
+    [...shopList.children].forEach((li,i)=>{ const f=li.querySelector(".flaps"); [...f.children].forEach(ti=>ti.dataset.ch="\u0000"); setTimeout(()=>setFlaps(f, SHOPS[i].name[lang], true), i*140); });
+  },{threshold:.35});
+  bio.observe(shopList);
+}
+
+/* ------------------------------------------------ route rail ------------------------------------------------ */
+const STATIONS = [["board","navBoard"],["route","navRoute"],["carpaticus",null],["timetable","navTimetable"],["range","navRange"],["history","navHistory"],["buy","navBuy"]];
+const rail = document.getElementById("rail");
+rail.innerHTML = STATIONS.map(([id])=>`<a href="#${id}" data-sec="${id}"><span></span></a>`).join("") +
+  `<svg class="car" viewBox="0 0 20 30" aria-hidden="true"><rect x="2" y="1" width="16" height="28" rx="5" fill="#1d68ad" stroke="#163a63" stroke-width="2"/><rect x="5" y="5" width="10" height="7" rx="2" fill="#ffffff"/><rect x="5" y="15" width="10" height="3" rx="1" fill="#ffffff"/></svg>`;
+function labelRail(){
+  rail.querySelectorAll("a").forEach((a,i)=>{ const k=STATIONS[i][1]; a.querySelector("span").textContent = k ? t(k) : "Carpaticus"; a.setAttribute("aria-label", a.querySelector("span").textContent); });
+}
+let railPos = [];
+function layoutRail(){
+  const docH = document.documentElement.scrollHeight - innerHeight;
+  railPos = STATIONS.map(([id])=>{ const el=document.getElementById(id); return Math.min(1, Math.max(0,(el.offsetTop-72)/docH)); });
+  rail.querySelectorAll("a").forEach((a,i)=>{ a.style.top = (railPos[i]*100)+"%"; });
+  onScroll();
+}
+const car = rail.querySelector(".car"), prog = document.getElementById("progress");
+const navLinks = [...document.querySelectorAll(".nav a")];
+function onScroll(){
+  const docH = document.documentElement.scrollHeight - innerHeight;
+  const f = docH>0 ? Math.min(1, Math.max(0, scrollY/docH)) : 0;
+  car.style.top = (f*100)+"%";
+  prog.style.transform = `scaleX(${f})`;
+  let cur = 0;
+  rail.querySelectorAll("a").forEach((a,i)=>{ const passed = railPos[i] <= f + .002; a.classList.toggle("passed", passed); if (passed) cur=i; });
+  const curId = STATIONS[cur][0];
+  navLinks.forEach(a=>a.setAttribute("aria-current", a.getAttribute("href")==="#"+curId ? "true" : "false"));
+}
+let raf = 0;
+addEventListener("scroll",()=>{ if(!raf) raf=requestAnimationFrame(()=>{raf=0;onScroll();}); },{passive:true});
+addEventListener("resize",()=>layoutRail());
+
+if ("IntersectionObserver" in window){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{ if (e.isIntersecting) e.target.classList.add("lit"); }),{rootMargin:"0px 0px -45% 0px"});
+  document.querySelectorAll(".stop").forEach(st=>io.observe(st));
+}
+
+/* ------------------------------------------------ language ------------------------------------------------ */
+const hl1 = document.getElementById("hl1"), hl2 = document.getElementById("hl2");
+buildFlaps(hl1, 11); buildFlaps(hl2, 11);
+function applyLang(next, animate){
+  lang = next;
+  document.documentElement.lang = lang==="uk" ? "uk" : "en";
+  document.title = t("title");
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>{ el.innerHTML = t(el.dataset.i18nHtml); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+  document.getElementById("stamp-ring").textContent = t("stampRing");
+  document.getElementById("hero-sr").textContent = t("heroSr");
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+  setFlaps(hl1, t("hl1"), animate); setFlaps(hl2, t("hl2"), animate);
+  renderDeps(animate); renderTicket(); renderPlats(); renderRange(); renderHistory(); renderShops(animate); labelRail();
+  try { localStorage.setItem("gal-lang", lang); } catch(e){}
+  requestAnimationFrame(layoutRail);
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{
+  if (b.dataset.lang===lang) return;
+  if (!reduce) document.querySelectorAll(".lang .m").forEach((m,i)=>{ m.classList.remove("tick"); void m.offsetWidth; setTimeout(()=>m.classList.add("tick"), i*40); });
+  applyLang(b.dataset.lang, true);
+}));
+
+/* ------------------------------------------------ boot ------------------------------------------------ */
+applyLang(lang, false);
+setInterval(tickClock, 15000);
+// The one orchestrated moment: the board shuffles into place once the faces are ready.
+const arrive = () => {
+  if (reduce) return;
+  [hl1,hl2].forEach(el=>[...el.children].forEach(ti=>ti.dataset.ch="\u0000"));
+  setFlaps(hl1, t("hl1"), true); setFlaps(hl2, t("hl2"), true);
+  [...deps.children].forEach(b=>{ const f=b.querySelector(".flaps"); [...f.children].forEach(ti=>ti.dataset.ch="\u0000"); setFlaps(f, byId(b.dataset.id)[lang].short, true); });
+};
+const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+fontsReady.then(layoutRail);
+// With the intro playing, the flaps wait until the cloud starts to part.
+Promise.all([fontsReady, window.galIntro ? window.galIntro.revealed : null]).then(()=>{ layoutRail(); setTimeout(arrive, 150); });
+})();
+</script>
+</body>
+</html>

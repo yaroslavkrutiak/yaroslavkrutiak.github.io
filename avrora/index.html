@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аврора · Світанок</title>
+<meta name="description" content="Неофіційна концепт-сторінка мережі «Аврора»: від однієї крамниці в Полтаві у 2011 році до понад 1 900 магазинів.">
+<link rel="icon" href="assets/avrora-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#141a3a; --night-deep:#0c1030; --plum:#5b1d4a; --red:#e30613; --red-deep:#b8000f;
+  --sun:#ffdd00; --day:#ffffff; --ink:#1d1d1b; --ink-soft:#4a4a45;
+  --on-night:#f4f1ff; --on-night-soft:#b9b8d8; --on-red-soft:#ffffff;
+  --display:"Unbounded", "Onest", system-ui, sans-serif;
+  --text:"Onest", system-ui, sans-serif;
+  --gutter:clamp(16px, 4vw, 56px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--night);color:var(--on-night);font:400 17px/1.55 var(--text);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--sun);color:var(--ink)}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1.5px}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+.light :focus-visible,.shelves :focus-visible,.find :focus-visible{outline-color:var(--red)}
+html{scrollbar-color:var(--sun) var(--night-deep)}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{padding-inline:var(--gutter);max-width:1440px;margin-inline:auto}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- top strip ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;gap:20px;padding:12px var(--gutter);transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s}
+.top.solid{background:rgba(20,26,58,.94);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.logo{display:grid;place-items:center;background:#fff;border-radius:999px;padding:7px 16px 6px;flex:none}
+.logo img{height:30px;width:auto}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav a{font:600 14px/1 var(--text);text-decoration:none;padding:10px 12px;border-radius:999px;color:var(--on-night)}
+.nav a:hover{background:rgba(255,255,255,.1)}
+.chip{font:600 12px/1.2 var(--text);letter-spacing:.02em;border:1.5px solid rgba(255,221,0,.7);color:var(--sun);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.lang{display:inline-flex;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:3px;flex:none}
+.lang button{all:unset;cursor:pointer;font:700 13px/1 var(--display);padding:8px 11px;border-radius:999px;color:var(--on-night-soft)}
+.lang button[aria-pressed="true"]{background:var(--sun);color:var(--ink)}
+.lang button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+@media (max-width:980px){.nav a:not(.nav-cta){display:none}}
+@media (max-width:560px){.chip{display:none}.logo img{height:24px}.logo{padding:6px 12px 5px}.nav a.nav-cta{padding:10px 8px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;display:grid;grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);overflow:hidden;background:var(--night)}
+.hero-sky{position:relative;display:grid;align-items:end}
+.hero-copy{position:relative;z-index:3;padding:96px var(--gutter) clamp(32px,6vh,72px);max-width:min(760px,62vw)}
+.hero h1{font-size:clamp(38px,5.4vw,84px);color:var(--on-night)}
+.hero h1 em{font-style:normal;color:var(--sun)}
+.hero .lede{margin-top:22px;font-size:clamp(17px,1.45vw,21px);max-width:44ch;color:var(--on-night-soft)}
+.hero .lede b{color:var(--on-night);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;margin-top:34px}
+.btn-sun{display:inline-flex;align-items:center;gap:12px;background:var(--sun);color:var(--ink);font:800 16px/1 var(--display);letter-spacing:-.01em;text-decoration:none;padding:18px 26px 18px 18px;border-radius:999px;transition:transform .5s var(--ease),background .3s}
+.btn-sun .dot{width:30px;height:30px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex:none;transition:transform .5s var(--ease)}
+.btn-sun .dot svg{width:15px;height:15px}
+.btn-sun:hover{transform:translateY(-2px)}
+.btn-sun:hover .dot{transform:rotate(-45deg)}
+.btn-sun:active{transform:translateY(0) scale(.98)}
+.link-quiet{font:600 16px/1.2 var(--text);color:var(--on-night)}
+.hero-sun{position:absolute;z-index:1;right:max(-8vw,-120px);bottom:0;width:min(64vw,92vh);aspect-ratio:1;transform:translateY(50%);border-radius:50%;background:var(--sun)}
+.hero-a{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none}
+.hero-a text,.stage-a text{font-family:var(--display);font-weight:900;fill:var(--red)}
+.ground{position:relative;z-index:4;min-width:0;background:var(--night-deep);border-top:2px solid var(--sun)}
+.ticks{display:grid;grid-template-columns:repeat(16,1fr);padding:0 var(--gutter)}
+.ticks a{display:block;text-decoration:none;font:700 12px/1 var(--display);color:var(--on-night-soft);padding:12px 0 10px;border-left:1px solid rgba(255,255,255,.18);padding-left:6px}
+.ticks a.hot{color:var(--sun)}
+.ticks .ys{display:none}
+@media (max-width:760px){.ticks .yf{display:none}.ticks .ys{display:inline}}
+.ticks a:hover{color:#fff;background:rgba(255,255,255,.05)}
+.ticker{overflow:hidden;border-top:1px solid rgba(255,255,255,.12);white-space:nowrap;font:500 13px/1 var(--text);color:var(--on-night-soft)}
+.ticker-track{display:inline-flex;gap:0;padding:12px 0;will-change:transform}
+.ticker span{padding:0 18px;border-right:1px solid rgba(255,255,255,.14)}
+.ticker b{color:var(--sun);font:700 13px/1 var(--display);margin-right:8px}
+@media (max-width:760px){
+  .hero-copy{max-width:none;padding-top:104px;padding-bottom:min(56vw,300px)}
+  .hero-sun{width:92vw;right:-20vw}
+  .ticks a{font-size:10px;padding-left:3px}
+}
+
+/* ---------- sunrise stage ---------- */
+.rise{position:relative;height:640vh;background:var(--day)}
+.anchor{position:absolute;left:0;width:1px;height:1px}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--day);--hz:82%}
+.sky{position:absolute;inset:0 0 calc(100% - var(--hz)) 0;overflow:hidden}
+.band{position:absolute;left:-30%;right:-30%;bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0;height:0;will-change:height}
+.b-night{background:var(--night)} .b-plum{background:var(--plum)} .b-red{background:var(--red)} .b-sun{background:var(--sun)}
+.b-night{left:-10%;right:-10%;border-radius:0}
+.stage-sun{position:absolute;z-index:2;width:clamp(120px,17vw,260px);aspect-ratio:1;border-radius:50%;background:var(--sun);left:0;top:0;will-change:transform;box-shadow:0 0 0 2px rgba(29,29,27,.0);transition:box-shadow .6s}
+.stage-a{position:absolute;inset:0;width:100%;height:100%;z-index:3;overflow:visible;opacity:0;pointer-events:none;will-change:opacity}
+.map{position:absolute;z-index:4;right:calc(var(--gutter) + 4vw);bottom:calc(100% - var(--hz));width:min(52vw,calc(var(--hz) * 1.08 - 70px));aspect-ratio:1000/669}
+.map svg,.map canvas{position:absolute;inset:0;width:100%;height:100%}
+.map .land{fill:var(--night-deep);stroke:rgba(255,221,0,.45);stroke-width:1.5;stroke-linejoin:round}
+.town{position:absolute;transform:translate(-50%,-50%);width:0;height:0;opacity:0;transition:opacity .5s var(--ease)}
+.town.on{opacity:1}
+.town i{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 3px var(--red)}
+.town span{position:absolute;left:12px;top:-26px;white-space:nowrap;font:700 12px/1.15 var(--display);background:var(--ink);color:#fff;padding:6px 8px;border-radius:6px}
+.town span small{display:block;font:500 11px/1.2 var(--text);color:#d8d6cf;margin-top:2px}
+.town.left span{left:auto;right:12px}
+.town.below span{top:10px}
+.readout{position:absolute;z-index:5;left:var(--gutter);top:clamp(80px,13vh,130px);max-width:min(520px,40vw);color:var(--on-night);transition:color .5s var(--ease)}
+.stage.day .readout{color:var(--ink)}
+.stage.onred .readout{color:#fff}
+.stage.onred .count-label{opacity:1}
+.readout .year{font:800 clamp(18px,1.6vw,24px)/1 var(--display);color:var(--sun);transition:color .5s}
+.stage.day .readout .year{color:var(--red)}
+.count{font:900 clamp(64px,9vw,136px)/.9 var(--display);letter-spacing:-.045em;margin:10px 0 6px;display:flex;align-items:baseline;gap:.04em;white-space:nowrap}
+.count small{font-size:.38em;letter-spacing:-.02em}
+.count-label{font:600 15px/1.3 var(--text);opacity:.85}
+.note{margin-top:22px;font-size:clamp(16px,1.3vw,19px);line-height:1.45;max-width:36ch;min-height:4.4em}
+.play{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--sun);color:var(--ink);font:800 14px/1 var(--display);letter-spacing:-.01em;padding:8px 18px 8px 8px;border-radius:999px;transition:transform .5s var(--ease)}
+.play .dot{width:28px;height:28px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex:none}
+.play .dot svg{width:12px;height:12px;fill:#fff}
+.play .i-pause{display:none}
+.play[aria-pressed="true"] .i-play{display:none}
+.play[aria-pressed="true"] .i-pause{display:block}
+.play:hover{transform:translateY(-2px)}
+.play:active{transform:scale(.97)}
+.play:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.stage.day .play:focus-visible{outline-color:var(--red)}
+.play-bar{position:absolute;left:0;bottom:0;height:3px;background:var(--red);width:0;border-radius:0 2px 2px 0}
+.play{position:relative;overflow:hidden}
+@media (max-width:760px){.play{margin-top:10px;padding:6px 14px 6px 6px;font-size:13px}.play .dot{width:24px;height:24px}}
+.stage-ground{position:absolute;z-index:6;left:0;right:0;top:var(--hz);bottom:0;background:var(--night-deep);border-top:2px solid var(--sun);color:var(--on-night)}
+.stage-ground .ticks a{padding:12px 0 10px 6px}
+.stage-ground .ticks a.now{color:var(--night-deep);background:var(--sun)}
+.stage-ground .ticker{border-top:1px solid rgba(255,255,255,.12)}
+.stage-ground .ticker span.cur{color:#fff}
+.legend{padding:10px var(--gutter);font:500 12px/1.35 var(--text);color:var(--on-night-soft);display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sun);margin-right:6px;vertical-align:0}
+.legend i.lost{background:transparent;box-shadow:inset 0 0 0 2px #ff5a4f}
+.legend svg{width:12px;height:12px;vertical-align:-1px;margin-right:6px;border-radius:2px}
+.map .occ{fill:url(#hatch);opacity:0;transition:opacity .35s var(--ease)}
+.map .occ.on{opacity:1}
+.sweep{position:absolute;z-index:6;left:0;top:var(--hz);height:2px;background:var(--red);width:0}
+@media (max-width:760px){
+  .stage{--hz:79%}
+  .map{left:var(--gutter);right:var(--gutter);width:auto;bottom:calc(100% - var(--hz) + 8px)}
+  .readout{max-width:none;right:var(--gutter);top:76px}
+  .count{font-size:clamp(56px,17vw,84px)}
+  .stage-sun{width:clamp(84px,24vw,120px)}
+  .note{font-size:15px;min-height:4.6em;max-width:none}
+  .town span{font-size:10px;padding:4px 6px}
+  .town span small{display:none}
+  .town:not(.cur) span{display:none}
+  .town.left span{left:12px;right:auto}
+  .legend{font-size:11px;gap:10px}
+}
+@media (max-height:640px) and (min-width:761px){.note{display:none}}
+
+/* ---------- prices ---------- */
+.prices{background:var(--sun);color:var(--ink);padding:clamp(80px,12vw,160px) 0 clamp(64px,9vw,120px)}
+.prices h2{font-size:clamp(40px,7vw,104px);color:var(--ink)}
+.prices h2 em{font-style:normal;color:var(--red)}
+.prices .lede{margin-top:22px;max-width:56ch;font-size:clamp(17px,1.4vw,20px)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(48px,6vw,88px);border-top:3px solid var(--ink)}
+.tier{padding:20px clamp(12px,2vw,28px) 0;border-left:1.5px solid var(--ink)}
+.tier:first-child{border-left:0;padding-left:0}
+.tier-n{font:900 clamp(72px,11vw,176px)/.85 var(--display);letter-spacing:-.05em;color:var(--red);display:flex;align-items:flex-start;gap:.04em}
+.tier-n small{font-size:.32em;margin-top:.12em;letter-spacing:0}
+.tier-k{font:700 13px/1 var(--display);margin:14px 0 26px;letter-spacing:.02em}
+.goods{display:grid;gap:22px}
+.good{display:grid;grid-template-columns:clamp(84px,9vw,128px) 1fr;gap:16px;align-items:center}
+.good img{mix-blend-mode:multiply;width:100%;aspect-ratio:1;object-fit:contain}
+.good .nm{font:500 15px/1.35 var(--text)}
+.good .pr{font:800 22px/1 var(--display);margin-top:8px;letter-spacing:-.02em}
+.good .own{display:inline-block;font:700 11px/1 var(--display);background:var(--red);color:#fff;border-radius:999px;padding:5px 8px 4px;margin-top:8px}
+.fine{margin-top:48px;font-size:14px;color:#3d3a1a;max-width:70ch}
+@media (max-width:760px){
+  .tiers{grid-template-columns:1fr}
+  .tier{border-left:0;border-top:1.5px solid var(--ink);padding:20px 0 32px}
+  .tier:first-child{border-top:0}
+  .tier-n{font-size:96px}
+}
+
+/* ---------- shelves ---------- */
+.shelves{background:var(--day);color:var(--ink);padding:clamp(80px,11vw,150px) 0}
+.shelves-head{display:grid;grid-template-columns:1.2fr 1fr;gap:24px 60px;align-items:end}
+.shelves h2{font-size:clamp(34px,5vw,72px)}
+.shelves h2 em{font-style:normal;color:var(--red)}
+.shelves-head p{font-size:clamp(16px,1.3vw,19px);color:var(--ink-soft);max-width:48ch}
+.rack{margin-top:clamp(40px,6vw,80px);display:grid;grid-template-columns:repeat(6,1fr);row-gap:0}
+.slot{position:relative;padding:18px 14px 0;display:flex;flex-direction:column;border-bottom:5px solid var(--ink);min-height:100%}
+.slot + .slot{border-left:1px dashed #c9c7bf}
+.slot:nth-child(6n+1){border-left:0}
+.slot img{width:100%;aspect-ratio:1;object-fit:contain;transition:transform .6s var(--ease)}
+.slot:hover img{transform:translateY(-6px) rotate(-2deg)}
+.slot .cat{font:800 14px/1.15 var(--display);letter-spacing:-.01em;margin-top:auto;padding-top:14px}
+.slot .ex{font:400 13px/1.35 var(--text);color:var(--ink-soft);margin:6px 0 14px}
+.slot .own{position:absolute;top:14px;right:10px;width:44px;height:44px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font:900 22px/1 var(--display);color:var(--red)}
+.rack-more{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;font-size:15px;color:var(--ink-soft)}
+.rack-more b{font:800 14px/1 var(--display);color:var(--ink)}
+.rack-more .own-key{display:inline-flex;align-items:center;gap:8px}
+.rack-more .own-key i{width:22px;height:22px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font:900 12px/1 var(--display);color:var(--red);font-style:normal}
+@media (max-width:1100px){.rack{grid-template-columns:repeat(4,1fr)}.slot:nth-child(6n+1){border-left:1px dashed #c9c7bf}.slot:nth-child(4n+1){border-left:0}}
+@media (max-width:640px){.shelves-head{grid-template-columns:1fr}.rack{grid-template-columns:repeat(2,1fr)}.slot:nth-child(4n+1){border-left:1px dashed #c9c7bf}.slot:nth-child(2n+1){border-left:0}.slot{padding:14px 8px 0}}
+
+/* ---------- ukrainian ---------- */
+.ua{background:var(--red);color:#fff;padding:clamp(80px,11vw,150px) 0;overflow:hidden}
+.ua-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;align-items:center}
+.ua h2{font-size:clamp(36px,5.4vw,80px)}
+.ua h2 em{font-style:normal;color:var(--sun)}
+.ua .lede{margin-top:24px;font-size:clamp(17px,1.35vw,20px);color:var(--on-red-soft);max-width:46ch}
+.ua-facts{margin-top:40px;display:grid;gap:0;border-top:1.5px solid rgba(255,255,255,.5)}
+.ua-facts div{display:grid;grid-template-columns:minmax(120px,11rem) 1fr;gap:20px;padding:18px 0;border-bottom:1.5px solid rgba(255,255,255,.5);align-items:baseline}
+.ua-facts b{font:900 clamp(26px,2.6vw,38px)/1 var(--display);letter-spacing:-.03em;color:var(--sun)}
+.ua-facts span{font-size:16px;color:#fff}
+.discs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,24px)}
+.disc{text-align:center}
+.disc .face{aspect-ratio:1;border-radius:50%;background:#fff;display:grid;place-items:center;padding:17%;overflow:hidden;transition:transform .6s var(--ease)}
+.disc:nth-child(2n) .face{background:var(--sun)}
+.disc:nth-child(2n) .face img{mix-blend-mode:multiply}
+.disc:hover .face{transform:scale(1.04)}
+.disc .face img{width:100%;height:100%;object-fit:contain}
+.disc p{font:500 13px/1.3 var(--text);margin-top:10px;color:var(--on-red-soft)}
+.disc:nth-child(3n+2){transform:translateY(34px)}
+.ua .fine{color:var(--on-red-soft)}
+@media (max-width:860px){.ua-grid{grid-template-columns:1fr}.disc:nth-child(3n+2){transform:none}}
+@media (max-width:560px){.ua-facts div{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- near ---------- */
+.near{background:var(--night);color:var(--on-night);padding:clamp(80px,11vw,150px) 0}
+.near h2{font-size:clamp(38px,6vw,92px)}
+.near h2 em{font-style:normal;color:var(--sun)}
+.near .lede{margin-top:22px;max-width:52ch;font-size:clamp(17px,1.35vw,20px);color:var(--on-night-soft)}
+.ledger{margin-top:clamp(40px,6vw,72px);border-top:2px solid var(--sun)}
+.row{display:grid;grid-template-columns:minmax(150px,1fr) 2.2fr minmax(120px,.8fr);gap:12px 40px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.16);align-items:baseline}
+.row b{font:900 clamp(30px,3.6vw,56px)/1 var(--display);letter-spacing:-.04em;color:var(--sun)}
+.row p{font-size:clamp(16px,1.3vw,19px);max-width:52ch}
+.row small{font-size:13px;color:var(--on-night-soft);text-align:right}
+@media (max-width:760px){.row{grid-template-columns:1fr}.row small{text-align:left}}
+
+/* ---------- find ---------- */
+.find{background:var(--day);color:var(--ink);padding:clamp(80px,10vw,140px) 0 clamp(60px,8vw,100px);overflow:hidden}
+.find-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px 72px;align-items:center}
+.big-sun{position:relative;aspect-ratio:1;border-radius:50%;background:var(--sun);display:grid;place-items:center;text-decoration:none;color:var(--ink);text-align:center;padding:12%;overflow:hidden;transition:transform .8s var(--ease)}
+.big-sun:hover{transform:rotate(-4deg) scale(1.02)}
+.big-sun .A{position:absolute;font:900 clamp(220px,34vw,520px)/1 var(--display);color:var(--red);left:-4%;bottom:-30%;pointer-events:none}
+.big-sun .lbl{position:relative;display:block}
+.big-sun strong{background:var(--sun);padding:.1em .15em;border-radius:.2em}
+.big-sun strong{position:relative;display:block;font:900 clamp(34px,4.6vw,72px)/1 var(--display);letter-spacing:-.04em}
+.big-sun .pill{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:700 16px/1 var(--display);background:var(--ink);color:#fff;padding:14px 20px;border-radius:999px}
+.find h2{font-size:clamp(32px,4.2vw,60px)}
+.facts{margin-top:30px;display:grid;border-top:2px solid var(--ink)}
+.facts div{padding:18px 0;border-bottom:1px solid #d8d6cf;display:grid;grid-template-columns:9.5rem 1fr;gap:18px;align-items:baseline}
+.facts dt{font:800 13px/1.2 var(--display);color:var(--red)}
+.facts dd{margin:0;font-size:17px}
+.facts dd a{font-weight:600}
+@media (max-width:860px){.find-grid{grid-template-columns:1fr}.big-sun{max-width:460px;width:100%;margin-inline:auto}.facts div{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#d8d6cf;padding:56px 0 64px;font-size:14px;line-height:1.6}
+.foot{display:grid;grid-template-columns:1.1fr 1.4fr;gap:40px 64px}
+footer h3{font:800 14px/1.2 var(--display);color:#fff;margin-bottom:12px;letter-spacing:0}
+footer .disclaimer{color:#fff;font-size:15px}
+footer ol{margin:0;padding-left:1.2em}
+footer li{margin-bottom:4px}
+footer a{color:#fff}
+@media (max-width:860px){.foot{grid-template-columns:1fr}}
+
+.reveal{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .reveal.pre{opacity:0;transform:translateY(28px)}
+@media (prefers-reduced-motion:reduce){.js .reveal.pre{opacity:1;transform:none}.reveal{transition:none}}
+</style>
+</head>
+<body>
+<a class="visually-hidden" href="#main" data-en="Skip to content">Перейти до змісту</a>
+
+<header class="top" id="top">
+  <a class="logo" href="#main" aria-label="Аврора: на початок сторінки" data-en-aria="Avrora: back to top"><img src="assets/avrora-logo.png" alt="Аврора мультимаркет" width="328" height="114"></a>
+  <nav class="nav" aria-label="Розділи" data-en-aria="Sections">
+    <a href="#rise" data-en="Story">Історія</a>
+    <a href="#prices" data-en="Prices">Ціни</a>
+    <a href="#shelves" data-en="Shelves">Полиці</a>
+    <a href="#ua" data-en="Made in Ukraine">Українське</a>
+    <a href="#near" data-en="Nearby">Поряд</a>
+    <a class="nav-cta" href="#find" data-en="Find a store">Знайти магазин</a>
+  </nav>
+  <span class="chip" data-en="Unofficial concept">Неофіційний концепт</span>
+  <div class="lang" role="group" aria-label="Мова" data-en-aria="Language">
+    <button type="button" data-lang="uk" aria-pressed="true">UA</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-sky">
+    <div class="hero-sun" aria-hidden="true"></div>
+    <svg class="hero-a" id="heroA" aria-hidden="true"><text>А</text></svg>
+    <div class="hero-copy">
+      <h1 id="hero-h" data-en="One shop in Poltava.<br><em>Now 1,900+.</em>">Одна крамниця в&nbsp;Полтаві.<br><em>Тепер —&nbsp;1&nbsp;900+.</em></h1>
+      <p class="lede" data-en="It opened in February 2011 and sold everything for 5, 10 or 15 hryvnias. Today <b>«Avrora»</b> is a chain of affordable goods for the whole family, and a new store opens roughly <b>every 14 hours</b>.">Відкрилася в лютому 2011-го і продавала все по 5, 10 і 15 гривень. Сьогодні <b>«Аврора»</b> — мережа доступних товарів для всієї сім’ї, і новий магазин відкривається в середньому <b>кожні 14 годин</b>.</p>
+      <div class="ctas">
+        <a class="btn-sun" href="#find"><span class="dot" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span><span data-en="Find a store">Знайти магазин</span></a>
+        <a class="link-quiet" href="#rise" data-play data-en="Watch 15 years rise">Подивитися, як сходило 15 років</a>
+      </div>
+    </div>
+  </div>
+  <div class="ground">
+    <nav class="ticks" aria-label="Роки історії" data-en-aria="Years of the story" id="heroTicks"></nav>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+  </div>
+</section>
+
+<section class="rise" id="rise" aria-labelledby="rise-h">
+  <div id="anchors"></div>
+  <div class="stage" id="stage">
+    <div class="sky" aria-hidden="true">
+      <div class="band b-night" id="bNight"></div>
+      <div class="band b-plum" id="bPlum"></div>
+      <div class="band b-red" id="bRed"></div>
+      <div class="band b-sun" id="bSun"></div>
+      <div class="stage-sun" id="sSun"></div>
+      <svg class="stage-a" id="sA" aria-hidden="true"><text>А</text></svg>
+    </div>
+    <div class="map" id="map" aria-hidden="true">
+      <svg viewBox="0 0 1000 669"><defs><clipPath id="uaClip"><path d="M539.1 19.6 L559.8 23.0 L573.8 3.9 L590.7 8.1 L648.3 0.0 L683.9 47.5 L670.0 64.5 L674.6 90.5 L718.9 94.6 L738.7 130.9 L737.4 147.4 L808.0 176.9 L850.7 163.6 L885.0 202.9 L917.4 202.0 L999.3 229.3 L1000.0 253.9 L977.4 297.8 L989.7 344.1 L981.0 372.0 L927.2 378.2 L898.5 401.6 L896.8 438.9 L852.4 445.6 L815.5 472.7 L763.4 477.1 L715.6 508.4 L718.8 560.5 L746.0 580.8 L802.7 575.7 L791.8 605.7 L731.0 620.2 L655.6 668.7 L624.7 651.6 L636.9 612.2 L576.2 587.7 L586.0 571.6 L639.2 543.7 L623.1 524.5 L536.7 503.3 L532.9 472.1 L481.4 482.4 L460.8 528.6 L417.8 590.6 L392.6 576.2 L366.4 589.7 L341.6 574.2 L355.6 565.1 L365.3 536.3 L380.6 509.6 L376.6 494.6 L388.2 487.9 L393.7 499.5 L426.5 501.9 L441.2 495.7 L430.8 487.2 L434.7 474.7 L415.3 453.4 L407.3 418.4 L387.1 404.6 L391.1 376.2 L365.9 353.7 L343.1 350.5 L302.1 324.4 L265.2 332.7 L251.9 345.0 L228.5 345.0 L214.5 364.6 L173.5 372.7 L154.5 385.6 L128.7 365.1 L93.1 364.8 L58.7 355.5 L34.7 373.4 L30.9 351.0 L0.0 328.1 L10.8 294.3 L26.3 272.5 L38.4 277.4 L24.1 239.7 L74.5 170.0 L102.1 160.2 L108.0 136.7 L80.1 63.5 L106.7 60.2 L137.1 37.5 L180.2 35.6 L236.3 42.2 L298.3 62.3 L342.1 64.0 L363.0 76.1 L383.8 61.5 L398.4 81.1 L448.6 77.1 L470.7 85.2 L474.2 43.0 L491.4 24.5 L539.1 19.6Z"/></clipPath><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#262c5c"/><rect width="2.6" height="8" fill="#9095c6"/></pattern></defs><path class="land" d="M539.1 19.6 L559.8 23.0 L573.8 3.9 L590.7 8.1 L648.3 0.0 L683.9 47.5 L670.0 64.5 L674.6 90.5 L718.9 94.6 L738.7 130.9 L737.4 147.4 L808.0 176.9 L850.7 163.6 L885.0 202.9 L917.4 202.0 L999.3 229.3 L1000.0 253.9 L977.4 297.8 L989.7 344.1 L981.0 372.0 L927.2 378.2 L898.5 401.6 L896.8 438.9 L852.4 445.6 L815.5 472.7 L763.4 477.1 L715.6 508.4 L718.8 560.5 L746.0 580.8 L802.7 575.7 L791.8 605.7 L731.0 620.2 L655.6 668.7 L624.7 651.6 L636.9 612.2 L576.2 587.7 L586.0 571.6 L639.2 543.7 L623.1 524.5 L536.7 503.3 L532.9 472.1 L481.4 482.4 L460.8 528.6 L417.8 590.6 L392.6 576.2 L366.4 589.7 L341.6 574.2 L355.6 565.1 L365.3 536.3 L380.6 509.6 L376.6 494.6 L388.2 487.9 L393.7 499.5 L426.5 501.9 L441.2 495.7 L430.8 487.2 L434.7 474.7 L415.3 453.4 L407.3 418.4 L387.1 404.6 L391.1 376.2 L365.9 353.7 L343.1 350.5 L302.1 324.4 L265.2 332.7 L251.9 345.0 L228.5 345.0 L214.5 364.6 L173.5 372.7 L154.5 385.6 L128.7 365.1 L93.1 364.8 L58.7 355.5 L34.7 373.4 L30.9 351.0 L0.0 328.1 L10.8 294.3 L26.3 272.5 L38.4 277.4 L24.1 239.7 L74.5 170.0 L102.1 160.2 L108.0 136.7 L80.1 63.5 L106.7 60.2 L137.1 37.5 L180.2 35.6 L236.3 42.2 L298.3 62.3 L342.1 64.0 L363.0 76.1 L383.8 61.5 L398.4 81.1 L448.6 77.1 L470.7 85.2 L474.2 43.0 L491.4 24.5 L539.1 19.6Z"/><g clip-path="url(#uaClip)"><path class="occ" id="oCrimea"/><path class="occ" id="oOrdlo"/><path class="occ" id="oSE"/><path class="occ" id="oKharkiv"/><path class="occ" id="oKherson"/></g></svg>
+      <canvas id="dots"></canvas>
+      <div id="towns"></div>
+    </div>
+    <div class="readout">
+      <h2 id="rise-h" class="visually-hidden" data-en="Fifteen years of growth">П’ятнадцять років зростання</h2>
+      <div class="year" id="rYear">2011</div>
+      <div class="count" aria-live="polite"><span id="rCount">1</span><small id="rPlus"></small></div>
+      <div class="count-label" id="rLabel" data-en="store in Ukraine">магазин в Україні</div>
+      <p class="note" id="rNote"></p>
+      <button type="button" class="play" id="play" aria-pressed="false" aria-controls="rise"><span class="dot" aria-hidden="true"><svg class="i-play" viewBox="0 0 12 12"><path d="M3 1.5v9l7.5-4.5z"/></svg><svg class="i-pause" viewBox="0 0 12 12"><path d="M2.5 1.5h2.6v9H2.5zM6.9 1.5h2.6v9H6.9z"/></svg></span><span id="playLabel">Програти 15 років</span><span class="play-bar" id="playBar" aria-hidden="true"></span></button>
+    </div>
+    <div class="stage-ground">
+      <nav class="ticks" aria-label="Перейти до року" data-en-aria="Jump to year" id="stageTicks"></nav>
+      <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker2"></div></div>
+      <div class="legend"><span><i></i><span data-en="Real store addresses (avrora.ua); opening year estimated">Справжні адреси магазинів (avrora.ua); рік відкриття — оцінка</span></span><span><i class="lost"></i><span data-en="Lost to occupation (known locations only)">Втрачені через окупацію (лише відомі адреси)</span></span><span><svg viewBox="0 0 12 12" aria-hidden="true"><rect width="12" height="12" fill="#262c5c"/><path d="M-3 3 3-3M-3 9 9-3M-3 15 15-3M3 15 15 3M9 15 15 9" stroke="#9095c6" stroke-width="2.2"/></svg><span data-en="Temporarily occupied by Russia (approximate lines)">Тимчасово окуповано Росією (межі приблизні)</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="prices" aria-labelledby="prices-h">
+  <div class="wrap">
+    <h2 id="prices-h" class="reveal" data-en="Still <em>5, 10, 15.</em>">Досі <em>по 5, 10, 15.</em></h2>
+    <p class="lede reveal" data-en="In 2012 the chain was called «Khvatai. Vse po 5, 10, 15», “Grab it. Everything for 5, 10, 15”. We checked avrora.ua: these things still cost no more than that.">У 2012-му мережа називалася «Хватай. Все по 5, 10, 15». Ми зазирнули на avrora.ua: ось що й досі коштує не більше.</p>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tier-n">5<small>₴</small></div>
+        <div class="tier-k" data-en="UP TO 5 HRYVNIAS">ДО 5 ГРИВЕНЬ</div>
+        <div class="goods">
+          <div class="good"><img src="assets/products/bag.jpg" alt="Жовтий пакет «Аврора» з логотипом" data-en-alt="Yellow Avrora carrier bag with logo" width="250" height="250" loading="lazy"><div><div class="nm" data-en="Avrora plastic bag, 34 × 55 cm">Пакет поліетиленовий АВРОРА 34 × 55 см</div><div class="pr">5,00 ₴</div><span class="own" data-en="Own label">Власна марка</span></div></div>
+        </div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-n">10<small>₴</small></div>
+        <div class="tier-k" data-en="UP TO 10 HRYVNIAS">ДО 10 ГРИВЕНЬ</div>
+        <div class="goods">
+          <div class="good"><img src="assets/products/maccoffee.jpg" alt="Пакетик MacCoffee Original 3в1" data-en-alt="MacCoffee Original 3-in-1 sachet" width="250" height="250" loading="lazy"><div><div class="nm" data-en="MacCoffee Original 3-in-1 instant coffee drink, 20 g">Напій кавовий розчинний 3в1 MacCoffee Original 20 г</div><div class="pr">7,00 ₴</div></div></div>
+          <div class="good"><img src="assets/products/safi-roll.jpg" alt="Рулон туалетного паперу Safi «Крижопіль»" data-en-alt="Safi «Kryzhopil» toilet paper roll" width="250" height="250" loading="lazy"><div><div class="nm" data-en="Safi «Kryzhopil» toilet paper, 1 roll">Папір туалетний Safi Крижопіль, 1 шт</div><div class="pr">8,00 ₴</div></div></div>
+        </div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-n">15<small>₴</small></div>
+        <div class="tier-k" data-en="UP TO 15 HRYVNIAS">ДО 15 ГРИВЕНЬ</div>
+        <div class="goods">
+          <div class="good"><img src="assets/products/brisk-8.jpg" alt="Альбом для малювання Бріск з русалкою на обкладинці" data-en-alt="Brisk drawing album with a mermaid cover" width="250" height="250" loading="lazy"><div><div class="nm" data-en="Brisk stapled drawing album, 8 sheets">Альбом для малювання на скобі Бріск, 8 аркушів</div><div class="pr">11,00 ₴</div></div></div>
+          <div class="good"><img src="assets/products/easter-plate.jpg" alt="Рожева пластикова тарілка для паски та яєць" data-en-alt="Pink plastic plate for Easter bread and eggs" width="250" height="250" loading="lazy"><div><div class="nm" data-en="Almo plastic plate for Easter bread and eggs">Тарілка для паски та яєць пластикова Almo</div><div class="pr">14,00 ₴</div></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="fine" data-en="Regular (non-promo) prices from avrora.ua as of 25 September 2026. This is a snapshot, not an offer; prices in stores may differ.">Звичайні (не акційні) ціни з avrora.ua станом на 25 вересня 2026 року. Це знімок, а не пропозиція; ціни в магазинах можуть відрізнятися.</p>
+  </div>
+</section>
+
+<section class="shelves" id="shelves" aria-labelledby="shelves-h">
+  <div class="wrap">
+    <div class="shelves-head">
+      <h2 id="shelves-h" class="reveal" data-en="13 departments, from shampoo <em>to chain lube.</em>">13 відділів — від шампуню <em>до змазки для ланцюга.</em></h2>
+      <p class="reveal" data-en="Things for the home and for the soul, as Avrora puts it. One real product from each department of the avrora.ua catalogue.">Речі для дому та душі, як каже сама «Аврора». По одному справжньому товару з кожного відділу каталогу avrora.ua.</p>
+    </div>
+    <div class="rack">
+      <div class="slot"><img src="assets/products/hairbrush.jpg" alt="Блакитна масажна щітка для волосся Lovit" data-en-alt="Blue Lovit massage hairbrush" width="250" height="250" loading="lazy"><div class="cat" data-en="Beauty &amp; health">Краса та здоров’я</div><div class="ex" data-en="Lovit massage hairbrush">Щітка для волосся масажна Lovit</div></div>
+      <div class="slot"><span class="own" aria-label="Власна марка «Аврора»" data-en-aria="Avrora own label">А</span><img src="assets/products/cup-saucer.jpg" alt="Порцелянова чашка з блюдцем з червоними квітами" data-en-alt="Porcelain cup and saucer with red flowers" width="250" height="250" loading="lazy"><div class="cat" data-en="Kitchen">Кухня</div><div class="ex" data-en="Avrora porcelain set: 300 ml cup and saucer">Набір порцеляновий Аврора: чашка 300 мл + блюдце</div></div>
+      <div class="slot"><span class="own" aria-label="Власна марка «Аврора»" data-en-aria="Avrora own label">А</span><img src="assets/products/paw-racer.jpg" alt="М’яка іграшка Гонщик у синьо-жовтій шапці" data-en-alt="Soft toy Chase in a blue-and-yellow hat" width="250" height="250" loading="lazy"><div class="cat" data-en="Kids &amp; toys">Дитячі товари та іграшки</div><div class="ex" data-en="Avrora soft toy, PAW Patrol Chase, 35 cm">М’яка іграшка Аврора «Щенячий патруль» Гонщик, 35 см</div></div>
+      <div class="slot"><img src="assets/products/kus-feather.jpg" alt="Іграшка-вудочка з пір’ям для котів" data-en-alt="Feather wand cat toy" width="250" height="250" loading="lazy"><div class="cat" data-en="Pets">Товари для тварин</div><div class="ex" data-en="Kus feather wand for cats">Іграшка для котів Кусь «Пір’я на паличці»</div></div>
+      <div class="slot"><img src="assets/products/coffee-lviv.jpg" alt="Пачка кави «Кава Старого Львова»" data-en-alt="Bag of «Kava Staroho Lvova» coffee" width="250" height="250" loading="lazy"><div class="cat" data-en="Food &amp; drinks">Продукти та напої</div><div class="ex" data-en="Kava Staroho Lvova «Snidankova» beans, 900 g">Кава Старого Львова «Сніданкова» в зернах, 900 г</div></div>
+      <div class="slot"><img src="assets/products/brisk-40.jpg" alt="Альбом для малювання на спіралі з ламою" data-en-alt="Spiral drawing album with a llama cover" width="250" height="250" loading="lazy"><div class="cat" data-en="Stationery &amp; crafts">Канцтовари та творчість</div><div class="ex" data-en="Brisk spiral drawing album, 40 sheets">Альбом для малювання Бріск на спіралі, 40 аркушів</div></div>
+      <div class="slot"><img src="assets/products/duracell.jpg" alt="Дві батарейки Duracell AA в упаковці" data-en-alt="Two Duracell AA batteries in a pack" width="250" height="250" loading="lazy"><div class="cat" data-en="Tech &amp; electronics">Техніка та електроніка</div><div class="ex" data-en="Duracell AA alkaline batteries, 2 pcs">Батарейки Duracell AA, 2 шт</div></div>
+      <div class="slot"><img src="assets/products/fairy.jpg" alt="Пляшка засобу для миття посуду Fairy Лимон" data-en-alt="Bottle of Fairy Lemon washing-up liquid" width="250" height="250" loading="lazy"><div class="cat" data-en="Household chemicals">Побутова хімія</div><div class="ex" data-en="Fairy Lemon washing-up liquid, 900 ml">Засіб для миття посуду Fairy Лимон, 900 мл</div></div>
+      <div class="slot"><span class="own" aria-label="Власна марка «Аврора»" data-en-aria="Avrora own label">А</span><img src="assets/products/diffuser-ruta.jpg" alt="Аромадифузор з паличками в червоній коробці" data-en-alt="Reed diffuser in a red box" width="250" height="250" loading="lazy"><div class="cat" data-en="Home">Товари для дому</div><div class="ex" data-en="Avrora «Potiah» reed diffuser, «Chervona Ruta», 100 ml">Аромадифузор Аврора «Потяг» Червона Рута, 100 мл</div></div>
+      <div class="slot"><img src="assets/products/glue.jpg" alt="Стрижні силіконового клею BELT" data-en-alt="BELT hot-glue sticks" width="250" height="250" loading="lazy"><div class="cat" data-en="DIY &amp; repair">Все для ремонту</div><div class="ex" data-en="BELT silicone glue sticks for a glue gun">Клей силіконовий BELT для пістолета</div></div>
+      <div class="slot"><img src="assets/products/chain-lube.jpg" alt="Балон змазки для ланцюгів Marconi" data-en-alt="Can of Marconi chain lube" width="250" height="250" loading="lazy"><div class="cat" data-en="Sport, leisure, fishing">Спорт, відпочинок, риболовля</div><div class="ex" data-en="Marconi moto/bike chain lube, 200 ml">Змазка для ланцюгів Marconi, 200 мл</div></div>
+    </div>
+    <div class="rack-more">
+      <span><b data-en="And two more:">І ще два:</b> <span data-en="clothing, footwear &amp; accessories; auto goods.">одяг, взуття, аксесуари; автотовари.</span></span>
+      <span class="own-key"><i aria-hidden="true">А</i><span data-en="Avrora’s own label">власна марка «Аврори»</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="ua" id="ua" aria-labelledby="ua-h">
+  <div class="wrap ua-grid">
+    <div>
+      <h2 id="ua-h" class="reveal" data-en="About half the shelf <em>is Ukrainian.</em>">Близько половини полиці — <em>українське.</em></h2>
+      <p class="lede reveal" data-en="Paper towels from Safi, cat food from Kus, coffee from Kava Staroho Lvova, sunflower seeds from Baba Shura. Avrora works with hundreds of Ukrainian makers and backs new ones.">Серветки Safi, корм «Кусь», «Кава Старого Львова», насіння «Баба Шура». «Аврора» працює з сотнями українських виробників і підтримує нових.</p>
+      <div class="ua-facts reveal">
+        <div><b>600+</b><span data-en="Ukrainian producer partners">українських виробників-партнерів</span></div>
+        <div><b>~50%</b><span data-en="of goods sold across the chain are of Ukrainian origin">товарів, проданих у мережі, — українського походження</span></div>
+        <div><b>10 × ₴1&nbsp;млн</b><span data-en="grants to entrepreneurs through «Avrora for Entrepreneurs»">гранти підприємцям у програмі «Аврора для підприємців»</span></div>
+      </div>
+    </div>
+    <div class="discs reveal">
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/safi-napkins.jpg" alt="Пачка паперових серветок Safi з лимонами" data-en-alt="Pack of Safi napkins with lemons" width="250" height="250" loading="lazy"></div><p>Safi PureNap</p></figure>
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/kus-can.jpg" alt="Консерва корму для котів «Кусь»" data-en-alt="Can of «Kus» cat food" width="250" height="250" loading="lazy"></div><p data-en="Kus cat food">Корм «Кусь»</p></figure>
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/coffee-lviv.jpg" alt="Пачка «Кава Старого Львова»" data-en-alt="Bag of «Kava Staroho Lvova»" width="250" height="250" loading="lazy"></div><p>Кава Старого Львова</p></figure>
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/baba-shura.jpg" alt="Пачка насіння «Баба Шура»" data-en-alt="Pack of «Baba Shura» sunflower seeds" width="250" height="250" loading="lazy"></div><p data-en="Baba Shura seeds">Насіння «Баба Шура»</p></figure>
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/tetrada.jpg" alt="Зошит для малювання «Тетрада» з полуницею" data-en-alt="«Tetrada» drawing book with a strawberry" width="250" height="250" loading="lazy"></div><p data-en="Tetrada drawing book">Зошит «Тетрада»</p></figure>
+      <figure class="disc" style="margin:0"><div class="face"><img src="assets/products/safi-roll.jpg" alt="Рулон паперу Safi «Крижопіль»" data-en-alt="Safi «Kryzhopil» roll" width="250" height="250" loading="lazy"></div><p data-en="Safi «Kryzhopil»">Safi «Крижопіль»</p></figure>
+    </div>
+  </div>
+  <div class="wrap"><p class="fine" data-en="Products shown are listed on avrora.ua under «5% cashback for Ukrainian goods» (the national cashback programme). ~50% and 600+: Wikipedia, «Aurora (chain)», 2026.">Показані товари розміщені на avrora.ua в розділі «5% кешбеку за покупку українських товарів» (програма «Національний кешбек»). ~50% і 600+: Вікіпедія, «Aurora (chain)», 2026.</p></div>
+</section>
+
+<section class="near" id="near" aria-labelledby="near-h">
+  <div class="wrap">
+    <h2 id="near-h" class="reveal" data-en="There <em>when it’s needed.</em>">Поряд, <em>коли треба.</em></h2>
+    <p class="lede reveal" data-en="One of Avrora’s own values. Since 2022 it has meant staying open in frontline towns, rebuilding what was lost and helping those who defend the country.">Це одна з цінностей самої «Аврори». З 2022-го вона означає працювати і в прифронтових містах, відбудовувати втрачене й допомагати тим, хто боронить країну.</p>
+    <div class="ledger">
+      <div class="row reveal"><b>200+</b><p data-en="stores lost in 2022 because of the full-scale Russian invasion. The chain kept growing anyway.">магазинів втрачено у 2022 році через повномасштабне вторгнення Росії. Мережа все одно продовжила рости.</p><small data-en="Wikipedia, 2026">Вікіпедія, 2026</small></div>
+      <div class="row reveal"><b>₴800&nbsp;млн</b><p data-en="in charitable help since the start of the full-scale invasion.">благодійної допомоги від початку повномасштабного вторгнення.</p><small data-en="as of Feb 2026">станом на лютий 2026</small></div>
+      <div class="row reveal"><b>16&nbsp;000+</b><p data-en="people on the team, from large cities to frontline towns.">людей у команді — від великих міст до прифронтових містечок.</p><small data-en="Feb 2026">лютий 2026</small></div>
+      <div class="row reveal"><b>4 + 2</b><p data-en="distribution centres and logistics hubs; the Vinnytsia and Poltava sites run on their own solar stations.">розподільчі центри та логістичні хаби; майданчики у Вінниці й Полтаві мають власні сонячні станції.</p><small data-en="Sept 2025">вересень 2025</small></div>
+      <div class="row reveal"><b>30+</b><p data-en="stores in Romania, with a support office and a logistics hub there.">магазинів у Румунії, де також працюють офіс підтримки та логістичний хаб.</p><small>2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find" aria-labelledby="find-h">
+  <div class="wrap find-grid">
+    <a class="big-sun reveal" href="https://avrora.ua/" target="_blank" rel="noopener">
+      <span class="A" aria-hidden="true">А</span>
+      <span class="lbl"><strong data-en="Find your Avrora">Знайти свою «Аврору»</strong><span class="pill"><span data-en="Open avrora.ua">Відкрити avrora.ua</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span></span>
+    </a>
+    <div>
+      <h2 id="find-h" class="reveal" data-en="1,900+ stores. One is probably near you.">1 900+ магазинів. Один, мабуть, неподалік.</h2>
+      <dl class="facts reveal">
+        <div><dt data-en="Hotline">Гаряча лінія</dt><dd><a href="tel:0800300066">0 800 300 066</a> <span data-en="· daily 7:00–21:00">· щодня 7:00–21:00</span></dd></div>
+        <div><dt data-en="Returns">Повернення</dt><dd data-en="Exchange or return within 30 days, at any store in the chain.">Обмін або повернення протягом 30 днів у будь-якому магазині мережі.</dd></div>
+        <div><dt data-en="App">Застосунок</dt><dd data-en="Avrora for iOS and Android; links at <a href='https://avrora.ua/' target='_blank' rel='noopener'>avrora.ua</a>.">«Аврора» для iOS та Android; посилання на <a href="https://avrora.ua/" target="_blank" rel="noopener">avrora.ua</a>.</dd></div>
+        <div><dt data-en="Formats">Формати</dt><dd data-en="Compact neighbourhood stores, and MAXI at 400+ m² with a beauty zone and a kids’ section.">Компактні магазини біля дому та MAXI від 400 м² — з б’юті-зоною і дитячим відділом.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h3 data-en="Unofficial concept">Неофіційний концепт</h3>
+      <p class="disclaimer" data-en="This is a portfolio concept page. It is not the official Avrora website and was not commissioned by the company. The logo and product photos belong to their owners (© Avrora and the manufacturers) and are shown for demonstration only.">Це концепт-сторінка для портфоліо. Вона не є офіційним сайтом «Аврори» і не замовлялася компанією. Логотип і фото товарів належать власникам (© «Аврора» та виробники) і показані лише для демонстрації.</p>
+      <p style="margin-top:14px" data-en="Map: real store addresses from the avrora.ua store locator (1,938 stores, Sept 2026) and archived lists from April and December 2022 (Wayback Machine). Exact opening and closing dates are not published: opening years are estimated from store order between documented milestones. Stores lost before April 2022 are not on the map because their addresses are unknown. Occupation lines are approximate, drawn from public front-line reporting.">Мапа: справжні адреси з пошуку магазинів avrora.ua (1 938 магазинів, вересень 2026) та архівних списків за квітень і грудень 2022 (Wayback Machine). Точні дати відкриття й закриття не публікуються: рік відкриття оцінено за порядком магазинів між задокументованими віхами. Магазини, втрачені до квітня 2022, на мапі відсутні — їхні адреси невідомі. Межі окупації приблизні, за відкритими даними про лінію фронту.</p>
+    </div>
+    <div>
+      <h3 data-en="Sources">Джерела</h3>
+      <ol>
+        <li><a href="https://uk.wikipedia.org/wiki/Аврора_(мережа)">Вікіпедія: Аврора (мережа)</a> · <a href="https://en.wikipedia.org/wiki/Aurora_(chain)">Wikipedia: Aurora (chain)</a></li>
+        <li><a href="https://corporate.avrora.ua/">corporate.avrora.ua</a> · <a href="https://robota.avrora.ua/en">robota.avrora.ua</a></li>
+        <li><a href="https://avrora.ua/">avrora.ua</a> <span data-en="(catalogue, prices and photos as of 25.09.2026)">(каталог, ціни та фото станом на 25.09.2026)</span></li>
+        <li><a href="https://epravda.com.ua/publications/2023/10/11/705321/">Економічна правда, 2023</a></li>
+      </ol>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const MAP = {towns:{"poltava": [692.7, 230.2], "kryvyi": [628.2, 371.1], "frankivsk": [145.8, 286.4], "starokost": [284.8, 216.0], "lviv": [108.1, 209.2], "vinnytsia": [354.8, 260.4], "kyiv": [468.7, 158.1]}, stores:[692,231,10,0,0,264,264,42,0,0,715,156,75,0,0,690,232,108,0,0,634,133,140,0,0,512,71,143,0,0,630,274,146,0,0,787,198,149,0,0,694,232,153,0,0,707,118,156,0,0,706,119,159,0,0,630,272,162,0,0,232,142,165,0,0,706,119,168,0,0,705,117,172,0,0,576,479,175,1115,0,719,324,178,0,0,809,417,181,1115,0,719,324,184,0,0,693,231,187,0,0,712,170,191,0,0,511,69,194,0,0,785,246,197,0,0,640,199,200,0,0,718,324,203,0,0,766,319,206,0,0,712,171,209,-2,0,545,108,213,0,0,348,272,216,-1,0,661,164,219,0,0,452,301,222,0,0,619,91,225,0,0,594,354,228,0,0,692,229,232,0,0,722,321,235,0,0,690,229,238,0,0,613,307,241,0,0,725,242,244,0,0,588,303,247,0,0,692,232,251,0,0,618,275,254,0,0,572,146,257,0,0,613,308,260,0,0,663,324,263,0,0,718,324,266,-1,0,695,231,269,0,0,732,310,273,0,0,728,379,276,0,0,544,260,279,0,0,657,55,282,0,0,631,268,285,0,0,438,295,288,-2,0,554,244,292,0,0,357,260,295,0,0,445,259,298,0,0,554,243,301,0,0,435,189,304,0,0,631,269,307,0,0,449,214,311,0,0,718,329,314,0,0,694,231,317,0,0,770,322,320,0,0,618,92,323,0,0,511,71,326,0,0,694,313,329,0,0,514,69,333,0,0,706,119,336,0,0,694,231,339,0,0,552,244,342,0,0,738,461,345,1115,0,642,279,348,0,0,693,313,352,0,0,622,214,355,0,0,655,84,358,0,0,497,279,361,0,0,718,326,364,0,0,630,272,367,0,0,693,314,371,0,0,708,119,374,0,0,514,68,377,0,0,576,186,380,0,0,591,154,383,0,0,554,246,386,0,0,785,431,389,1115,0,557,276,393,0,0,709,121,396,0,0,666,232,399,0,0,732,310,402,0,0,590,213,405,0,0,493,273,408,0,0,575,186,412,0,0,545,107,415,-1,0,682,178,418,0,0,696,199,421,0,0,691,210,424,0,0,708,120,427,0,0,696,320,431,-1,0,620,274,434,0,0,569,224,437,-1,0,655,126,440,-1,0,486,259,441,0,0,452,300,442,0,0,613,308,443,0,0,615,390,444,0,0,696,320,446,0,0,513,69,447,0,0,605,194,448,0,0,617,93,449,0,0,627,286,450,0,0,692,230,451,0,0,634,364,452,0,0,563,68,453,0,0,726,220,454,0,0,679,100,456,-1,0,653,95,457,0,0,370,319,458,0,0,488,234,459,0,0,625,371,460,-2,0,563,322,461,0,0,658,55,462,0,0,636,38,463,0,0,634,39,464,0,0,548,43,466,0,0,633,361,467,0,0,622,248,468,0,0,510,245,469,0,0,765,220,470,0,0,725,329,471,0,0,683,399,472,0,0,629,371,473,0,0,502,119,474,0,0,623,372,475,0,0,629,369,477,-1,0,632,367,478,0,0,787,392,479,1430,0,760,255,480,0,0,531,297,481,0,0,509,69,482,0,0,489,235,483,0,0,545,108,484,0,0,699,394,485,0,0,613,307,487,0,0,496,153,488,0,0,785,246,489,0,0,713,286,490,0,0,628,372,491,0,0,485,207,492,0,0,528,117,493,0,0,664,12,494,-1,0,613,306,495,0,0,694,320,497,0,0,494,284,498,0,0,912,285,499,1115,0,680,252,500,-2,0,659,32,501,-2,0,580,175,502,0,0,731,377,503,0,0,560,359,504,0,0,466,222,505,0,0,530,310,507,0,0,940,283,508,1115,0,562,322,509,0,0,621,27,510,0,0,514,69,511,0,0,618,92,512,0,0,684,399,513,0,0,694,320,514,-1,0,524,337,515,-1,0,645,392,517,-2,0,482,69,518,0,0,453,336,519,-2,0,752,209,520,0,0,625,371,521,-2,0,668,393,522,0,0,769,201,523,0,0,720,378,524,0,0,684,399,525,0,0,514,69,527,0,0,621,390,528,0,0,787,407,529,1115,0,573,124,530,0,0,485,308,531,-1,0,742,368,532,0,0,426,308,533,0,0,630,371,534,0,0,631,366,535,-1,0,718,415,536,1115,0,429,157,538,0,0,614,260,539,0,0,635,335,540,-1,0,432,335,541,0,0,452,300,542,0,0,520,255,543,0,0,650,33,544,-1,0,525,336,545,0,0,732,131,546,-2,0,777,197,548,0,0,694,319,549,0,0,704,190,550,0,0,629,162,551,0,0,485,308,552,0,0,473,350,553,0,0,730,425,554,1115,0,747,337,555,-1,0,687,333,556,0,0,628,66,558,0,0,529,37,559,0,0,622,359,560,0,0,766,267,561,0,0,766,191,562,-2,0,500,45,563,0,0,693,231,564,-1,0,707,517,565,1115,0,587,333,566,0,0,706,118,568,0,0,647,213,569,-1,0,646,330,570,0,0,693,230,571,0,0,739,458,572,1115,0,696,320,573,0,0,757,425,574,1115,0,817,468,575,1115,0,474,154,576,0,0,728,381,578,0,0,689,147,579,0,0,722,321,580,0,0,777,319,581,-2,0,812,209,582,0,0,746,337,583,-2,0,786,365,584,-1,0,556,244,585,0,0,634,335,586,0,0,376,307,588,0,0,698,393,589,0,0,365,173,590,0,0,521,170,591,0,0,452,302,592,0,0,695,232,593,0,0,792,470,594,1115,0,797,325,595,0,0,684,399,596,0,0,614,125,597,0,0,764,317,599,0,0,634,133,600,0,0,566,321,601,0,0,232,144,602,0,0,146,94,603,0,0,632,367,604,0,0,180,134,605,0,0,805,237,606,0,0,182,131,607,0,0,180,133,609,0,0,219,133,610,-1,0,640,199,611,0,0,563,322,612,0,0,368,174,613,-1,0,633,361,614,-1,0,632,277,615,0,0,630,274,616,0,0,674,267,617,0,0,699,323,619,0,0,690,232,620,0,0,692,229,621,0,0,692,231,622,-1,0,841,334,623,-1,0,697,303,624,0,0,606,194,625,0,0,522,217,626,0,0,864,248,627,1115,0,602,140,629,0,0,643,400,630,0,0,334,252,631,0,0,789,290,632,0,0,712,170,633,-2,0,597,97,634,0,0,706,326,635,0,0,564,283,636,-1,0,579,68,637,0,0,691,232,639,0,0,604,64,640,0,0,397,321,641,-2,0,583,13,642,0,0,632,39,643,0,0,203,161,644,0,0,375,282,645,-2,0,721,373,646,0,0,865,225,647,1115,0,691,231,649,0,0,387,261,650,0,0,518,344,651,0,0,558,319,652,-1,0,738,277,653,0,0,614,309,654,0,0,728,382,655,0,0,785,247,656,0,0,692,231,657,-1,0,545,110,658,-1,0,540,176,660,0,0,684,400,661,0,0,565,47,662,0,0,517,279,663,0,0,459,283,664,0,0,573,124,665,0,0,364,116,666,0,0,603,173,667,0,0,528,117,668,-1,0,689,284,670,0,0,630,273,671,0,0,814,342,672,-1,0,601,316,673,0,0,559,199,674,-1,0,633,364,675,-1,0,630,461,676,1115,0,429,280,677,0,0,357,319,678,0,0,707,120,680,0,0,733,410,681,1115,0,698,406,682,1115,0,377,332,683,0,0,192,87,684,-1,0,630,273,685,0,0,553,242,686,0,0,617,230,687,0,0,795,335,688,-1,0,347,272,690,0,0,711,242,691,0,0,149,153,692,0,0,588,273,693,0,0,489,116,694,0,0,344,343,695,0,0,564,321,696,0,0,631,268,697,-1,0,654,261,698,0,0,563,343,700,0,0,699,407,701,1115,0,406,296,702,0,0,317,326,703,0,0,563,322,704,0,0,326,233,705,0,0,308,248,706,0,0,846,431,707,1115,0,633,134,708,0,0,135,55,710,0,0,505,331,711,0,0,124,125,712,-1,0,673,267,713,0,0,845,264,714,1115,1177,373,85,715,0,0,498,198,716,-1,0,641,279,717,0,0,365,117,718,0,0,553,224,719,0,0,867,227,721,1115,0,378,346,722,0,0,768,366,723,-1,0,642,279,724,0,0,398,239,725,0,0,285,216,726,0,0,675,323,727,0,0,626,377,728,0,0,452,300,729,0,0,446,212,731,0,0,804,292,732,0,0,708,119,733,0,0,830,287,734,0,0,777,320,735,0,0,180,133,736,0,0,661,164,737,0,0,120,59,738,0,0,566,318,739,0,0,669,393,741,0,0,209,83,742,0,0,567,320,743,0,0,689,231,744,0,0,252,85,745,0,0,747,182,746,0,0,574,146,747,0,0,538,154,748,-1,0,544,263,749,0,0,552,243,751,0,0,845,261,752,1115,0,727,190,753,0,0,765,220,754,0,0,814,465,755,1115,0,626,372,756,0,0,794,221,757,0,0,633,133,758,0,0,764,319,759,0,0,397,306,761,0,0,564,321,762,0,0,297,257,763,-2,0,617,92,764,-1,0,517,134,765,0,0,566,322,766,0,0,283,216,767,0,0,684,398,768,0,0,301,186,769,0,0,514,165,771,0,0,452,177,772,0,0,356,279,773,0,0,488,234,774,0,0,694,313,775,-1,0,366,158,776,0,0,646,392,777,0,0,776,212,778,0,0,522,217,779,0,0,145,94,780,0,0,115,135,782,0,0,517,279,783,0,0,575,91,784,0,0,436,142,785,0,0,513,313,786,0,0,761,399,787,-2,0,249,265,788,0,0,862,219,789,1115,0,115,135,790,0,0,358,242,792,0,0,265,288,793,0,0,632,368,794,-1,0,766,319,795,0,0,566,319,796,0,0,663,206,797,0,0,364,116,798,0,0,336,191,799,0,0,769,322,800,0,0,731,376,802,0,0,387,170,803,0,0,727,373,804,0,0,627,469,805,1115,0,658,433,806,1115,0,753,470,807,1115,0,627,468,808,1115,0,720,379,809,0,0,625,372,810,0,0,689,230,812,0,0,766,319,813,0,0,556,243,814,0,0,396,271,815,0,0,791,199,816,0,0,209,82,817,0,0,680,308,818,0,0,245,321,819,0,0,697,321,820,0,0,490,431,822,0,0,683,400,823,0,0,325,184,824,-2,0,627,468,825,1115,0,685,406,826,-2,0,789,290,827,-1,0,480,497,828,0,0,696,322,829,0,0,725,377,830,0,0,724,375,832,0,0,785,247,833,0,0,730,377,834,-2,0,622,166,835,0,0,791,289,836,0,0,573,146,837,0,0,795,334,838,-1,0,699,405,839,-2,0,733,330,840,0,0,716,325,841,-2,0,519,343,843,0,0,259,112,844,0,0,333,301,845,0,0,368,176,846,0,0,366,174,847,0,0,307,146,848,0,0,863,220,849,1115,0,736,459,850,1115,0,120,162,851,0,0,714,323,853,0,0,707,121,854,0,0,661,164,855,0,0,251,84,856,0,0,488,344,857,0,0,730,382,858,0,0,732,131,859,-1,0,410,200,860,0,0,563,322,861,0,0,584,152,863,0,0,310,171,864,0,0,791,269,865,0,0,770,322,866,0,0,353,146,867,0,0,706,120,868,0,0,680,502,869,1115,0,618,92,870,0,0,727,379,871,0,0,513,69,873,0,0,365,172,874,0,0,565,320,875,0,0,368,175,876,0,0,826,207,877,0,0,863,292,878,-2,0,413,333,879,0,0,364,175,880,0,0,651,149,881,0,0,538,173,883,0,0,231,152,884,0,0,785,191,885,0,0,796,203,886,0,0,782,197,887,0,0,862,302,888,-2,0,585,475,889,1115,1191,637,501,890,1115,0,623,509,891,1115,0,681,399,893,0,0,774,345,894,-1,0,703,379,895,0,0,655,359,896,0,0,896,276,897,1115,0,793,195,898,0,0,791,200,899,0,0,452,301,900,0,0,820,242,901,1115,1177,905,277,902,1115,0,784,197,904,0,0,597,97,905,0,0,463,210,906,0,0,468,233,907,0,0,818,469,908,1115,0,272,225,909,0,0,709,120,910,0,0,413,172,911,0,0,544,108,912,0,0,531,81,914,0,0,683,460,915,1115,0,343,156,916,0,0,562,322,917,0,0,844,263,918,1115,0,385,195,919,0,0,690,232,920,0,0,696,321,921,0,0,718,415,922,1115,0,738,461,924,1115,0,472,375,925,0,0,632,288,926,0,0,452,300,927,0,0,893,245,928,1115,0,862,219,929,1115,0,793,197,930,0,0,893,246,931,1115,0,692,230,932,0,0,632,371,934,0,0,751,430,935,1115,0,839,341,936,1510,0,445,212,937,0,0,365,174,938,0,0,747,182,939,0,0,706,122,940,0,0,594,354,941,0,0,621,335,942,-1,0,908,287,944,1115,0,627,372,945,0,0,708,119,946,0,0,229,235,947,-1,0,706,117,948,0,0,867,321,949,1530,0,335,277,950,0,0,633,360,951,0,0,585,478,952,1115,0,722,373,954,0,0,525,479,955,0,0,335,277,956,0,0,695,320,957,-2,0,862,292,958,-2,0,726,372,959,0,0,693,313,960,0,0,713,323,961,0,0,789,290,962,0,0,543,261,963,0,0,554,242,965,0,0,364,116,966,0,0,794,194,967,0,0,860,277,968,1115,0,459,368,969,0,0,727,378,970,0,0,632,39,971,0,0,744,160,972,-1,0,867,437,973,1115,0,629,274,975,0,0,812,209,976,-1,0,846,443,977,1115,0,557,245,978,0,0,479,289,979,0,0,832,319,980,-1,0,361,204,981,0,0,792,196,982,0,0,437,387,983,0,0,410,402,985,-1,0,582,477,986,1115,1191,782,200,987,0,0,344,343,988,0,0,389,95,989,0,0,373,85,990,0,0,787,188,991,0,0,794,201,992,0,0,318,326,993,0,0,255,146,995,0,0,495,395,996,0,0,618,90,997,0,0,454,378,998,0,0,351,105,999,0,0,905,277,1000,1115,0,694,231,1001,0,0,523,168,1002,0,0,243,122,1003,0,0,555,244,1005,0,0,935,256,1006,1115,0,869,321,1007,1520,0,868,318,1008,-2,0,785,200,1009,0,0,53,267,1010,0,0,634,334,1011,0,0,630,368,1012,0,0,579,389,1013,0,0,548,451,1015,0,0,681,426,1016,1115,0,862,303,1017,-2,0,720,329,1018,0,0,777,319,1019,0,0,607,194,1020,0,0,108,93,1021,0,0,572,147,1022,0,0,859,302,1023,-2,0,259,112,1024,0,0,124,124,1026,0,0,505,378,1027,0,0,793,193,1028,0,0,398,154,1029,0,0,728,383,1030,0,0,484,482,1031,0,0,693,231,1032,0,0,551,446,1033,0,0,788,197,1034,0,0,633,364,1036,0,0,63,236,1037,0,0,214,339,1038,0,0,250,307,1039,0,0,792,223,1040,0,0,146,94,1041,0,0,692,231,1042,0,0,677,258,1043,0,0,790,200,1044,0,0,369,133,1046,0,0,858,438,1047,1115,0,580,487,1048,1115,0,231,144,1049,0,0,494,225,1050,0,0,739,459,1050,1115,0,178,324,1051,0,0,793,194,1051,0,0,204,163,1051,0,0,109,213,1052,0,0,514,400,1052,0,0,483,483,1052,0,0,61,236,1053,0,0,626,372,1053,0,0,727,373,1053,0,0,165,319,1054,0,0,273,243,1054,0,0,867,208,1055,1115,0,718,328,1055,0,0,728,380,1055,-1,0,876,330,1056,1310,0,856,397,1056,1115,0,642,279,1056,0,0,730,377,1057,0,0,480,492,1057,0,0,712,323,1057,0,0,626,371,1058,0,0,194,234,1058,0,0,718,327,1058,-2,0,170,224,1059,0,0,136,56,1059,0,0,196,153,1059,0,0,137,224,1060,0,0,465,153,1060,0,0,310,273,1060,0,0,419,545,1061,0,0,631,269,1061,0,0,205,278,1061,0,0,723,320,1062,-1,0,786,197,1062,0,0,726,377,1062,0,0,490,146,1063,0,0,639,351,1063,0,0,270,243,1064,0,0,1940575475,323,1064,-2,0,538,421,1064,0,0,194,233,1065,-2,0,968,310,1065,1115,0,367,270,1065,0,0,62,236,1066,0,0,786,193,1066,0,0,232,149,1066,0,0,126,276,1067,0,0,512,71,1067,0,0,719,378,1067,0,0,743,248,1068,0,0,718,329,1068,0,0,584,304,1068,0,0,727,472,1069,1115,0,586,476,1069,1115,1191,792,194,1069,0,0,785,190,1070,0,0,136,296,1070,0,0,195,234,1070,0,0,659,194,1071,0,0,696,320,1071,-2,0,555,243,1072,0,0,466,331,1072,0,0,141,259,1072,0,0,272,244,1073,0,0,790,200,1073,0,0,555,451,1073,-1,0,479,495,1074,0,0,584,477,1074,1115,1191,108,207,1074,0,0,444,353,1075,0,0,122,155,1075,0,0,552,450,1075,0,0,719,319,1076,0,0,366,174,1076,0,0,229,235,1076,-1,0,464,511,1077,0,0,724,377,1077,0,0,724,375,1077,0,0,785,197,1078,0,0,484,483,1078,0,0,479,492,1078,0,0,116,133,1079,0,0,632,278,1079,0,0,475,159,1079,0,0,484,483,1080,0,0,526,480,1080,0,0,461,164,1081,0,0,772,173,1081,0,0,365,173,1081,0,0,307,229,1082,-1,0,792,196,1082,0,0,732,310,1082,-1,0,79,256,1083,0,0,172,342,1083,0,0,250,306,1083,0,0,787,201,1084,0,0,393,516,1084,0,0,232,143,1084,0,0,475,162,1085,0,0,214,341,1085,0,0,511,71,1085,0,0,793,200,1086,0,0,480,490,1086,0,0,480,497,1086,-2,0,719,320,1087,0,0,630,274,1087,0,0,786,194,1087,0,0,549,450,1088,0,0,462,161,1088,0,0,711,346,1088,0,0,198,233,1089,0,0,357,260,1089,0,0,109,207,1090,0,0,791,289,1090,0,0,484,483,1090,0,0,720,379,1091,0,0,718,324,1091,0,0,729,310,1091,0,0,719,324,1092,-1,0,205,224,1092,0,0,552,459,1092,0,0,501,479,1093,0,0,472,502,1093,0,0,788,196,1093,0,0,553,452,1094,0,0,480,499,1094,0,0,719,324,1094,0,0,231,144,1095,0,0,787,197,1095,-2,0,74,256,1095,0,0,367,173,1096,0,0,364,172,1096,0,0,250,306,1096,0,0,214,342,1097,0,0,309,93,1097,0,0,59,213,1098,0,0,184,274,1098,0,0,144,287,1098,0,0,435,189,1099,0,0,725,322,1099,0,0,106,212,1099,0,0,860,294,1100,-2,0,865,439,1100,1115,0,222,207,1100,0,0,788,200,1101,0,0,787,196,1101,-2,0,75,255,1101,0,0,480,498,1102,0,0,727,378,1102,0,0,537,343,1102,0,0,792,194,1103,0,0,50,318,1103,0,0,105,191,1103,0,0,864,438,1104,1115,0,785,197,1104,0,0,236,279,1104,-2,0,365,174,1105,0,0,80,250,1105,0,0,233,345,1105,0,0,153,288,1106,0,0,478,490,1106,0,0,888,305,1107,1330,0,925,236,1107,1115,0,487,362,1107,0,0,638,351,1108,0,0,480,498,1108,0,0,12,311,1108,0,0,232,144,1109,0,0,719,330,1109,0,0,119,162,1109,-2,0,783,197,1110,0,0,285,216,1110,0,0,736,310,1110,-1,0,554,452,1111,0,0,116,135,1111,0,0,195,233,1111,0,0,860,292,1112,-2,0,552,459,1112,0,0,720,320,1112,0,0,699,406,1113,1115,0,549,451,1113,0,0,633,464,1113,1115,0,786,193,1114,0,0,721,320,1114,0,0,191,48,1115,0,0,35,326,1115,0,0,415,386,1115,0,0,35,327,1116,0,0,583,477,1116,1115,1191,912,284,1116,1115,0,120,162,1117,0,0,511,68,1117,0,0,212,347,1117,0,0,417,582,1118,0,0,793,197,1118,0,0,641,279,1118,0,0,146,286,1119,0,0,225,44,1119,0,0,249,64,1119,0,0,631,271,1120,0,0,548,451,1120,0,0,141,172,1120,0,0,464,153,1121,0,0,215,341,1121,0,0,202,188,1121,0,0,253,168,1122,0,0,99,257,1122,0,0,794,192,1122,-2,0,149,154,1123,0,0,549,450,1123,0,0,905,311,1124,1115,0,215,339,1124,-1,0,198,233,1124,0,0,159,242,1125,0,0,626,468,1125,1115,0,788,197,1125,0,0,476,506,1126,0,0,273,243,1126,0,0,362,205,1126,0,0,67,349,1127,0,0,556,244,1127,0,0,35,327,1128,0,0,640,199,1128,0,0,785,197,1129,0,0,136,56,1130,0,0,549,450,1130,0,0,667,232,1131,0,0,67,349,1132,0,0,674,267,1132,0,0,606,194,1133,0,0,618,92,1134,0,0,549,450,1135,0,0,554,452,1135,0,0,505,378,1136,0,0,629,372,1137,0,0,793,223,1137,0,0,618,275,1138,0,0,108,209,1139,0,0,514,400,1139,0,0,730,377,1140,0,0,105,191,1141,0,0,188,126,1141,0,0,243,122,1142,0,0,465,153,1143,0,0,272,243,1143,0,0,301,186,1144,0,0,629,371,1145,0,0,694,313,1146,0,0,712,323,1146,0,0,448,214,1147,0,0,657,55,1148,0,0,366,174,1148,0,0,414,264,1149,0,0,480,491,1150,0,0,98,258,1150,0,0,718,326,1151,0,0,475,162,1152,0,0,732,310,1152,0,0,719,324,1153,0,0,793,199,1154,0,0,785,246,1154,0,0,483,483,1155,0,0,552,244,1156,0,0,435,189,1157,0,0,784,197,1157,0,0,565,320,1158,0,0,272,243,1159,0,0,690,229,1159,0,0,554,243,1160,0,0,203,310,1161,0,0,438,295,1161,0,0,680,251,1162,0,0,453,336,1163,0,0,626,371,1163,0,0,767,191,1164,0,0,508,418,1165,0,0,709,317,1165,0,0,641,199,1166,0,0,375,282,1167,0,0,297,257,1168,0,0,545,264,1168,0,0,277,180,1169,0,0,202,350,1170,0,0,467,157,1170,0,0,713,323,1171,0,0,217,341,1172,0,0,274,245,1172,0,0,119,163,1173,0,0,53,337,1174,0,0,721,320,1174,0,0,623,270,1175,0,0,791,199,1176,0,0,486,153,1176,0,0,181,349,1177,0,0,633,39,1178,0,0,787,198,1179,0,0,105,211,1179,0,0,355,259,1180,0,0,110,214,1181,0,0,692,232,1181,0,0,457,178,1182,0,0,486,207,1183,0,0,82,202,1183,0,0,520,255,1184,0,0,462,156,1185,0,0,164,319,1185,0,0,171,272,1186,0,0,114,247,1187,0,0,191,332,1187,0,0,172,343,1188,0,0,93,244,1189,0,0,274,245,1190,0,0,554,243,1190,0,0,391,355,1191,0,0,419,369,1192,0,0,723,316,1192,0,0,786,195,1193,0,0,616,276,1194,0,0,734,209,1194,0,0,225,235,1195,0,0,105,211,1195,0,0,164,318,1196,0,0,100,349,1196,0,0,10,312,1197,0,0,452,153,1197,0,0,458,149,1197,0,0,783,197,1198,0,0,182,132,1198,0,0,466,158,1198,0,0,35,327,1199,0,0,103,204,1199,0,0,204,327,1200,0,0,307,147,1200,0,0,182,132,1200,0,0,474,158,1201,0,0,631,366,1201,0,0,170,189,1201,0,0,99,274,1202,0,0,83,363,1202,0,0,115,285,1203,0,0,457,130,1203,0,0,460,157,1203,0,0,274,242,1204,0,0,11,313,1204,0,0,482,68,1205,0,0,462,161,1205,0,0,465,154,1205,0,0,477,161,1206,0,0,543,389,1206,0,0,781,187,1206,0,0,126,277,1207,0,0,421,218,1207,0,0,128,178,1208,0,0,78,249,1208,0,0,105,209,1208,0,0,468,152,1209,0,0,414,385,1209,0,0,459,515,1209,0,0,436,236,1210,0,0,358,241,1210,0,0,391,356,1211,0,0,272,244,1211,0,0,466,168,1211,0,0,630,369,1212,0,0,474,156,1212,0,0,468,152,1213,0,0,147,285,1213,0,0,476,162,1213,0,0,465,156,1214,0,0,456,168,1214,0,0,811,209,1214,0,0,145,286,1215,0,0,630,274,1215,0,0,83,202,1216,0,0,282,144,1216,0,0,706,120,1216,0,0,166,320,1217,0,0,464,159,1217,0,0,126,143,1217,0,0,481,183,1218,0,0,224,186,1218,0,0,11,310,1219,0,0,785,193,1219,0,0,559,248,1219,0,0,11,313,1220,0,0,641,199,1220,0,0,512,70,1221,0,0,465,152,1221,0,0,212,271,1221,0,0,464,153,1222,0,0,461,165,1222,0,0,209,320,1222,0,0,465,158,1223,0,0,473,154,1223,0,0,474,159,1224,0,0,115,240,1224,0,0,465,158,1224,0,0,474,159,1225,0,0,148,285,1225,0,0,475,163,1226,0,0,484,482,1226,0,0,500,264,1226,0,0,752,210,1227,0,0,476,160,1227,0,0,146,287,1227,0,0,453,152,1228,0,0,136,105,1228,0,0,67,349,1229,0,0,140,245,1229,0,0,461,158,1229,0,0,468,152,1230,0,0,458,162,1230,0,0,232,351,1230,0,0,467,158,1231,0,0,520,190,1231,0,0,363,558,1232,0,0,444,460,1232,0,0,90,364,1232,0,0,468,152,1233,0,0,200,255,1233,0,0,116,135,1234,0,0,792,195,1234,0,0,297,315,1234,0,0,469,162,1235,0,0,785,191,1235,0,0,231,143,1235,0,0,463,160,1236,0,0,465,154,1236,0,0,333,252,1237,0,0,232,143,1237,0,0,403,569,1237,0,0,164,319,1238,0,0,145,284,1238,0,0,190,196,1238,0,0,39,232,1239,0,0,460,158,1239,0,0,183,131,1240,0,0,85,176,1240,0,0,215,341,1240,0,0,80,250,1241,0,0,473,159,1241,0,0,483,154,1242,0,0,21,288,1242,0,0,458,162,1242,0,0,398,131,1243,0,0,468,156,1243,0,0,490,155,1243,0,0,417,137,1244,0,0,769,200,1244,0,0,101,219,1245,0,0,463,153,1245,0,0,145,285,1245,0,0,466,155,1246,0,0,460,161,1246,0,0,114,175,1246,0,0,181,133,1247,0,0,10,313,1247,0,0,125,126,1248,0,0,807,235,1248,0,0,144,288,1248,0,0,467,161,1248,0,0,745,337,1249,0,0,42,235,1249,0,0,146,289,1249,0,0,490,177,1249,0,0,595,442,1250,0,0,474,157,1250,0,0,685,314,1250,0,0,475,161,1250,0,0,452,150,1251,0,0,772,194,1251,0,0,426,420,1251,0,0,452,152,1251,0,0,51,339,1252,0,0,107,212,1252,0,0,145,285,1252,0,0,144,94,1252,0,0,192,88,1253,0,0,124,246,1253,0,0,793,196,1253,0,0,421,529,1253,0,0,399,239,1254,0,0,460,516,1254,0,0,111,204,1254,0,0,120,140,1254,0,0,630,274,1255,0,0,476,159,1255,0,0,459,162,1255,0,0,480,490,1255,0,0,464,153,1255,0,0,98,258,1256,0,0,108,93,1256,0,0,793,196,1256,0,0,138,311,1256,0,0,705,119,1257,0,0,375,221,1257,0,0,325,184,1257,0,0,468,152,1257,0,0,457,174,1258,0,0,32,347,1258,0,0,473,163,1258,0,0,476,161,1258,0,0,114,240,1259,0,0,474,152,1259,0,0,105,209,1259,0,0,440,147,1259,0,0,79,250,1260,0,0,303,181,1260,0,0,553,451,1260,0,0,473,158,1260,0,0,352,276,1261,0,0,554,452,1261,0,0,460,160,1261,0,0,466,158,1261,0,0,470,161,1261,0,0,598,422,1262,0,0,12,312,1262,0,0,168,337,1262,0,0,78,225,1262,0,0,846,261,1263,0,0,458,163,1263,0,0,273,244,1263,0,0,466,152,1263,0,0,465,153,1264,0,0,796,201,1264,0,0,117,295,1264,0,0,635,358,1264,0,0,630,372,1265,0,0,183,133,1265,0,0,637,351,1265,0,0,120,163,1265,0,0,190,48,1266,0,0,470,161,1266,0,0,552,450,1266,0,0,140,330,1266,0,0,483,483,1267,0,0,409,280,1267,0,0,668,392,1267,0,0,629,369,1267,0,0,784,197,1268,0,0,461,160,1268,0,0,441,345,1268,0,0,146,285,1268,0,0,461,159,1268,0,0,461,162,1269,0,0,79,250,1269,0,0,300,186,1269,0,0,247,168,1269,0,0,51,242,1270,0,0,480,495,1270,0,0,557,245,1270,0,0,474,160,1270,0,0,511,70,1271,0,0,182,132,1271,0,0,719,326,1271,0,0,476,160,1271,0,0,92,202,1272,0,0,719,331,1272,0,0,628,373,1272,0,0,510,72,1272,0,0,484,153,1273,0,0,632,368,1273,0,0,468,159,1273,0,0,465,164,1273,0,0,790,206,1274,0,0,459,158,1274,0,0,461,160,1274,0,0,565,321,1274,0,0,147,286,1275,0,0,214,342,1275,0,0,458,162,1275,0,0,563,322,1275,0,0,487,360,1275,0,0,458,181,1276,0,0,457,181,1276,0,0,484,152,1276,0,0,314,202,1276,0,0,631,366,1277,0,0,177,119,1277,0,0,785,247,1277,0,0,215,337,1277,0,0,721,323,1278,0,0,467,163,1278,0,0,465,154,1278,0,0,552,460,1278,0,0,473,158,1279,0,0,157,212,1279,0,0,107,212,1279,0,0,124,124,1279,0,0,11,312,1280,0,0,335,318,1280,0,0,783,197,1280,0,0,164,319,1280,0,0,566,321,1281,0,0,100,367,1281,0,0,259,112,1281,0,0,492,166,1281,0,0,459,156,1282,0,0,42,354,1282,0,0,720,324,1282,0,0,467,147,1282,0,0,514,69,1282,0,0,470,159,1283,0,0,483,153,1283,0,0,484,153,1283,0,0,632,371,1283,0,0,273,243,1284,0,0,722,373,1284,0,0,229,274,1284,0,0,722,373,1284,0,0,227,313,1285,0,0,613,307,1285,0,0,453,152,1285,0,0,786,195,1285,0,0,481,492,1286,0,0,465,156,1286,0,0,766,319,1286,0,0,631,366,1286,0,0,591,155,1287,0,0,476,185,1287,0,0,825,220,1287,0,0,727,378,1287,0,0,494,225,1288,0,0,198,233,1288,0,0,476,162,1288,0,0,621,335,1288,0,0,629,372,1288,0,0,537,236,1289,0,0,429,280,1289,0,0,719,325,1289,0,0,727,378,1289,0,0,492,166,1290,0,0,58,337,1290,0,0,731,376,1290,0,0,641,386,1290,0,0,127,277,1291,0,0,630,274,1291,0,0,72,201,1291,0,0,706,118,1291,0,0,52,352,1292,0,0,508,68,1292,0,0,524,337,1292,0,0,471,162,1292,0,0,435,118,1293,0,0,251,307,1293,0,0,410,200,1293,0,0,597,378,1293,0,0,146,286,1294,0,0,472,154,1294,0,0,785,247,1294,0,0,719,319,1294,0,0,587,476,1295,0,0,785,192,1295,0,0,366,219,1295,0,0,466,154,1295,0,0,457,167,1295,0,0,104,282,1296,0,0,140,199,1296,0,0,476,160,1296,0,0,760,255,1296,0,0,454,152,1297,0,0,552,460,1297,0,0,376,307,1297,0,0,375,586,1297,0,0,352,260,1298,0,0,463,161,1298,0,0,631,370,1298,0,0,616,390,1298,0,0,178,315,1299,0,0,291,128,1299,0,0,613,309,1299,0,0,458,155,1299,0,0,713,324,1300,0,0,553,453,1300,0,0,474,159,1300,0,0,669,393,1300,0,0,162,291,1301,0,0,102,71,1301,0,0,468,319,1301,0,0,552,459,1301,0,0,159,59,1302,0,0,119,163,1302,0,0,214,340,1302,0,0,455,497,1302,0,0,137,326,1302,0,0,475,158,1303,0,0,357,265,1303,0,0,35,326,1303,0,0,37,326,1303,0,0,646,330,1304,0,0,11,313,1304,0,0,455,148,1304,0,0,454,151,1304,0,0,634,335,1305,0,0,697,322,1305,0,0,52,352,1305,0,0,459,157,1305,0,0,23,318,1306,0,0,722,329,1306,0,0,344,577,1306,0,0,408,532,1306,0,0,363,558,1307,0,0,182,132,1307,0,0,432,335,1307,0,0,527,375,1307,0,0,190,307,1308,0,0,467,163,1308,0,0,474,158,1308,0,0,164,319,1308,0,0,474,151,1309,0,0,469,161,1309,0,0,484,153,1309,0,0,505,378,1309,0,0,547,448,1309,0,0,446,211,1310,0,0,476,161,1310,0,0,511,390,1310,0,0,596,441,1310,0,0,89,227,1311,0,0,445,214,1311,0,0,663,323,1311,0,0,75,256,1311,0,0,219,133,1312,0,0,114,216,1312,0,0,453,153,1312,0,0,551,447,1312,0,0,462,156,1313,0,0,62,237,1313,0,0,142,173,1313,0,0,545,110,1313,0,0,22,302,1314,0,0,498,198,1314,0,0,368,174,1314,0,0,127,278,1314,0,0,691,234,1315,0,0,555,450,1315,0,0,398,131,1315,0,0,456,169,1315,0,0,793,193,1315,0,0,453,163,1316,0,0,192,325,1316,0,0,466,160,1316,0,0,528,117,1316,0,0,105,282,1317,0,0,115,135,1317,0,0,463,159,1317,0,0,468,162,1317,0,0,464,156,1318,0,0,183,131,1318,0,0,352,261,1318,0,0,473,155,1318,0,0,449,150,1319,0,0,638,351,1319,0,0,632,368,1319,0,0,473,160,1319,0,0,489,359,1320,0,0,719,326,1320,0,0,473,153,1320,0,0,789,193,1320,0,0,551,451,1321,0,0,476,157,1321,0,0,554,452,1321,0,0,447,213,1321,0,0,553,451,1322,0,0,720,328,1322,0,0,475,162,1322,0,0,117,359,1322,0,0,633,363,1322,0,0,721,326,1323,0,0,351,260,1323,0,0,450,247,1323,0,0,475,155,1323,0,0,582,477,1324,0,0,475,157,1324,0,0,786,195,1324,0,0,492,165,1324,0,0,192,140,1325,0,0,263,186,1325,0,0,277,181,1325,0,0,475,156,1325,0,0,473,155,1326,0,0,459,157,1326,0,0,241,210,1326,0,0,783,197,1326,0,0,193,326,1327,0,0,148,285,1327,0,0,265,171,1327,0,0,213,262,1327,0,0,631,366,1328,0,0,59,351,1328,0,0,107,207,1328,0,0,631,367,1328,0,0,789,198,1329,0,0,308,146,1329,0,0,538,172,1329,0,0,476,506,1329,0,0,725,376,1329,0,0,475,161,1330,0,0,719,320,1330,0,0,722,319,1330,0,0,179,136,1330,0,0,105,211,1331,0,0,793,197,1331,0,0,126,276,1331,0,0,579,389,1331,0,0,627,374,1332,0,0,481,183,1332,0,0,197,234,1332,0,0,105,236,1332,0,0,182,131,1333,0,0,777,320,1333,0,0,634,379,1333,0,0,631,268,1333,0,0,125,93,1334,0,0,446,212,1334,0,0,717,321,1334,0,0,205,333,1334,0,0,485,483,1335,0,0,453,336,1335,0,0,436,189,1335,0,0,364,138,1335,0,0,487,360,1335,0,0,355,258,1336,0,0,130,304,1336,0,0,728,379,1336,0,0,623,373,1336,0,0,617,92,1337,0,0,308,179,1337,0,0,413,333,1337,0,0,732,310,1337,0,0,669,334,1338,0,0,629,274,1338,0,0,361,204,1338,0,0,461,159,1338,0,0,387,169,1339,0,0,461,160,1339,0,0,717,321,1339,0,0,792,195,1339,0,0,776,212,1340,0,0,355,259,1340,0,0,367,178,1340,0,0,480,498,1340,0,0,74,359,1341,0,0,177,119,1341,0,0,468,152,1341,0,0,462,153,1341,0,0,462,161,1342,0,0,466,158,1342,0,0,473,155,1342,0,0,285,323,1342,0,0,80,256,1342,0,0,366,177,1343,0,0,272,244,1343,0,0,478,160,1343,0,0,465,165,1343,0,0,472,155,1344,0,0,451,151,1344,0,0,27,329,1344,0,0,727,378,1344,0,0,466,154,1345,0,0,722,320,1345,0,0,727,191,1345,0,0,309,94,1345,0,0,232,144,1346,0,0,99,258,1346,0,0,106,212,1346,0,0,467,159,1346,0,0,197,234,1347,0,0,476,185,1347,0,0,310,171,1347,0,0,447,128,1347,0,0,463,167,1348,0,0,705,117,1348,0,0,195,234,1348,0,0,556,450,1348,0,0,110,213,1349,0,0,451,491,1349,0,0,107,213,1349,0,0,551,448,1349,0,0,318,123,1349,0,0,181,132,1350,0,0,626,371,1350,0,0,629,372,1350,0,0,159,330,1350,0,0,507,475,1351,0,0,152,351,1351,0,0,473,159,1351,0,0,631,366,1351,0,0,613,308,1352,0,0,708,120,1352,0,0,103,206,1352,0,0,788,197,1352,0,0,790,193,1353,0,0,785,199,1353,0,0,567,320,1353,0,0,483,152,1353,0,0,721,325,1354,0,0,233,142,1354,0,0,572,146,1354,0,0,233,143,1354,0,0,730,381,1355,0,0,633,363,1355,0,0,364,173,1355,0,0,475,186,1355,0,0,146,287,1356,0,0,585,475,1356,0,0,484,152,1356,0,0,451,152,1356,0,0,461,164,1356,0,0,82,254,1357,0,0,473,158,1357,0,0,634,364,1357,0,0,691,233,1357,0,0,788,197,1358,0,0,216,156,1358,0,0,766,320,1358,0,0,447,214,1358,0,0,736,289,1359,0,0,482,493,1359,0,0,476,485,1359,0,0,722,321,1359,0,0,575,413,1360,0,0,488,234,1360,0,0,463,159,1360,0,0,721,329,1360,0,0,622,214,1361,0,0,473,156,1361,0,0,511,70,1361,0,0,466,158,1361,0,0,502,119,1362,0,0,463,156,1362,0,0,468,157,1362,0,0,277,181,1362,0,0,270,245,1362,0,0,719,331,1363,0,0,7,328,1363,0,0,730,381,1363,0,0,555,243,1363,0,0,454,152,1364,0,0,478,493,1364,0,0,631,366,1364,0,0,481,492,1364,0,0,452,150,1365,0,0,485,482,1365,0,0,468,153,1365,0,0,106,210,1365,0,0,566,321,1366,0,0,521,190,1366,0,0,492,463,1366,0,0,263,186,1366,0,0,251,84,1367,0,0,453,177,1367,0,0,790,196,1367,0,0,285,216,1367,0,0,476,162,1368,0,0,465,160,1368,0,0,209,83,1368,0,0,467,153,1368,0,0,466,165,1369,0,0,154,302,1369,0,0,106,210,1369,0,0,476,162,1369,0,0,98,258,1370,0,0,99,267,1370,0,0,513,70,1371,0,0,718,326,1371,0,0,461,163,1371,0,0,563,320,1372,0,0,721,329,1372,0,0,488,483,1372,0,0,469,161,1373,0,0,475,159,1373,0,0,98,258,1374,0,0,309,146,1374,0,0,791,195,1374,0,0,720,324,1375,0,0,93,354,1375,0,0,585,475,1376,0,0,422,249,1376,0,0,444,460,1376,0,0,356,262,1377,0,0,120,163,1377,0,0,110,214,1377,0,0,480,495,1378,0,0,567,324,1378,0,0,480,499,1379,0,0,267,86,1379,0,0,692,230,1379,0,0,476,162,1380,0,0,483,153,1380,0,0,689,229,1381,0,0,215,342,1381,0,0,461,163,1381,0,0,693,313,1382,0,0,468,154,1382,0,0,511,70,1383,0,0,480,487,1383,0,0,490,430,1383,0,0,414,385,1384,0,0,714,323,1384,0,0,690,232,1384,0,0,358,260,1385,0,0,484,481,1385,0,0,635,335,1386,0,0,692,230,1386,0,0,513,69,1386,0,0,84,363,1387,0,0,204,162,1387,0,0,466,163,1388,0,0,467,159,1388,0,0,539,63,1388,0,0,635,357,1389,0,0,365,173,1389,0,0,348,80,1389,0,0,138,310,1390,0,0,792,200,1390,0,0,472,154,1391,0,0,110,213,1391,0,0,479,492,1391,0,0,607,194,1392,0,0,555,244,1392,0,0,251,307,1393,0,0,474,162,1393,0,0,484,482,1393,0,0,467,159,1394,0,0,774,205,1394,0,0,727,379,1394,0,0,446,181,1395,0,0,473,151,1395,0,0,714,323,1396,0,0,482,485,1396,0,0,357,260,1396,0,0,195,362,1397,0,0,693,312,1397,0,0,698,303,1398,0,0,497,133,1398,0,0,352,262,1398,0,0,719,319,1399,0,0,105,282,1399,0,0,100,210,1399,0,0,791,199,1400,0,0,363,205,1400,0,0,721,373,1401,0,0,99,226,1401,0,0,466,156,1401,0,0,484,152,1402,0,0,474,495,1402,0,0,310,274,1403,0,0,722,320,1403,0,0,288,293,1403,0,0,514,400,1404,0,0,106,212,1404,0,0,484,484,1404,0,0,366,173,1405,0,0,206,278,1405,0,0,125,187,1406,0,0,700,325,1406,0,0,711,170,1406,0,0,450,247,1407,0,0,481,493,1407,0,0,447,215,1408,0,0,552,245,1408,0,0,548,452,1408,0,0,195,234,1409,0,0,180,201,1409,0,0,455,148,1410,0,0,692,231,1410,0,0,162,132,1410,0,0,326,233,1411,0,0,361,205,1411,0,0,727,372,1411,0,0,681,309,1412,0,0,488,165,1412,0,0,148,287,1413,0,0,446,259,1413,0,0,367,174,1413,0,0,179,134,1414,0,0,148,285,1414,0,0,108,209,1415,0,0,452,150,1415,0,0,433,173,1415,0,0,716,324,1416,0,0,720,329,1416,0,0,139,199,1416,0,0,480,494,1417,0,0,71,214,1417,0,0,728,378,1418,0,0,285,89,1418,0,0,722,323,1418,0,0,272,243,1419,0,0,42,323,1419,0,0,717,324,1420,0,0,695,321,1420,0,0,232,144,1420,0,0,445,212,1421,0,0,249,305,1421,0,0,105,214,1421,0,0,785,194,1422,0,0,456,159,1422,0,0,141,319,1423,0,0,353,261,1423,0,0,693,230,1423,0,0,447,213,1424,0,0,464,154,1424,0,0,721,323,1425,0,0,718,327,1425,0,0,356,260,1425,0,0,443,211,1426,0,0,781,200,1426,0,0,728,324,1426,0,0,793,194,1427,0,0,628,163,1427,0,0,466,153,1428,0,0,555,451,1428,0,0,702,268,1428,0,0,123,204,1429,0,0,467,157,1429,0,0,464,166,1430,0,0,195,234,1430,0,0,545,107,1430,0,0,719,329,1431,0,0,274,242,1431,0,0,499,184,1432,0,0,452,300,1432,0,0,126,341,1432,0,0,722,322,1433,0,0,197,232,1433,0,0,352,260,1433,0,0,303,304,1434,0,0,566,321,1434,0,0,187,173,1435,0,0,725,329,1435,0,0,108,207,1435,0,0,460,154,1436,0,0,120,171,1436,0,0,718,324,1437,0,0,481,493,1437,0,0,366,157,1437,0,0,475,156,1438,0,0,589,304,1438,0,0,472,146,1438,0,0,107,366,1439,0,0,475,160,1439,0,0,467,152,1440,0,0,159,242,1440,0,0,148,286,1440,0,0,225,76,1441,0,0,365,172,1441,0,0,460,163,1442,0,0,249,136,1442,0,0,286,277,1442,0,0,474,153,1443,0,0,738,304,1443,0,0,623,421,1443,0,0,13,311,1444,0,0,721,325,1444,0,0,630,274,1445,0,0,122,156,1445,0,0,719,324,1445,0,0,351,260,1446,0,0,629,274,1446,0,0,782,227,1447,0,0,631,365,1447,0,0,460,160,1447,0,0,214,356,1448,0,0,233,145,1448,0,0,724,377,1448,0,0,726,378,1449,0,0,633,360,1449,0,0,63,303,1450,0,0,769,322,1450,0,0,479,499,1450,0,0,233,144,1451,0,0,545,107,1451,0,0,548,451,1452,0,0,352,260,1452,0,0,565,322,1452,0,0,718,377,1453,0,0,484,482,1453,0,0,564,320,1454,0,0,694,313,1454,0,0,730,377,1454,0,0,554,224,1455,0,0,467,147,1455,0,0,694,313,1455,0,0,730,382,1456,0,0,477,162,1456,0,0,474,150,1457,0,0,114,211,1457,0,0,330,101,1457,0,0,720,320,1458,0,0,491,165,1458,0,0,636,406,1459,0,0,484,152,1459,0,0,688,147,1459,0,0,457,169,1460,0,0,216,133,1460,0,0,720,379,1460,0,0,466,450,1461,0,0,564,315,1461,0,0,415,386,1462,0,0,471,492,1462,0,0,131,75,1462,0,0,374,585,1463,0,0,450,415,1463,0,0,792,194,1464,0,0,465,159,1464,0,0,542,211,1464,0,0,513,371,1465,0,0,693,312,1465,0,0,354,261,1465,0,0,353,260,1466,0,0,717,331,1466,0,0,655,126,1467,0,0,779,199,1467,0,0,349,264,1467,0,0,479,145,1468,0,0,696,321,1468,0,0,375,220,1469,0,0,138,335,1469,0,0,31,346,1469,0,0,232,146,1470,0,0,363,175,1470,0,0,307,146,1470,0,0,462,169,1471,0,0,784,191,1471,0,0,511,69,1472,0,0,251,306,1472,0,0,464,158,1472,0,0,632,372,1473,0,0,79,320,1473,0,0,328,165,1474,0,0,463,157,1474,0,0,271,245,1474,0,0,462,166,1475,0,0,368,250,1475,0,0,196,234,1475,0,0,476,493,1476,0,0,730,382,1476,0,0,105,236,1477,0,0,474,153,1477,0,0,465,160,1477,0,0,593,354,1478,0,0,473,491,1478,0,0,349,258,1479,0,0,482,495,1479,0,0,551,446,1479,0,0,628,373,1480,0,0,463,159,1480,0,0,474,162,1481,0,0,203,309,1481,0,0,706,120,1481,0,0,67,349,1482,0,0,160,59,1482,0,0,719,325,1482,0,0,155,213,1483,0,0,461,162,1483,0,0,551,450,1484,0,0,632,368,1484,0,0,466,160,1484,0,0,111,205,1485,0,0,215,342,1485,0,0,467,160,1486,0,0,366,174,1486,0,0,521,170,1486,0,0,719,373,1487,0,0,477,506,1487,0,0,215,342,1487,0,0,59,213,1488,0,0,441,486,1488,0,0,196,247,1489,0,0,109,207,1489,0,0,480,498,1489,0,0,468,157,1490,0,0,344,577,1490,0,0,795,200,1491,0,0,202,292,1491,0,0,198,233,1491,0,0,481,491,1492,0,0,720,379,1492,0,0,539,154,1492,0,0,792,194,1493,0,0,232,151,1493,0,0,296,326,1494,0,0,367,173,1494,0,0,396,219,1494,0,0,711,171,1495,0,0,634,335,1495,0,0,398,132,1496,0,0,475,161,1496,0,0,461,158,1496,0,0,480,496,1497,0,0,470,482,1497,0,0,491,143,1497,0,0,473,153,1498,0,0,399,578,1498,0,0,109,213,1499,0,0,80,256,1499,0,0,449,302,1499,0,0,459,157,1500,0,0,229,143,1500,0,0,565,321,1501,0,0,548,452,1501,0,0,686,236,1501,0,0,196,233,1502,0,0,147,269,1502,0,0,788,200,1503,0,0,787,197,1503,0,0,316,202,1503,0,0,630,369,1504,0,0,479,495,1504,0,0,127,277,1504,0,0,551,450,1505,0,0,474,163,1505,0,0,464,167,1506,0,0,707,120,1506,0,0,559,446,1506,0,0,555,243,1507,0,0,514,400,1507,0,0,554,243,1508,0,0,338,271,1508,0,0,207,135,1508,0,0,460,160,1509,0,0,214,341,1509,0,0,567,321,1509,0,0,552,450,1510,0,0,109,213,1510,0,0,106,207,1511,0,0,146,94,1511,0,0,468,155,1511,0,0,272,244,1512,0,0,618,275,1512,0,0,633,361,1513,0,0,556,244,1513,0,0,464,158,1513,0,0,556,243,1514,0,0,727,378,1514,0,0,469,163,1514,0,0,553,223,1515,0,0,631,271,1515,0,0,688,289,1516,0,0,794,201,1516,0,0,438,387,1516,0,0,465,406,1517,0,0,398,154,1517,0,0,92,213,1518,0,0,556,244,1518,0,0,434,117,1518,0,0,720,324,1519,0,0,481,184,1519,0,0,271,244,1519,0,0,183,133,1520,0,0,170,243,1520,0,0,463,153,1521,0,0,555,242,1521,0,0,721,328,1521,0,0,250,307,1522,0,0,461,165,1522,0,0,689,285,1523,0,0,573,146,1523,0,0,110,206,1523,0,0,397,306,1524,0,0,106,192,1524,0,0,361,176,1524,0,0,461,164,1525,0,0,182,133,1525,0,0,572,146,1526,0,0,273,244,1526,0,0,513,398,1526,0,0,274,242,1527,0,0,200,255,1527,0,0,213,339,1528,0,0,547,244,1528,0,0,367,177,1528,0,0,820,242,1529,0,0,87,214,1529,0,0,140,245,1530,0,0,115,211,1530,0,0,480,496,1530,0,0,190,308,1531,0,0,219,135,1531,0,0,564,321,1531,0,0,730,381,1532,0,0,556,244,1532,0,0,28,324,1533,0,0,353,261,1533,0,0,467,222,1533,0,0,98,258,1534,0,0,481,491,1534,0,0,466,166,1535,0,0,718,324,1535,0,0,109,206,1535,0,0,198,233,1536,0,0,766,319,1536,0,0,204,223,1536,0,0,467,153,1537,0,0,202,186,1537,0,0,532,146,1538,0,0,98,185,1538,0,0,555,242,1538,0,0,36,327,1538,0,0,509,245,1539,0,0,501,479,1539,0,0,309,146,1539,0,0,50,317,1539,0,0,555,243,1539,0,0,231,144,1539,0,0,731,263,1540,0,0,68,233,1540,0,0,181,160,1540,0,0,843,262,1540,0,0,477,160,1540,0,0,523,126,1541,0,0,730,382,1541,0,0,704,121,1541,0,0,272,244,1541,0,0,718,326,1541,0,0,693,319,1542,0,0,126,277,1542,0,0,720,327,1542,0,0,375,586,1542,0,0,473,155,1542,0,0,352,261,1542,0,0,721,326,1543,0,0,299,150,1543,0,0,445,149,1543,0,0,143,95,1543,0,0,569,224,1543,0,0,274,243,1544,0,0,473,155,1544,0,0,355,254,1544,0,0,564,282,1544,0,0,396,321,1544,0,0,558,319,1544,0,0,559,199,1545,0,0,283,217,1545,0,0,229,235,1545,0,0,410,402,1545,0,0,444,211,1545,0,0,308,230,1546,0,0,98,258,1546,0,0,381,294,1546,0,0,215,334,1546,0,0,691,232,1546,0,0,106,212,1546,0,0,472,154,1547,0,0,791,199,1547,0,0,584,476,1547,0,0,511,70,1547,0,0,707,119,1547,0,0,273,244,1548,0,0,241,196,1548,0,0,204,162,1548,0,0,696,320,1548,0,0,264,324,1548,0,0,696,229,1549,0,0,795,200,1549,0,0,122,156,1549,0,0,363,117,1549,0,0,11,312,1549,0,0,183,132,1549,0,0,124,125,1550,0,0,467,164,1550,0,0,473,155,1550,0,0], occ:{"crimea":[562.1,682.2,562.1,522.9,628.7,520.4,656.5,519.5,684.3,526.3,723.2,535.5,823.2,590.0,823.2,682.2],"ordlo":[1001.1,296.5,967.7,311.6,939.9,311.6,917.7,307.4,903.8,311.6,898.3,325.8,887.1,335.9,876.0,346.8,868.8,357.7,862.1,367.8,864.9,382.0,873.3,397.1,878.8,422.3,881.6,443.2,884.4,464.2,1028.9,464.2,1028.9,296.5],"kharkiv":[789.9,158.1,795.5,185.8,814.9,189.1,827.7,204.2,826.0,221.0,817.7,240.3,828.8,254.5,834.4,271.3,859.4,283.9,898.3,283.9,881.6,246.1,881.6,216.8,901.0,187.4,828.8,153.9],"kherson":[523.2,484.3,545.4,468.4,570.4,447.4,595.4,437.4,620.4,422.3,637.1,405.5,659.3,409.7,673.2,418.1,626.0,465.9,587.1,477.6,567.6,481.0],"frontA":[523.2,484.3,567.6,481.0,587.1,477.6,626.0,465.9,673.2,418.1,712.1,398.8,742.7,401.3,764.9,405.5,789.9,397.1,820.5,384.5,845.5,387.0,859.4,367.8,873.3,352.7,887.1,314.9,898.3,283.9,881.6,246.1,881.6,216.8,901.0,187.4],"frontB":[523.2,484.3,567.6,481.0,587.1,477.6,626.0,465.9,673.2,418.1,712.1,398.8,742.7,397.1,764.9,403.8,789.9,387.0,814.9,367.8,831.6,353.5,837.1,338.4,859.4,325.8,878.8,313.2,889.9,289.8,873.3,254.5,870.5,225.2,901.0,187.4],"back":[1051.1,162.3,1051.1,489.4,828.8,615.2,606.5,699.0,512.0,531.3]}, t:{"crimea":2014.15,"ordlo":2014.3,"full":2022.15,"kharkiv":2022.72,"kherson":2022.86,"m0":2023.1,"m1":2026.3}};
+
+/* ---------- data (documented milestones only) ---------- */
+const M = [
+  {y:2011.1, t:'2011', c:'1', town:'poltava',
+   uk:'Лютий. Перша крамниця — у Полтаві. Засновники: Тарас Панасенко, Лев Жиденко, Леся Клименко.',
+   en:'February. The first shop opens in Poltava. Founders: Taras Panasenko, Lev Zhydenko, Lesia Klymenko.'},
+  {y:2012.4, t:'2012', c:'5',
+   uk:'П’ять крамниць під назвою «Хватай. Все по 5, 10, 15».',
+   en:'Five shops, called «Khvatai. Vse po 5, 10, 15»: grab it, everything for 5, 10, 15.'},
+  {y:2014.15, t:'2014', c:null,
+   uk:'Росія окуповує Крим, а згодом частину Донеччини й Луганщини. Мережа росте на решті території країни.',
+   en:'Russia occupies Crimea, then parts of the Donetsk and Luhansk regions. The chain grows across the rest of the country.'},
+  {y:2015.4, t:'2015', c:'100',
+   uk:'Сота крамниця. Формат «магазину однієї ціни» виходить за межі Полтавщини.',
+   en:'Store number 100. The one-price format spreads beyond the Poltava region.'},
+  {y:2021.3, t:'2021', c:null, town:'kryvyi',
+   uk:'Перший MAXI у Кривому Розі: 400+ м², б’юті-зона, дитячий відділ. Інвестиція Horizon Capital.',
+   en:'The first MAXI opens in Kryvyi Rih: 400+ m², beauty zone, kids’ section. Horizon Capital invests.'},
+  {y:2022.15, t:'2022', c:null, lost:true,
+   uk:'Повномасштабне вторгнення. Під окупацією опиняються схід і південь, понад 200 магазинів втрачено. Восени звільнено Харківщину й Херсон — мережа працює далі.',
+   en:'Full-scale invasion. The east and south fall under occupation and more than 200 stores are lost. Kharkiv region and Kherson are freed in the autumn, and the chain keeps going.'},
+  {y:2023.48, t:'2023', c:'1\u00a0000', town:'frankivsk',
+   uk:'24 червня: тисячний магазин — в Івано-Франківську.',
+   en:'24 June: store number 1,000 opens in Ivano-Frankivsk.'},
+  {y:2024.7, t:'2024', c:'1\u00a0500', town:'starokost',
+   uk:'Вересень: 1 500-й магазин — у Старокостянтинові. За рік — 360 нових.',
+   en:'September: store number 1,500 opens in Starokostiantyniv. 360 new stores that year.'},
+  {y:2025.6, t:'2025', c:null, town:'vinnytsia',
+   uk:'235 нових магазинів і ₴58,6 млрд виручки. Сонячні станції у Вінниці та Полтаві.',
+   en:'235 new stores and ₴58.6 bn in revenue. Solar stations at Vinnytsia and Poltava.'},
+  {y:2026.55, t:'2026', c:'1\u00a0900', plus:'+',
+   uk:'Липень: понад 1 900 магазинів в Україні та 30+ у Румунії. Новий — у середньому кожні 14 годин.',
+   en:'July: over 1,900 stores in Ukraine and 30+ in Romania. A new one roughly every 14 hours.'}
+];
+const TOWN_NAMES = {
+  poltava:{uk:'Полтава',en:'Poltava',s:{uk:'2011 · перша',en:'2011 · first'}},
+  kryvyi:{uk:'Кривий Ріг',en:'Kryvyi Rih',s:{uk:'2021 · перший MAXI',en:'2021 · first MAXI'}},
+  frankivsk:{uk:'Івано-Франківськ',en:'Ivano-Frankivsk',s:{uk:'2023 · №1 000',en:'2023 · No. 1,000'},left:true},
+  starokost:{uk:'Старокостянтинів',en:'Starokostiantyniv',s:{uk:'2024 · №1 500',en:'2024 · No. 1,500'}},
+  vinnytsia:{uk:'Вінниця',en:'Vinnytsia',s:{uk:'сонячна станція',en:'solar station'},left:true,below:true}
+};
+const Y0=2011, Y1=2026.6;
+
+let lang='uk';
+const $=s=>document.querySelector(s);
+
+/* ---------- ticks + ticker ---------- */
+function yearOf(p){return Y0+(Y1-Y0)*p}
+function buildTicks(el,stage){
+  el.innerHTML='';
+  for(let y=2011;y<=2026;y++){
+    const a=document.createElement('a');
+    a.href='#y'+y; a.innerHTML=`<span class="yf">${y}</span><span class="ys" aria-hidden="true">’${String(y).slice(2)}</span>`; a.dataset.y=y;
+    if(M.some(m=>m.t==String(y))) a.classList.add('hot');
+    el.appendChild(a);
+  }
+}
+buildTicks($('#heroTicks')); buildTicks($('#stageTicks'),true);
+function buildTicker(){
+  const items=M.map(m=>`<span><b>${m.t}</b>${m[lang]}</span>`).join('');
+  $('#ticker').innerHTML=items; $('#ticker2').innerHTML=items;
+}
+
+/* ---------- year anchors inside the scroll track ---------- */
+const anchors=$('#anchors');
+for(let y=2011;y<=2026;y++){
+  const d=document.createElement('div'); d.className='anchor'; d.id='y'+y;
+  const p=Math.min(1,Math.max(0,(y+0.45-Y0)/(Y1-Y0)));
+  d.style.top=`calc(${p} * (100% - 100vh))`;
+  anchors.appendChild(d);
+}
+
+/* ---------- map ---------- */
+const mapEl=$('#map'), cv=$('#dots'), ctx=cv.getContext('2d');
+const townsEl=$('#towns');
+Object.entries(TOWN_NAMES).forEach(([k,v])=>{
+  const [x,y]=MAP.towns[k];
+  const d=document.createElement('div'); d.className='town'+(v.left?' left':'')+(v.below?' below':''); d.dataset.k=k;
+  d.style.left=(x/10)+'%'; d.style.top=(y/669*100)+'%';
+  d.innerHTML='<i></i><span></span>';
+  townsEl.appendChild(d);
+});
+function renderTowns(){
+  townsEl.querySelectorAll('.town').forEach(t=>{const v=TOWN_NAMES[t.dataset.k];t.querySelector('span').innerHTML=`${v[lang]}<small>${v.s[lang]}</small>`});
+}
+// real store locations (avrora.ua), 5 numbers each: x, y, open, close, reopen (years as (y-2011)*100)
+// close: 0 = still open, >0 = lost to occupation at that date, -2 = closed by Dec 2022, -1 = closed between Dec 2022 and Sep 2026
+const ST=MAP.stores, NS=ST.length/5, yv=v=>2011+v/100;
+// the ~200 lost stores: dots nearest the east and south front (schematic)
+// a dot is lost when its (schematic) location falls under occupation; no dot ever opens on occupied ground
+const OCC=MAP.occ, OT=MAP.t;
+const pathOf=a=>{let d='';for(let i=0;i<a.length;i+=2)d+=(i?'L':'M')+a[i]+' '+a[i+1];return d+'Z'};
+$('#oCrimea').setAttribute('d',pathOf(OCC.crimea)); $('#oOrdlo').setAttribute('d',pathOf(OCC.ordlo));
+$('#oKharkiv').setAttribute('d',pathOf(OCC.kharkiv)); $('#oKherson').setAttribute('d',pathOf(OCC.kherson));
+let lastSE=-1;
+function renderOcc(yr){
+  $('#oCrimea').classList.toggle('on',yr>=OT.crimea);
+  $('#oOrdlo').classList.toggle('on',yr>=OT.ordlo);
+  $('#oSE').classList.toggle('on',yr>=OT.full);
+  $('#oKharkiv').classList.toggle('on',yr>=OT.full&&yr<OT.kharkiv);
+  $('#oKherson').classList.toggle('on',yr>=OT.full&&yr<OT.kherson);
+  const t=Math.round(clamp((yr-OT.m0)/(OT.m1-OT.m0))*100)/100;
+  if(t!==lastSE){ lastSE=t; const A=OCC.frontA,B=OCC.frontB,f=A.map((v,i)=>+(v+(B[i]-v)*t).toFixed(1)); $('#oSE').setAttribute('d',pathOf(f.concat(OCC.back))); }
+}
+let dpr=1, cw=0, ch=0;
+function sizeCanvas(){
+  const r=mapEl.getBoundingClientRect(); dpr=Math.min(2,window.devicePixelRatio||1);
+  cw=r.width; ch=r.height; cv.width=Math.round(cw*dpr); cv.height=Math.round(ch*dpr);
+  lastDrawn=-1;
+}
+let lastDrawn=-1,lastLost=null;
+function drawDots(yr){
+  const key=Math.round(yr*50);
+  if(key===lastLost && lastDrawn===cw) return; lastDrawn=cw; lastLost=key;
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,cw,ch);
+  const sx=cw/1000, sy=ch/669, r=Math.max(1.8,cw/300);
+  ctx.fillStyle='#ffdd00';
+  ctx.beginPath();
+  const gone=[];
+  for(let i=0;i<NS;i++){
+    const o=i*5; if(yr<yv(ST[o+2])) break;            // sorted by (estimated) opening
+    const c=ST[o+3], ro=ST[o+4];
+    if(c>0 && yr>=yv(c) && !(ro && yr>=yv(ro))){ gone.push(o); continue; }   // lost to occupation
+    if(c===-2 && yr>=2022.6) continue;                // closed by Dec 2022
+    if(c===-1 && yr>=2026.4) continue;                // closed before the Sep 2026 list
+    const x=ST[o]*sx,y=ST[o+1]*sy; ctx.moveTo(x+r,y); ctx.arc(x,y,r,0,6.2832);
+  }
+  ctx.fill();
+  if(gone.length){ ctx.strokeStyle='#ff5a4f'; ctx.lineWidth=1.3; ctx.beginPath();
+    for(const o of gone){ const x=ST[o]*sx,y=ST[o+1]*sy; ctx.moveTo(x+r,y); ctx.arc(x,y,r,0,6.2832);} ctx.stroke(); }
+}
+
+/* ---------- sunrise ---------- */
+const rise=$('#rise'), stage=$('#stage');
+const bands={n:$('#bNight'),p:$('#bPlum'),r:$('#bRed'),s:$('#bSun')};
+const sSun=$('#sSun'), sA=$('#sA');
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ramp=(p,a,b)=>clamp((p-a)/(b-a));
+const ease=t=>1-Math.pow(1-t,3);
+let curM=-1;
+function frame(){
+  const r=rise.getBoundingClientRect(), vh=innerHeight;
+  const p=clamp(-r.top/(r.height-vh));
+  const yr=yearOf(p);
+  const skyH=stage.clientHeight*(parseFloat(getComputedStyle(stage).getPropertyValue('--hz'))/100);
+  // flat cut-paper bands, bottom-anchored at the horizon
+  let hN = 1 - ease(ramp(p,.38,.72));
+  const hP = ease(ramp(p,.05,.42)) * (1 - ease(ramp(p,.55,.84))) * .92;
+  const hR = ease(ramp(p,.14,.5)) * (1 - ease(ramp(p,.62,.92))) * .66;
+  const hS = ease(ramp(p,.22,.56)) * .42 - ease(ramp(p,.7,1))*.22;
+  const ro=stage.querySelector('.readout'); const ty=1-ro.offsetTop/skyH, rb=1-(ro.offsetTop+ro.offsetHeight)/skyH;
+  if(hP>rb||hR>rb||hS>rb) hN=1;
+  bands.n.style.height=(hN*100)+'%';
+  bands.p.style.height=(hP*100)+'%';
+  bands.r.style.height=(hR*100)+'%';
+  bands.s.style.height=(Math.max(0,hS)*100)+'%';
+  // sun: x rides the year graticule, y rises from half-sunk to high
+  const W=stage.clientWidth, sd=sSun.offsetWidth;
+  const tk=stage.querySelectorAll('#stageTicks a'), fy=Math.min(2026,Math.floor(yr)), ta=tk[fy-2011].getBoundingClientRect(), tb=(tk[fy-2010]||tk[fy-2011]).getBoundingClientRect();
+  let gx = ta.left + (tb.left-ta.left)*(yr-fy);
+  gx = Math.min(gx, W - sd*0.62 - 24); gx = Math.max(gx, sd*.5+8);
+  const rise01=ease(ramp(p,0,.9));
+  let sy = skyH - sd/2 - rise01*(skyH - sd*1.05);
+  // the sun never passes behind the readout text
+  if (W<761 || gx - sd/2 < ro.offsetLeft+ro.offsetWidth+16) sy=Math.max(sy, ro.offsetTop+ro.offsetHeight+12);
+  sSun.style.transform=`translate(${gx-sd/2}px,${sy}px)`;
+  const aOn=ramp(p,.9,1);
+  sA.style.opacity=aOn;
+  if(GL){ const s=(sd/2)*0.9/GL.dCen*400, t=sA.firstChild; t.setAttribute('font-size',s.toFixed(1)); t.setAttribute('x',(gx-GL.cx*s/400).toFixed(1)); t.setAttribute('y',(sy+sd/2-GL.cyC*s/400+(1-aOn)*20).toFixed(1)); }
+  // text tone: which band sits behind the readout?
+  const isDay = hN<ty && hP<ty && hR<ty && hS<ty;
+  stage.classList.toggle('day', isDay);
+  stage.classList.toggle('onred', !isDay && hR>rb);   // red behind the text: pure white keeps AA
+  // counter & note
+  let mi=0; for(let i=0;i<M.length;i++) if(yr>=M[i].y-0.35) mi=i;
+  if(mi!==curM){ curM=mi; renderReadout(); }
+  $('#rYear').textContent=Math.min(2026,Math.floor(yr));
+  stage.querySelectorAll('#stageTicks a').forEach(a=>a.classList.toggle('now', +a.dataset.y===Math.min(2026,Math.floor(yr))));
+  // towns + dots
+  let curT=null; townsEl.querySelectorAll('.town').forEach(t=>{const m=M.find(m=>m.town===t.dataset.k); const on=!!(m && yr>=m.y-0.2); t.classList.toggle('on', on); if(on && (!curT || m.y>curT[1])) curT=[t,m.y];});
+  townsEl.querySelectorAll('.town').forEach(t=>t.classList.toggle('cur', !!curT && t===curT[0]));
+  renderOcc(yr);
+  drawDots(yr);
+  // dense milestone band scrubs with the year instead of looping
+  const t2=$('#ticker2'), span=Math.max(0,t2.scrollWidth-W+48);
+  t2.style.transform=`translateX(${-p*span}px)`;
+  const t1=$('#ticker'); t1.style.transform=`translateX(${-Math.min(scrollY*0.8, Math.max(0,t1.scrollWidth-W))}px)`;
+}
+function lastCount(i){ for(let j=i;j>=0;j--) if(M[j].c) return M[j]; return M[0]; }
+function renderReadout(){
+  const m=M[Math.max(0,curM)], cm=lastCount(Math.max(0,curM));
+  $('#rCount').textContent = lang==='en'? cm.c.replace('\u00a0',',') : cm.c;
+  $('#rPlus').textContent = cm.plus||'';
+  const one = cm.c==='1';
+  $('#rLabel').textContent = (lang==='en' ? (one?'store in Ukraine':'stores in Ukraine') : (one?'магазин в Україні':'магазинів в Україні')) + (lang==='en'?', as of ':' станом на ') + cm.t;
+  $('#rNote').textContent = m[lang];
+}
+let ticking=false;
+function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;frame();solidTop()})} }
+function solidTop(){ $('#top').classList.toggle('solid', scrollY>40); }
+addEventListener('scroll',onScroll,{passive:true});
+
+/* ---------- play: 15 years in 15 seconds ---------- */
+const playBtn=$('#play'), playLabel=$('#playLabel'), playBar=$('#playBar');
+const PLAY_MS=15000;
+let playing=false, playRaf=0, playP=0, playLast=0;
+const riseY=p=>rise.offsetTop+(rise.offsetHeight-innerHeight)*p;
+const riseP=()=>clamp((scrollY-rise.offsetTop)/(rise.offsetHeight-innerHeight));
+const PLAY_TXT={uk:{idle:'Програти 15 років',pause:'Пауза',resume:'Продовжити',again:'Ще раз'},en:{idle:'Play 15 years',pause:'Pause',resume:'Resume',again:'Play again'}};
+let playState='idle';
+function setPlayState(s){ playState=s; playLabel.textContent=PLAY_TXT[lang][s]; playBtn.setAttribute('aria-pressed', s==='pause'); }
+function playStep(t){
+  if(!playing) return;
+  const dt=Math.min(64,t-playLast); playLast=t;
+  playP=Math.min(1,playP+dt/PLAY_MS);
+  scrollTo(0,riseY(playP)); playBar.style.width=(playP*100)+'%';
+  if(playP>=1){ stopPlay('again'); return; }
+  playRaf=requestAnimationFrame(playStep);
+}
+function startPlay(){
+  let p=riseP(); if(p>=0.995 || scrollY<rise.offsetTop-2) p=0;
+  playP=p; playing=true; document.documentElement.style.scrollBehavior='auto';
+  scrollTo(0,riseY(playP)); setPlayState('pause');
+  playLast=performance.now(); playRaf=requestAnimationFrame(playStep);
+}
+function stopPlay(next){
+  if(!playing) return; playing=false; cancelAnimationFrame(playRaf);
+  document.documentElement.style.scrollBehavior='';
+  setPlayState(next||'resume'); if(next==='again') playBar.style.width='100%';
+}
+playBtn.addEventListener('click',()=>{ playing ? stopPlay('resume') : startPlay(); });
+// any manual scroll intent hands control back to the visitor
+['wheel','touchstart'].forEach(ev=>addEventListener(ev,()=>stopPlay('resume'),{passive:true}));
+addEventListener('keydown',e=>{ if(playing && e.target!==playBtn && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)) stopPlay('resume'); });
+document.querySelectorAll('[data-play]').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); if(!playing) startPlay(); playBtn.focus({preventScroll:true}); }));
+// leaving the section by hand resets the label
+addEventListener('scroll',()=>{ if(!playing && playState!=='idle' && (scrollY<rise.offsetTop-innerHeight || scrollY>rise.offsetTop+rise.offsetHeight)){ setPlayState('idle'); playBar.style.width='0'; } },{passive:true});
+addEventListener('resize',()=>{sizeCanvas();frame()});
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>{ if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el);} });
+
+/* ---------- language ---------- */
+const store=[];
+document.querySelectorAll('[data-en]').forEach(el=>store.push([el,'html',el.innerHTML,el.dataset.en]));
+document.querySelectorAll('[data-en-alt]').forEach(el=>store.push([el,'alt',el.alt,el.dataset.enAlt]));
+document.querySelectorAll('[data-en-aria]').forEach(el=>store.push([el,'aria',el.getAttribute('aria-label'),el.dataset.enAria]));
+function setLang(l){
+  lang=l; document.documentElement.lang = l==='en'?'en':'uk';
+  store.forEach(([el,k,uk,en])=>{const v=l==='en'?en:uk; if(k==='html') el.innerHTML=v; else if(k==='alt') el.alt=v; else el.setAttribute('aria-label',v);});
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.lang===l));
+  document.title = l==='en' ? 'Avrora · Sunrise' : 'Аврора · Світанок';
+  buildTicker(); renderTowns(); curM=-1; frame();
+  if(typeof setPlayState==='function') setPlayState(playState);
+  try{localStorage.setItem('avrora-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved='uk'; try{saved=localStorage.getItem('avrora-lang')||'uk'}catch(e){}
+
+/* ---------- the «А» is fitted inside its sun from the glyph's real ink ---------- */
+let GL=null;
+function measureGlyph(){
+  const S=640,c=document.createElement('canvas'); c.width=S; c.height=S; const x=c.getContext('2d');
+  x.font='900 400px Unbounded'; x.fillText('А',120,500);
+  const d=x.getImageData(0,0,S,S).data, pts=[]; let l=1e9,r=-1e9,t=1e9,b=-1e9;
+  for(let yy=0;yy<S;yy++)for(let xx=0;xx<S;xx++){ if(d[(yy*S+xx)*4+3]>60){const px=xx-120,py=yy-500;pts.push(px,py);if(px<l)l=px;if(px>r)r=px;if(py<t)t=py;if(py>b)b=py;} }
+  if(!pts.length) return null;
+  const cx=(l+r+1)/2, cyC=(t+b+1)/2; let dBase=0,dCen=0;
+  for(let i=0;i<pts.length;i+=2){ const X=pts[i]+.5-cx, Y=pts[i+1]+.5; dBase=Math.max(dBase,Math.hypot(Math.abs(X)+.5,Math.abs(Y)+.5)); dCen=Math.max(dCen,Math.hypot(Math.abs(X)+.5,Math.abs(Y-cyC)+.5)); }
+  return {cx,cyC,dBase,dCen};
+}
+function layoutHeroA(){
+  if(!GL) return; const sv=$('#heroA'), sun=$('.hero-sun').getBoundingClientRect(), box=sv.getBoundingClientRect();
+  const R=sun.width/2, cx=sun.left+R-box.left, cy=sun.top+R-box.top, s=R*0.9/GL.dBase*400, t=sv.firstChild;
+  t.setAttribute('font-size',s.toFixed(1)); t.setAttribute('x',(cx-GL.cx*s/400).toFixed(1)); t.setAttribute('y',cy.toFixed(1));
+}
+addEventListener('resize',layoutHeroA);
+sizeCanvas(); setLang(saved); solidTop();
+if(document.fonts) document.fonts.ready.then(()=>{GL=measureGlyph();layoutHeroA();sizeCanvas();frame()});
+</script>
+</body>
+</html>
