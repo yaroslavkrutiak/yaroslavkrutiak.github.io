@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
@@ -287,8 +287,8 @@ footer a{color:#fff}
   </nav>
   <span class="chip" data-en="Unofficial concept">Неофіційний концепт</span>
   <div class="lang" role="group" aria-label="Мова" data-en-aria="Language">
-    <button type="button" data-lang="uk" aria-pressed="true">UA</button>
-    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-lang="uk" aria-pressed="false">UA</button>
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
   </div>
 </header>
 
@@ -524,7 +524,7 @@ const TOWN_NAMES = {
 };
 const Y0=2011, Y1=2026.6;
 
-let lang='uk';
+let lang='en';
 const $=s=>document.querySelector(s);
 
 /* ---------- ticks + ticker ---------- */
@@ -739,7 +739,7 @@ function setLang(l){
   try{localStorage.setItem('avrora-lang',l)}catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-let saved='uk'; try{saved=localStorage.getItem('avrora-lang')||'uk'}catch(e){}
+let saved='en'; try{saved=localStorage.getItem('avrora-lang')||'en'}catch(e){}
 
 /* ---------- the «А» is fitted inside its sun from the glyph's real ink ---------- */
 let GL=null;

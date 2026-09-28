@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
@@ -422,8 +422,8 @@ html.intro-on .rail{transition-delay:.45s}
       <small data-i18n="kyiv">Київ</small>
     </div>
     <div class="lang" role="group" aria-label="Мова / Language">
-      <button type="button" id="lang-uk" data-lang="uk" aria-pressed="true" lang="uk" aria-label="Українська"><span class="m">У</span><span class="m">К</span></button>
-      <button type="button" id="lang-en" data-lang="en" aria-pressed="false" lang="en" aria-label="English"><span class="m">E</span><span class="m">N</span></button>
+      <button type="button" id="lang-uk" data-lang="uk" aria-pressed="false" lang="uk" aria-label="Українська"><span class="m">У</span><span class="m">К</span></button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="true" lang="en" aria-label="English"><span class="m">E</span><span class="m">N</span></button>
     </div>
   </div>
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -1469,7 +1469,7 @@ function setFlaps(el, text, animate){
 }
 
 /* ------------------------------------------------ state ------------------------------------------------ */
-let lang = "uk";
+let lang = "en";
 try { const s = localStorage.getItem("gal-lang"); if (s==="en"||s==="uk") lang = s; } catch(e){}
 let selected = "straw-wild";
 let activePlat = 1;
