@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Галичина · Потяг №1955</title>
 <meta name="description" content="Неофіційний концепт-лендінг Карпатського йогурту «Галичина» на заквасці Carpaticus.">
@@ -79,8 +81,7 @@ p{margin:0}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--board-deep);border-bottom:1px solid var(--rule-solid)}
 .top .wrap{display:flex;align-items:center;gap:24px;min-height:64px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
-.brand .crown{width:34px;height:26px;color:var(--crown);flex:none}
-.brand b{font:600 22px/1 var(--body);letter-spacing:-.01em}
+.brand .logo{height:46px;width:auto;flex:none}
 .brand span{font:500 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--lamp)}
 .nav{display:flex;gap:4px;margin-inline:auto;flex-wrap:wrap}
 .nav a{font:500 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:10px 10px;border-radius:3px;transition:color .2s}
@@ -406,8 +407,8 @@ html.intro-on .rail{transition-delay:.45s}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#board" aria-label="Галичина">
-      <svg class="crown" viewBox="-24 -20 48 36" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(-15 -1) rotate(-32) scale(.95)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g><g transform="translate(0 -4) scale(1.15)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g><g transform="translate(15 -1) rotate(32) scale(.95)" stroke-width="2.2"><path d="M0 -13C6 -7 7.5 -1 5 4C3 7.5 -3 7.5 -5 4C-7.5 -1 -6 -7 0 -13Z"/><path d="M0 -8V6M0 -3L3.4 -6M0 -3L-3.4 -6M0 2L3.4 -1M0 2L-3.4 -1" stroke-width="1.6"/></g></g><rect x="-21" y="7" width="42" height="3.6" rx="1" fill="currentColor"/><rect x="-21" y="13" width="42" height="1.6" rx=".8" fill="currentColor"/></svg>
-      <b>Галичина</b><span data-i18n="brandTrain">Потяг №1955</span>
+      <img class="logo" src="assets/brand/logo.png" alt="Галичина" width="180" height="114">
+      <span data-i18n="brandTrain">Потяг №1955</span>
     </a>
     <nav class="nav" aria-label="Розділи" data-i18n-aria="navLabel">
       <a href="#route" data-i18n="navRoute">Маршрут</a>

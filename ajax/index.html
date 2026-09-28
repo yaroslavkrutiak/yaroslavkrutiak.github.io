@@ -6,7 +6,8 @@
 <title>Ajax Model Room</title>
 <meta name="description" content="An unofficial portfolio concept: the Ajax Systems security ecosystem built as an architect's scale model.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%23184a3b'/%3E%3Crect x='7' y='7' width='18' height='18' rx='4' fill='%23eef0ee'/%3E%3Ccircle cx='16' cy='14' r='2.4' fill='%23184a3b'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800;900&family=Sofia+Sans+Semi+Condensed:wght@500;600;700&family=Sofia+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap&subset=cyrillic" rel="stylesheet">
@@ -79,8 +80,8 @@ img{display:block;max-width:100%}
   pointer-events:none;
 }
 .top > *{pointer-events:auto}
-.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;margin-right:auto}
-.brand b{font:900 30px/1 var(--display);letter-spacing:.06em}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand .wordmark{height:24px;width:auto;flex:none}
 .brand span{font:600 13px/1 var(--label);letter-spacing:.04em;color:var(--mat-ink)}
 .nav{display:flex;gap:4px}
 .nav a{font:600 14px/1 var(--label);letter-spacing:.03em;text-decoration:none;padding:9px 10px;border-radius:2px;color:var(--card)}
@@ -319,7 +320,7 @@ footer a{color:#fff}
 @media (max-width:760px){
   body{font-size:16px}
   .top{padding:10px 16px;gap:10px}
-  .brand b{font-size:26px}
+  .brand .wordmark{height:20px}
   .brand span{display:none}
   .chip{font-size:11px;padding:7px 8px 6px}
   .step{align-items:flex-end;padding:72px 16px 24px}
@@ -365,7 +366,7 @@ footer a{color:#fff}
 <a class="sr" href="#main" data-uk="Перейти до змісту">Skip to content</a>
 
 <header class="top" id="top">
-  <a class="brand" href="#hero" aria-label="Ajax Systems concept, back to top" data-uk-aria="Концепт Ajax Systems, на початок"><b>AJAX</b><span data-uk="Systems · макет-концепт">Systems · model-room concept</span></a>
+  <a class="brand" href="#hero" aria-label="Ajax Systems concept, back to top" data-uk-aria="Концепт Ajax Systems, на початок"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 20" fill="currentColor" class="wordmark" aria-hidden="true"><path d="M74.69.88h-5.3l21.25 19.11h5.3L74.69.88m6.14 13.6-6.13 5.51h-5.3l6.12-5.51h5.31m8.99-8.09L95.95.88h-5.3l-6.13 5.51h5.3M13.28.88l-2.17 3.11 11.07 16h4.38L13.28.88M7.66 8.97H12L4.38 19.99H0L7.66 8.97M53.24.88l-2.17 3.11 11.07 16h4.38L53.24.88m-5.62 8.09h4.34l-7.62 11.02h-4.38l7.66-11.02M35.23.88l.01 11.7c-.01 1.9-.9 4.27-3.89 4.47h-1.09v2.94l1.57.01a7.01 7.01 0 0 0 4.81-2.06 8.11 8.11 0 0 0 2.03-5.55V.88h-3.44"></path></svg><span data-uk="Systems · макет-концепт">Systems · model-room concept</span></a>
   <nav class="nav" aria-label="Sections" data-uk-aria="Розділи">
     <a href="#hub" data-uk="Тур">Tour</a>
     <a href="#jeweller" data-uk="Симуляція тривоги">Alarm simulation</a>
